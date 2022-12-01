@@ -17,90 +17,10 @@
 
 <body class="h-full relative flex p-4">
 
-    <!--
-    #######
-    #        ####  #####  #    #
-    #       #    # #    # ##  ##
-    #####   #    # #    # # ## #
-    #       #    # #####  #    #
-    #       #    # #   #  #    #
-    #        ####  #    # #    #
-    -->
-    <form action="" class="flex-col w-full hidden">
-        <div class="form-control row w-full">
-            <label class="label">
-                <span class="label-text">What is your name?</span>
-            </label>
-            <input type="text" placeholder="John Doe" class="input input-bordered w-full" />
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span class="label-text">What is your birthdate?</span>
-            </label>
-            <input type="date" placeholder="31.12.1990" class="input input-bordered w-full" />
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span class="label-text">How many languages do you understand?</span>
-            </label>
-            <input type="number" placeholder="1" step="1.0" min="1" class="input input-bordered w-full" />
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span class="label-text">How many languages do you speak?</span>
-            </label>
-            <input type="number" placeholder="1" step="1.0" min="1" class="input input-bordered w-full" />
-        </div>
-
-        <div class="bottom-container">
-            <button class="btn btn-primary w-full">Pokračovat</button>
-        </div>
-    </form>
-
-    <!--
-    ###
-     #  #    # ######  ####
-     #  ##   # #      #    #
-     #  # #  # #####  #    #
-     #  #  # # #      #    #
-     #  #   ## #      #    #
-    ### #    # #       ####
-    -->
-    <div class="_hidden">
-        <h1 class="h1">Základní informace</h1>
-
-        <p class="p">V následujících krocích budete sledovat na obrazovce měnící se písmena a čísla. Každé se zobrazí na 2s.
-        Pod nimi vždy tlačítko <span class="btn btn-primary btn-xs">Shodné s 1 předchozí</span>. </p>
-
-        <p class="p">Vaším úkolem je toto tlačítko zmáčknout, pokud předchozí znak byl stejný, jako ten aktuální.
-        Až budete připraveni, klikněte na tlačítko <i>Pokračovat</i>.</p>
-
-        <div class="bottom-container">
-            <a href="" class="btn btn-primary w-full">Pokračovat</a>
-        </div>
+    <div id="app" class="w-full">
+        <nback/>
     </div>
 
-    <!--
-     #####
-    #     # #   # #    # #####   ####  #
-    #        # #  ##  ## #    # #    # #
-     #####    #   # ## # #####  #    # #
-          #   #   #    # #    # #    # #
-    #     #   #   #    # #    # #    # #
-     #####    #   #    # #####   ####  ######
-    -->
-    <div class="w-full hidden">
-        <div class="symbol">
-            A
-        </div>
-
-        <div class="bottom-container">
-            <a href="" class="btn btn-secondary w-full">Shodné s 1 předchozí</a>
-        </div>
-    </div>
-
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

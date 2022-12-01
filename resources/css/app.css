@@ -15,7 +15,13 @@
 }
 
 .bottom-container {
-    @apply absolute bottom-0 left-0 p-4 w-full;
+    @apply fixed bottom-0 left-0 p-4 w-full bg-base-100;
+}
+.bottom-left-container {
+    @apply fixed bottom-0 left-0 p-4 pr-2 w-1/2 bg-base-100;
+}
+.bottom-right-container {
+    @apply fixed bottom-0 right-0 p-4 pl-2 w-1/2 bg-base-100;
 }
 
 .symbol {
