@@ -19676,13 +19676,13 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "p"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("V následujících krocích budete sledovat na obrazovce měnící se písmena a čísla. Každé se zobrazí na 2s. Pod nimi vždy tlačítko "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "btn btn-primary btn-xs"
-}, "Shodné s 1 předchozí"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")], -1 /* HOISTED */);
+}, "Shodné s předchozím"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")], -1 /* HOISTED */);
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "p"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Vaším úkolem je toto tlačítko zmáčknout, pokud předchozí znak byl stejný, jako ten aktuální. Až budete připraveni, klikněte na tlačítko "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", null, "Pokračovat"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(".")], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    ###\r\n    #  #    # ######  ####\r\n    #  ##   # #      #    #\r\n    #  # #  # #####  #    #\r\n    #  #  # # #      #    #\r\n    #  #   ## #      #    #\r\n    ### #    # #       ####\r\n    "), _hoisted_1, _hoisted_2, _hoisted_3], 64 /* STABLE_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    ###\n    #  #    # ######  ####\n    #  ##   # #      #    #\n    #  # #  # #####  #    #\n    #  #  # # #      #    #\n    #  #   ## #      #    #\n    ### #    # #       ####\n    "), _hoisted_1, _hoisted_2, _hoisted_3], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
