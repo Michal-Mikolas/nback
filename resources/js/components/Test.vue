@@ -13,7 +13,7 @@
     </div>
 
     <div class="bottom-container">
-        <button @click="sameBtnClicked()" class="btn btn-secondary w-full">Shodné s 1 předchozí</button>
+        <button @click="sameBtnClicked()" class="btn btn-secondary w-full">Shodné s předchozí</button>
     </div>
 </template>
 

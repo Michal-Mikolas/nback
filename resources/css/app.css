@@ -25,13 +25,11 @@
     @apply fixed bottom-0 left-0 p-4 w-full bg-base-100;
     @apply sm:w-96 sm:left-1/2 sm:ml-[-192px] sm:bottom-4 sm:rounded-2xl;
 }
-.bottom-left-container {
-    @apply bottom-container;
-    @apply pr-2 w-1/2;
+.left-container {
+    @apply pr-2 w-1/2 inline-block;
 }
-.bottom-right-container {
-    @apply bottom-container;
-    @apply right-0 pl-2 w-1/2;
+.right-container {
+    @apply pl-2 w-1/2 inline-block;
 }
 
 .symbol {

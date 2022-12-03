@@ -14,11 +14,13 @@
         <StartInfo/>
 
         <div class="pt-20"></div>
-        <div class="bottom-left-container">
-            <button class="btn btn-primary w-full" @click="moveto('form')">Zpět</button>
-        </div>
-        <div class="bottom-right-container">
-            <button class="btn btn-primary w-full" @click="moveto('test')">Pokračovat</button>
+        <div class="bottom-container">
+            <div class="left-container">
+                <button class="btn btn-primary w-full" @click="moveto('form')">Zpět</button>
+            </div>
+            <div class="right-container">
+                <button class="btn btn-primary w-full" @click="moveto('test')">Pokračovat</button>
+            </div>
         </div>
     </div>
 

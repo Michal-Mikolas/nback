@@ -2356,50 +2356,13 @@ html {
     border-radius: 1rem;
   }
 }
-.bottom-left-container {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
-  padding: 1rem;
-}
-@media (min-width: 640px) {
-
-  .bottom-left-container {
-    left: 50%;
-    bottom: 1rem;
-    margin-left: -192px;
-    width: 24rem;
-    border-radius: 1rem;
-  }
-}
-.bottom-left-container {
+.left-container {
+  display: inline-block;
   width: 50%;
   padding-right: 0.5rem;
 }
-.bottom-right-container {
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
-  padding: 1rem;
-}
-@media (min-width: 640px) {
-
-  .bottom-right-container {
-    left: 50%;
-    bottom: 1rem;
-    margin-left: -192px;
-    width: 24rem;
-    border-radius: 1rem;
-  }
-}
-.bottom-right-container {
-  right: 0px;
+.right-container {
+  display: inline-block;
   width: 50%;
   padding-left: 0.5rem;
 }
