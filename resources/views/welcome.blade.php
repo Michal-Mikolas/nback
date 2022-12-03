@@ -15,9 +15,15 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="all" />
 </head>
 
-<body class="h-full relative flex p-4">
+<body
+    class="h-full relative flex p-4
+        sm:bg-base-200 sm:bg-cover sm:bg-top"
+>
 
-    <div id="app" class="w-full">
+    <div id="app"
+        class="w-full
+            sm:card sm:w-96 sm:bg-base-100 sm:shadow-xl sm:relative sm:mx-auto sm:p-4"
+    >
         <nback/>
     </div>
 

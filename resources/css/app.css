@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (min-width: 640px) {
+    body {
+        background-image: radial-gradient(hsla(var(--bc)/.2) 0.5px,hsla(var(--b2)/1) 0.5px);
+        background-size: 5px 5px !important;
+    }
+}
+
 .form-control {
     @apply mb-4;
 }
@@ -16,12 +23,15 @@
 
 .bottom-container {
     @apply fixed bottom-0 left-0 p-4 w-full bg-base-100;
+    @apply sm:w-96 sm:left-1/2 sm:ml-[-192px] sm:bottom-4 sm:rounded-2xl;
 }
 .bottom-left-container {
-    @apply fixed bottom-0 left-0 p-4 pr-2 w-1/2 bg-base-100;
+    @apply bottom-container;
+    @apply pr-2 w-1/2;
 }
 .bottom-right-container {
-    @apply fixed bottom-0 right-0 p-4 pl-2 w-1/2 bg-base-100;
+    @apply bottom-container;
+    @apply right-0 pl-2 w-1/2;
 }
 
 .symbol {
