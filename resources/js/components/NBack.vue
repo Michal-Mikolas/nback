@@ -1,19 +1,31 @@
 <template>
 
+    <div v-if="step=='home'">
+        <Home/>
+
+        <div class="bottom-container">
+            <button class="btn btn-primary w-full" @click="moveto('form')">Pokračovat</button>
+        </div>
+    </div>
+
+
     <div v-if="step=='form'">
         <PersonalInfoForm/>
 
-        <div class="pt-20"></div>
         <div class="bottom-container">
-            <button class="btn btn-primary w-full" @click="moveto('info')">Pokračovat</button>
+            <div class="left-container">
+                <button class="btn btn-primary w-full" @click="moveto('home')">Zpět</button>
+            </div>
+            <div class="right-container">
+                <button class="btn btn-primary w-full" @click="moveto('info')">Pokračovat</button>
+            </div>
         </div>
     </div>
 
 
     <div v-if="step=='info'">
-        <StartInfo/>
+        <TestInfo/>
 
-        <div class="pt-20"></div>
         <div class="bottom-container">
             <div class="left-container">
                 <button class="btn btn-primary w-full" @click="moveto('form')">Zpět</button>
@@ -33,26 +45,27 @@
 
 
 <script>
-import PersonalInfoForm from './PersonalInfoForm.vue';
-import StartInfo from './StartInfo.vue'
+import Home from './Home.vue'
+import PersonalInfoForm from './PersonalInfoForm.vue'
+import TestInfo from './TestInfo.vue'
 import Test from './Test.vue'
 
 export default {
     data() {
         return {
-            step: 'form',
-            '': ''
+            step: 'home',
         }
     },
     components: {
+        Home,
         PersonalInfoForm,
-        StartInfo,
-        Test
+        TestInfo,
+        Test,
     },
     methods: {
         moveto(step){
-            console.log('moveto', step);
-            this.step = step;
+            console.log('moveto', step)
+            this.step = step
         }
     }
 }

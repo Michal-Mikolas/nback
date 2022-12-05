@@ -32,6 +32,13 @@
     @apply pl-2 w-1/2 inline-block;
 }
 
-.symbol {
+.test-symbol {
     @apply text-center text-9xl pt-40;
+}
+
+.badge {
+    @apply ml-1 mr-1;
+}
+.badge-slim {
+    @apply pl-[4px] pr-[4px];
 }
