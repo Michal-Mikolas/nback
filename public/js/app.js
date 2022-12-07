@@ -19606,19 +19606,84 @@ __webpack_require__.r(__webpack_exports__);
       this.card.clicked = true;
     },
     nextCard: function nextCard() {
-      this.i += 1;
-      if (this.i in this.cards) {
-        this.card = this.cards[this.i];
-        this.card.clicked = false;
-        if (this.card.type == 'symbol') {
-          setTimeout(this.nextCard, 2000);
+      var _this = this;
+      this.card['content'] = '';
+      setTimeout(function () {
+        _this.i += 1;
+        if (_this.i in _this.cards) {
+          _this.card = _this.cards[_this.i];
+          _this.card.clicked = false;
+          if (_this.card.type == 'symbol') {
+            setTimeout(_this.nextCard, 2000);
+          }
+        } else {
+          console.log(_this.cards);
         }
-      } else {
-        console.log(this.cards);
+      }, 500);
+    },
+    generateCards: function generateCards(count, level) {
+      String.prototype.replaceAt = function (index, replacement) {
+        return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+      };
+
+      /*
+       * 1) Generate word
+       */
+      var word = this.randomWord(count);
+      console.log(word);
+
+      // at least 30 % of cards should be match
+      var matches = this.countMatches(word, level);
+      var j = 0;
+      while (matches < count * 0.3 && j < 99) {
+        i = Math.floor(Math.random() * (word.length - level)) + level;
+        word = word.replaceAt(i, word[i - level]);
+        console.log(i, word);
+        matches = this.countMatches(word, level);
+        j++;
       }
+
+      /*
+       * 2) Convert word to cards
+       */
+      var cards = [];
+      for (var i = 0; i < word.length; i++) {
+        cards.push({
+          type: 'symbol',
+          content: word[i],
+          same: word[i] == word[i - level],
+          badge: level > 1 ? level + '.' : ''
+        });
+      }
+      return cards;
+    },
+    randomWord: function randomWord(length) {
+      var result = '';
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      var charactersLength = characters.length;
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    },
+    countMatches: function countMatches(word, level) {
+      var counter = 0;
+      for (var i = 0; i < word.length; i++) {
+        if (i >= level && word[i] == word[i - level]) {
+          counter++;
+        }
+      }
+      return counter;
     }
   },
   mounted: function mounted() {
+    this.cards = this.generateCards(10, 1);
+    this.cards.push({
+      type: 'break',
+      content: "\n                <h1 class=\"h1\">Vede\u0161 si skv\u011Ble!</h1>\n                <p class=\"p\">\xDAsp\u011B\u0161n\u011B jsi dokon\u010Dil zah\u0159\xEDvac\xED kolo. Zde jsi m\u011Bl kontrolovat, jestli je p\xEDsmeno shodn\xE9 s jeho <b><i>p\u0159\xEDm\xFDm p\u0159edch\u016Fdcem</i></b>. </p>\n\n                <p class=\"p\">Zkus\xEDme to trochu zt\xED\u017Eit. Nyn\xED bude\u0161 porovn\xE1vat, jestli je symbol shodn\xFD se symbolem <b><i>p\u0159ed-p\u0159edchoz\xEDm</i></b>. <br/>\n                Tedy nap\u0159\xEDklad v sekvenci <span class=\"badge\">A</span>-<span class=\"badge\">B</span>-<span class=\"badge\">A</span> je posledn\xED p\xEDsmeno shodn\xE9 - proto\u017Ee je stejn\xE9, jako <b><i>p\xEDsmeno p\u0159ed p\u0159edchoz\xEDm</i></b> (tak\u017Ee klik\xE1\u0161 na tla\u010D\xEDtko).</p>\n\n                <p class=\"p\">V n\xE1sleduj\xEDc\xED sekvenci se ti tedy bude dole zobrazovat tla\u010D\xEDtko\n                    <button class=\"btn btn-secondary btn-xs\">\n                        Shodn\xE9 s <span class=\"badge badge-slim\">2.</span> p\u0159edchoz\xEDm\n                    </button>\n                .</p>\n\n                <p class=\"p\">Je v\u0161e srozumiteln\xE9? Jsi p\u0159ipraven pokra\u010Dovat? Klikni na tla\u010D\xEDtko n\xED\u017Ee.</p>\n            "
+    });
+    this.cards = this.cards.concat(this.generateCards(10, 2));
+    console.log('cards', this.cards);
     this.nextCard();
   }
 });
@@ -19660,7 +19725,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Vítej!</h1><p class=\"p\"><img src=\"/lea2.png\" alt=\"Lea Slížová\" class=\"float-left mt-[6px] mr-4 mb-4 w-28 rounded\"> Děkuji, že jsi se rozhodl/a zúčastnit tohoto výzkumu. Podpoříš tím moji bakalářskou práci, ale také otestuješ jednu z částí své paměti a dozvíš se něco o sobě. </p><p class=\"p clear-left\">Na konci celého procesu můžeš své výsledky porovnat s ostatními. Můžeš si později test klidně zopakovat a vyzkoušet si, jestli sis vedl lépe než na poprvé. Do výzkumu ale použiji pouze tvůj první test.</p><p class=\"p\"><b>Celý test ti zabere cca 10 minut.</b> Po jeho dokončení ti na e-mail přijde odkaz s tvými výsledky a aktuálním porovnáním s ostatními. <b>Pokud jsi tedy připraven/a a jsi pro následujících 10 minut v prostředí, kde tě nic nebude rušit, klikni dole na tlačítko <i>Pokračovat</i></b>.</p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #     #\n    #     #  ####  #    # ######\n    #     # #    # ##  ## #\n    ####### #    # # ## # #####\n    #     # #    # #    # #\n    #     # #    # #    # #\n    #     #  ####  #    # ######\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #     #\r\n    #     #  ####  #    # ######\r\n    #     # #    # ##  ## #\r\n    ####### #    # # ## # #####\r\n    #     # #    # #    # #\r\n    #     # #    # #    # #\r\n    #     #  ####  #    # ######\r\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -19760,7 +19825,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Nejdříve něco o tobě</h1><form action=\"\" class=\"flex-col\"><!--\n        #######\n        #        ####  #####  #    #\n        #       #    # #    # ##  ##\n        #####   #    # #    # # ## #\n        #       #    # #####  #    #\n        #       #    # #   #  #    #\n        #        ####  #    # #    #\n        --><div class=\"form-control row w-full\"><label class=\"label\"><span class=\"label-text\">Jak se jmenuješ?</span></label><input type=\"text\" placeholder=\"Jan Novák\" class=\"input input-bordered w-full\"></div><div class=\"form-control w-full\"><label class=\"label\"><span class=\"label-text\">Kdy ses narodil/a?</span></label><input type=\"date\" placeholder=\"31.12.1990\" class=\"input input-bordered w-full\"></div><div class=\"form-control w-full\"><label class=\"label\"><span class=\"label-text\">Kolika jazykům rozumíš?</span></label><input type=\"number\" placeholder=\"1\" step=\"1.0\" min=\"1\" class=\"input input-bordered w-full\"></div><div class=\"form-control w-full\"><label class=\"label\"><span class=\"label-text\">Kolika jazyky zvládneš mluvit?</span></label><input type=\"number\" placeholder=\"1\" step=\"1.0\" min=\"1\" class=\"input input-bordered w-full\"></div></form>", 2);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Nejdříve něco o tobě</h1><form action=\"\" class=\"flex-col\"><!--\r\n        #######\r\n        #        ####  #####  #    #\r\n        #       #    # #    # ##  ##\r\n        #####   #    # #    # # ## #\r\n        #       #    # #####  #    #\r\n        #       #    # #   #  #    #\r\n        #        ####  #    # #    #\r\n        --><div class=\"form-control row w-full\"><label class=\"label\"><span class=\"label-text\">Jak se jmenuješ?</span></label><input type=\"text\" placeholder=\"Jan Novák\" class=\"input input-bordered w-full\"></div><div class=\"form-control w-full\"><label class=\"label\"><span class=\"label-text\">Kdy ses narodil/a?</span></label><input type=\"date\" placeholder=\"31.12.1990\" class=\"input input-bordered w-full\"></div><div class=\"form-control w-full\"><label class=\"label\"><span class=\"label-text\">Kolika jazykům rozumíš?</span></label><input type=\"number\" placeholder=\"1\" step=\"1.0\" min=\"1\" class=\"input input-bordered w-full\"></div><div class=\"form-control w-full\"><label class=\"label\"><span class=\"label-text\">Kolika jazyky zvládneš mluvit?</span></label><input type=\"number\" placeholder=\"1\" step=\"1.0\" min=\"1\" class=\"input input-bordered w-full\"></div></form>", 2);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return _hoisted_1;
 }
@@ -19807,7 +19872,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.sameBtnClicked();
     }),
     "class": "btn btn-secondary w-full"
-  }, [_hoisted_3, 'badge' in $data.card ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['badge']), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_5])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, [_hoisted_3, $data.card['badge'] && $data.card['badge'].length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['badge']), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_5])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     innerHTML: $data.card['content']
   }, null, 8 /* PROPS */, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-secondary w-full",
@@ -19834,7 +19899,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Základní informace</h1><p class=\"p\">V následujících krocích budeš sledovat na obrazovce měnící se písmena a čísla. Každé se zobrazí na 2s. Pod nimi vždy tlačítko <span class=\"btn btn-secondary btn-xs\">Shodné s předchozím</span>. </p><p class=\"p\">Tvým úkolem je toto tlačítko zmáčknout, pokud předchozí znak byl stejný, jako ten aktuální. </p><p class=\"p\">Až budeš připraven/a, klikni na tlačítko <i>Pokračovat</i>.</p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    ###\n     #  #    # ######  ####\n     #  ##   # #      #    #\n     #  # #  # #####  #    #\n     #  #  # # #      #    #\n     #  #   ## #      #    #\n    ### #    # #       ####\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    ###\r\n     #  #    # ######  ####\r\n     #  ##   # #      #    #\r\n     #  # #  # #####  #    #\r\n     #  #  # # #      #    #\r\n     #  #   ## #      #    #\r\n    ### #    # #       ####\r\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
