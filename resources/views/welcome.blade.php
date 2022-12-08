@@ -7,12 +7,13 @@
 
     <title>NBack</title>
 
+    <!-- Styles -->
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="all" />
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="all" />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'/>
 </head>
 
 <body
@@ -27,6 +28,7 @@
         <nback/>
     </div>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js'></script>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

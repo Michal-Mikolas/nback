@@ -10,14 +10,14 @@
 
 
     <div v-if="step=='form'">
-        <PersonalInfoForm/>
+        <PersonalInfoForm ref="personalInfoForm" v-on:change="personalInfoFormChanged()"/>
 
         <div class="bottom-container">
             <div class="left-container">
                 <button class="btn btn-primary w-full" @click="moveto('home')">Zpět</button>
             </div>
             <div class="right-container">
-                <button class="btn btn-primary w-full" @click="moveto('info')">Pokračovat</button>
+                <button @click="moveto('info')" v-bind:disabled="movetoInfoDisabled" class="btn btn-primary w-full">Pokračovat</button>
             </div>
         </div>
     </div>
@@ -38,7 +38,12 @@
 
 
     <div class="w-full" v-if="step=='test'">
-        <Test/>
+        <Test ref="test"/>
+    </div>
+
+
+    <div class="w-full" v-if="step=='finish'">
+
     </div>
 
 </template>
@@ -49,11 +54,13 @@ import Home from './Home.vue'
 import PersonalInfoForm from './PersonalInfoForm.vue'
 import TestInfo from './TestInfo.vue'
 import Test from './Test.vue'
+import Finish from './Finish.vue'
 
 export default {
     data() {
         return {
             step: 'home',
+            movetoInfoDisabled: true,
         }
     },
     components: {
@@ -61,12 +68,20 @@ export default {
         PersonalInfoForm,
         TestInfo,
         Test,
+        Finish,
     },
     methods: {
         moveto(step){
-            console.log('moveto', step)
             this.step = step
+        },
+        finish(){
+            this.$refs.personalInfoForm
+        },
+        personalInfoFormChanged(){
+            this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
         }
-    }
+    },
+    computed: {
+    },
 }
 </script>
