@@ -19531,7 +19531,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      step: 'home',
+      step: 'info',
       movetoInfoDisabled: true
     };
   },
@@ -19546,11 +19546,12 @@ __webpack_require__.r(__webpack_exports__);
     moveto: function moveto(step) {
       this.step = step;
     },
-    finish: function finish() {
-      this.$refs.personalInfoForm;
-    },
     personalInfoFormChanged: function personalInfoFormChanged() {
       this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
+    },
+    testFinished: function testFinished() {
+      var user = this.$refs.personalInfoForm.user;
+      var cards = this.$refs.personalInfoForm.cards;
     }
   },
   computed: {}
@@ -19646,9 +19647,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  emits: ['finish'],
   data: function data() {
     return {
+      loading: true,
+      error: false,
       cards: [{
         type: 'symbol',
         content: 'A',
@@ -19688,25 +19695,49 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  mounted: function mounted() {
+    var _this = this;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/test/find-user/test@gmail.com').then(function (response) {
+      console.log('response.data', response.data);
+      _this.loading = false;
+      if ('user' in response.data) {
+        console.log('user found', response.data['user']);
+      } else {
+        console.log('no user');
+        _this.runRandomTest();
+      }
+    })["catch"](function (err) {
+      _this.error = true;
+    });
+  },
   methods: {
     sameBtnClicked: function sameBtnClicked() {
       this.card.clicked = true;
     },
     nextCard: function nextCard() {
-      var _this = this;
+      var _this2 = this;
       this.card['content'] = '';
       setTimeout(function () {
-        _this.i += 1;
-        if (_this.i in _this.cards) {
-          _this.card = _this.cards[_this.i];
-          _this.card.clicked = false;
-          if (_this.card.type == 'symbol') {
-            setTimeout(_this.nextCard, 2000);
+        _this2.i += 1;
+        if (_this2.i in _this2.cards) {
+          _this2.card = _this2.cards[_this2.i];
+          _this2.card.clicked = false;
+          if (_this2.card.type == 'symbol') {
+            setTimeout(_this2.nextCard, 2000);
           }
         } else {
-          console.log(_this.cards);
+          // console.log(this.cards)
         }
       }, 500);
+    },
+    runRandomTest: function runRandomTest() {
+      this.cards = this.generateCards(10, 1);
+      this.cards.push({
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Vede\u0161 si skv\u011Ble!</h1>\n                    <p class=\"p\">\xDAsp\u011B\u0161n\u011B jsi dokon\u010Dil zah\u0159\xEDvac\xED kolo. Zde jsi m\u011Bl kontrolovat, jestli je p\xEDsmeno shodn\xE9 s jeho <b><i>p\u0159\xEDm\xFDm p\u0159edch\u016Fdcem</i></b>. </p>\n\n                    <p class=\"p\">Zkus\xEDme to trochu zt\xED\u017Eit. Nyn\xED bude\u0161 porovn\xE1vat, jestli je symbol shodn\xFD se symbolem <b><i>p\u0159ed-p\u0159edchoz\xEDm</i></b>. <br/>\n                    Tedy nap\u0159\xEDklad v sekvenci <span class=\"badge\">A</span>-<span class=\"badge\">B</span>-<span class=\"badge\">A</span> je posledn\xED p\xEDsmeno shodn\xE9 - proto\u017Ee je stejn\xE9, jako <b><i>p\xEDsmeno p\u0159ed p\u0159edchoz\xEDm</i></b> (tak\u017Ee klik\xE1\u0161 na tla\u010D\xEDtko).</p>\n\n                    <p class=\"p\">V n\xE1sleduj\xEDc\xED sekvenci se ti tedy bude dole zobrazovat tla\u010D\xEDtko\n                        <button class=\"btn btn-secondary btn-xs\">\n                            Shodn\xE9 s <span class=\"badge badge-slim\">2.</span> p\u0159edchoz\xEDm\n                        </button>\n                    .</p>\n\n                    <p class=\"p\">Je v\u0161e srozumiteln\xE9? Jsi p\u0159ipraven pokra\u010Dovat? Klikni na tla\u010D\xEDtko n\xED\u017Ee.</p>\n                "
+      });
+      this.cards = this.cards.concat(this.generateCards(10, 2));
+      this.nextCard();
     },
     generateCards: function generateCards(count, level) {
       String.prototype.replaceAt = function (index, replacement) {
@@ -19717,7 +19748,6 @@ __webpack_require__.r(__webpack_exports__);
        * 1) Generate word
        */
       var word = this.randomWord(count);
-      console.log(word);
 
       // at least 30 % of cards should be match
       var matches = this.countMatches(word, level);
@@ -19746,7 +19776,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     randomWord: function randomWord(length) {
       var result = '';
-      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var charactersLength = characters.length;
       for (var i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -19762,16 +19792,6 @@ __webpack_require__.r(__webpack_exports__);
       }
       return counter;
     }
-  },
-  mounted: function mounted() {
-    this.cards = this.generateCards(10, 1);
-    this.cards.push({
-      type: 'break',
-      content: "\n                <h1 class=\"h1\">Vede\u0161 si skv\u011Ble!</h1>\n                <p class=\"p\">\xDAsp\u011B\u0161n\u011B jsi dokon\u010Dil zah\u0159\xEDvac\xED kolo. Zde jsi m\u011Bl kontrolovat, jestli je p\xEDsmeno shodn\xE9 s jeho <b><i>p\u0159\xEDm\xFDm p\u0159edch\u016Fdcem</i></b>. </p>\n\n                <p class=\"p\">Zkus\xEDme to trochu zt\xED\u017Eit. Nyn\xED bude\u0161 porovn\xE1vat, jestli je symbol shodn\xFD se symbolem <b><i>p\u0159ed-p\u0159edchoz\xEDm</i></b>. <br/>\n                Tedy nap\u0159\xEDklad v sekvenci <span class=\"badge\">A</span>-<span class=\"badge\">B</span>-<span class=\"badge\">A</span> je posledn\xED p\xEDsmeno shodn\xE9 - proto\u017Ee je stejn\xE9, jako <b><i>p\xEDsmeno p\u0159ed p\u0159edchoz\xEDm</i></b> (tak\u017Ee klik\xE1\u0161 na tla\u010D\xEDtko).</p>\n\n                <p class=\"p\">V n\xE1sleduj\xEDc\xED sekvenci se ti tedy bude dole zobrazovat tla\u010D\xEDtko\n                    <button class=\"btn btn-secondary btn-xs\">\n                        Shodn\xE9 s <span class=\"badge badge-slim\">2.</span> p\u0159edchoz\xEDm\n                    </button>\n                .</p>\n\n                <p class=\"p\">Je v\u0161e srozumiteln\xE9? Jsi p\u0159ipraven pokra\u010Dovat? Klikni na tla\u010D\xEDtko n\xED\u017Ee.</p>\n            "
-    });
-    this.cards = this.cards.concat(this.generateCards(10, 2));
-    console.log('cards', this.cards);
-    this.nextCard();
   }
 });
 
@@ -19932,7 +19952,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.moveto('test');
     })
   }, "Pokračovat")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
-    ref: "test"
+    ref: "test",
+    onFinish: _cache[6] || (_cache[6] = function ($event) {
+      return $options.testFinished();
+    })
   }, null, 512 /* NEED_PATCH */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
@@ -20120,39 +20143,65 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = {
   key: 0,
+  "class": "test-error"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "h1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-sad-tear"
+})], -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "p"
+}, "Je mi líto, něco se porouchalo. Zkus prosím stránku za chvíli obnovit.", -1 /* HOISTED */);
+var _hoisted_4 = [_hoisted_2, _hoisted_3];
+var _hoisted_5 = {
+  key: 1,
+  "class": "test-loading"
+};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "lds-grid"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div")], -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "h2"
+}, "Načítám test...", -1 /* HOISTED */);
+var _hoisted_8 = [_hoisted_6, _hoisted_7];
+var _hoisted_9 = {
   "class": "test-symbol"
 };
-var _hoisted_2 = {
+var _hoisted_10 = {
   "class": "bottom-container"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Shodné s ");
-var _hoisted_4 = {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Shodné s ");
+var _hoisted_12 = {
   key: 0,
   "class": "badge badge-slim"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" předchozím ");
-var _hoisted_6 = {
-  key: 1,
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" předchozím ");
+var _hoisted_14 = {
   "class": "test-break"
 };
-var _hoisted_7 = ["innerHTML"];
-var _hoisted_8 = {
+var _hoisted_15 = ["innerHTML"];
+var _hoisted_16 = {
   "class": "bottom-container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n     #######\r\n        #    ######  ####  #####\r\n        #    #      #        #\r\n        #    #####   ####    #\r\n        #    #           #   #\r\n        #    #      #    #   #\r\n        #    ######  ####    #\r\n    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SYMBOL "), $data.card['type'] == 'symbol' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['content']) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n     #######\n        #    ######  ####  #####\n        #    #      #        #\n        #    #####   ####    #\n        #    #           #   #\n        #    #      #    #   #\n        #    ######  ####    #\n    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" LOADING & ERROR "), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4)) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_8)) : $data.card['type'] == 'symbol' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 2
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SYMBOL "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['content']) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.sameBtnClicked();
     }),
     "class": "btn btn-secondary w-full"
-  }, [_hoisted_3, $data.card['badge'] && $data.card['badge'].length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['badge']), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_5])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, [_hoisted_11, $data.card['badge'] && $data.card['badge'].length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['badge']), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13])])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 3
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     innerHTML: $data.card['content']
-  }, null, 8 /* PROPS */, _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-secondary w-full",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.nextCard();
     })
-  }, "Pokračovat")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+  }, "Pokračovat")])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -20170,7 +20219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Základní informace</h1><p class=\"p\">V následujících krocích budeš sledovat na obrazovce měnící se písmena a čísla. Každé se zobrazí na 2s. Pod nimi vždy tlačítko <span class=\"btn btn-secondary btn-xs\">Shodné s předchozím</span>. </p><p class=\"p\">Tvým úkolem je toto tlačítko zmáčknout, pokud předchozí znak byl stejný, jako ten aktuální. </p><p class=\"p\">Až budeš připraven/a, klikni na tlačítko <i>Pokračovat</i>.</p>", 4);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Základní informace</h1><p class=\"p\">V následujících krocích budeš sledovat na obrazovce měnící se písmena. Každé se zobrazí na 2s. Pod nimi vždy tlačítko <span class=\"btn btn-secondary btn-xs\">Shodné s předchozím</span>. </p><p class=\"p\">Tvým úkolem je toto tlačítko zmáčknout, pokud předchozí znak byl stejný, jako ten aktuální. </p><p class=\"p\">Až budeš připraven/a, klikni na tlačítko <i>Pokračovat</i>.</p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    ###\n     #  #    # ######  ####\n     #  ##   # #      #    #\n     #  # #  # #####  #    #\n     #  #  # # #      #    #\n     #  #   ## #      #    #\n    ### #    # #       ####\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
@@ -38338,6 +38387,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

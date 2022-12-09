@@ -38,7 +38,7 @@
 
 
     <div class="w-full" v-if="step=='test'">
-        <Test ref="test"/>
+        <Test ref="test" v-on:finish="testFinished()"/>
     </div>
 
 
@@ -59,7 +59,7 @@ import Finish from './Finish.vue'
 export default {
     data() {
         return {
-            step: 'home',
+            step: 'info',
             movetoInfoDisabled: true,
         }
     },
@@ -74,12 +74,13 @@ export default {
         moveto(step){
             this.step = step
         },
-        finish(){
-            this.$refs.personalInfoForm
-        },
         personalInfoFormChanged(){
             this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
-        }
+        },
+        testFinished(){
+            var user = this.$refs.personalInfoForm.user;
+            var cards = this.$refs.personalInfoForm.cards;
+        },
     },
     computed: {
     },
