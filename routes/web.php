@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test/find-user/{email}', [TestController::class, 'findUser']);
+Route::get('/api/find-user/{email}', [ApiController::class, 'findUser']);
+Route::get('/api/save-test', [ApiController::class, 'saveTest']);
+Route::post('/api/save-test', [ApiController::class, 'saveTest']);
 
 Route::get('/', function () {
     return view('welcome');

@@ -19479,6 +19479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['email'],
   data: function data() {
     return {};
   },
@@ -19523,6 +19524,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TestInfo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TestInfo.vue */ "./resources/js/components/TestInfo.vue");
 /* harmony import */ var _Test_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Test.vue */ "./resources/js/components/Test.vue");
 /* harmony import */ var _Finish_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Finish.vue */ "./resources/js/components/Finish.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -19531,7 +19535,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      step: 'info',
+      step: 'home',
       movetoInfoDisabled: true
     };
   },
@@ -19550,8 +19554,24 @@ __webpack_require__.r(__webpack_exports__);
       this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
     },
     testFinished: function testFinished() {
-      var user = this.$refs.personalInfoForm.user;
-      var cards = this.$refs.personalInfoForm.cards;
+      var _this = this;
+      this.step = 'loading';
+      var data = {
+        'user': this.$refs.personalInfoForm.user,
+        'cards': this.$refs.test.cards
+      };
+      console.log('data to send: ', data); /**/
+      data = JSON.parse(JSON.stringify(data));
+      console.log('data to send after cloning: ', data); /**/
+
+      axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/save-test', data).then(function (response) {
+        setTimeout(function () {
+          // enjoy the loader animation a bit :-P
+          _this.step = 'finish';
+        }, 1000);
+      })["catch"](function (error) {
+        _this.step = 'error';
+      });
     }
   },
   computed: {}
@@ -19575,17 +19595,27 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       'user': {
+        'email': '@',
         'fullname': '',
         'birthdate': null,
-        'passiveLanguages': null,
-        'activeLanguages': null
+        'passive_languages': null,
+        'active_languages': null
       }
     };
   },
   methods: {},
   computed: {
     isValid: function isValid() {
-      return this.isFullnameValid && this.isBirthdateValid && this.isActiveLanguageValid && this.isPassiveLanguageValid;
+      return this.isEmailValid && this.isFullnameValid && this.isBirthdateValid && this.isActiveLanguageValid && this.isPassiveLanguageValid;
+    },
+    isEmailValid: function isEmailValid() {
+      if (!this.user['email']) {
+        return false;
+      }
+      if (!this.user['email'].match(/^[^\s]+@[^\s]+\.[^\s]+/)) {
+        return false;
+      }
+      return true;
     },
     isFullnameValid: function isFullnameValid() {
       if (!this.user['fullname']) {
@@ -19611,26 +19641,26 @@ __webpack_require__.r(__webpack_exports__);
       return true;
     },
     isPassiveLanguageValid: function isPassiveLanguageValid() {
-      if (this.user['passiveLanguages'] <= 0) {
+      if (this.user['passive_languages'] <= 0) {
         return false;
       }
-      if (this.user['passiveLanguages'] > 43) {
+      if (this.user['passive_languages'] > 43) {
         return false;
       }
       return true;
     },
     isActiveLanguageValid: function isActiveLanguageValid() {
-      if (this.user['activeLanguages'] <= 0) {
+      if (this.user['active_languages'] <= 0) {
         return false;
       }
-      if (this.user['activeLanguages'] > 43) {
+      if (this.user['active_languages'] > 43) {
         return false;
       }
       return true;
     }
   },
   mounted: function mounted() {
-    this.$refs.inputFullname.focus();
+    this.$refs.inputEmail.focus();
   }
 });
 
@@ -19652,6 +19682,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   emits: ['finish'],
+  props: ['email'],
   data: function data() {
     return {
       loading: true,
@@ -19697,22 +19728,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var _this = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/test/find-user/test@gmail.com').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/find-user/' + this.email).then(function (response) {
       console.log('response.data', response.data);
-      _this.loading = false;
-      if ('user' in response.data) {
-        console.log('user found', response.data['user']);
-      } else {
-        console.log('no user');
-        _this.runRandomTest();
-      }
+      setTimeout(function () {
+        // enjoy the loader animation a bit :-P
+        _this.loading = false;
+        if (response.data['user']) {
+          console.log('user found', response.data['user']);
+          _this.runRandomTest();
+        } else {
+          console.log('no user');
+          _this.runRandomTest();
+        }
+      }, 1000);
     })["catch"](function (err) {
+      console.log('err', err);
       _this.error = true;
     });
   },
   methods: {
     sameBtnClicked: function sameBtnClicked() {
-      this.card.clicked = true;
+      this.cards[this.i].clicked = true;
     },
     nextCard: function nextCard() {
       var _this2 = this;
@@ -19720,12 +19756,13 @@ __webpack_require__.r(__webpack_exports__);
       setTimeout(function () {
         _this2.i += 1;
         if (_this2.i in _this2.cards) {
-          _this2.card = _this2.cards[_this2.i];
+          _this2.card = JSON.parse(JSON.stringify(_this2.cards[_this2.i]));
           _this2.card.clicked = false;
           if (_this2.card.type == 'symbol') {
             setTimeout(_this2.nextCard, 2000);
           }
         } else {
+          _this2.$emit('finish');
           // console.log(this.cards)
         }
       }, 500);
@@ -19755,7 +19792,8 @@ __webpack_require__.r(__webpack_exports__);
       while (matches < count * 0.3 && j < 99) {
         i = Math.floor(Math.random() * (word.length - level)) + level;
         word = word.replaceAt(i, word[i - level]);
-        console.log(i, word);
+        // console.log(i, word);
+
         matches = this.countMatches(word, level);
         j++;
       }
@@ -19832,13 +19870,46 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "h1"
-}, "Finish", -1 /* HOISTED */);
+}, "Gratuluji!", -1 /* HOISTED */);
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "p text-justify"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/lea2.png",
+  alt: "Lea Slížová",
+  "class": "float-right mt-[3px] ml-5 mb-4 w-28 rounded"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Úspěšně jsi prošel celým testem. Velice jsi mi tím pomohl s bakalářskou prací a já ti jsem za to vděčná. ")], -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "p text-justify"
+}, " Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit. ", -1 /* HOISTED */);
+var _hoisted_4 = {
   "class": "p"
-}, "...", -1 /* HOISTED */);
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" A zde už slíbený odkaz: ");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-up-right-from-square link link-primary mr-1"
+}, null, -1 /* HOISTED */);
+var _hoisted_8 = ["href"];
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "bottom-container text-center opacity-75"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-copyright"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Aplikaci vytvořil "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "https://www.linkedin.com/in/michal-mikolas",
+  target: "_blank",
+  "class": "link"
+}, "Michal Mikoláš"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" jako "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "https://github.com/Michal-Mikolas/nback",
+  target: "_blank",
+  "class": "link"
+}, "open-source"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")])], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, _hoisted_2], 64 /* STABLE_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, _hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, [_hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    "class": "link link-primary",
+    href: 'https://lea.michalm.cz/vysledky/' + $props.email,
+    target: "_blank"
+  }, "lea.michalm.cz/vysledky/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.email), 9 /* TEXT, PROPS */, _hoisted_8)]), _hoisted_9], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -19856,7 +19927,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Vítej!</h1><p class=\"p\"><img src=\"/lea2.png\" alt=\"Lea Slížová\" class=\"float-left mt-[6px] mr-4 mb-4 w-28 rounded\"> Děkuji, že jsi se rozhodl/a zúčastnit tohoto výzkumu. Podpoříš tím moji bakalářskou práci, ale také otestuješ jednu z částí své paměti a dozvíš se něco o sobě. </p><p class=\"p clear-left\">Na konci celého procesu můžeš své výsledky porovnat s ostatními. Můžeš si později test klidně zopakovat a vyzkoušet si, jestli sis vedl lépe než na poprvé. Do výzkumu ale použiji pouze tvůj první test.</p><p class=\"p\"><b>Celý test ti zabere cca 10 minut.</b> Po jeho dokončení ti na e-mail přijde odkaz s tvými výsledky a aktuálním porovnáním s ostatními. <b>Pokud jsi tedy připraven/a a jsi pro následujících 10 minut v prostředí, kde tě nic nebude rušit, klikni dole na tlačítko <i>Pokračovat</i></b>.</p>", 4);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Vítej!</h1><p class=\"p\"><img src=\"/lea2.png\" alt=\"Lea Slížová\" class=\"float-left mt-[3px] mr-4 mb-4 w-28 rounded\"> Děkuji, že jsi se rozhodl/a zúčastnit tohoto výzkumu. Podpoříš tím moji bakalářskou práci, ale také otestuješ jednu z částí své paměti a dozvíš se něco o sobě. </p><p class=\"p clear-left\">Na konci celého procesu můžeš své výsledky porovnat s ostatními. Můžeš si později test klidně zopakovat a vyzkoušet si, jestli sis vedl lépe než na poprvé. Do výzkumu ale použiji pouze tvůj první test.</p><p class=\"p\"><b>Celý test ti zabere cca 10 minut.</b> Po jeho dokončení ti na e-mail přijde odkaz s tvými výsledky a aktuálním porovnáním s ostatními. <b>Pokud jsi tedy připraven/a a jsi pro následujících 10 minut v prostředí, kde tě nic nebude rušit, klikni dole na tlačítko <i>Pokračovat</i></b>.</p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #     #\n    #     #  ####  #    # ######\n    #     # #    # ##  ## #\n    ####### #    # # ## # #####\n    #     # #    # #    # #\n    #     # #    # #    # #\n    #     #  ####  #    # ######\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
@@ -19883,36 +19954,65 @@ var _hoisted_2 = {
   "class": "bottom-container"
 };
 var _hoisted_3 = {
-  key: 1
+  "class": "bottom-container"
 };
 var _hoisted_4 = {
-  "class": "bottom-container"
+  "class": "left-container"
 };
 var _hoisted_5 = {
-  "class": "left-container"
-};
-var _hoisted_6 = {
   "class": "right-container"
 };
-var _hoisted_7 = ["disabled"];
-var _hoisted_8 = {
-  key: 2
+var _hoisted_6 = ["disabled"];
+var _hoisted_7 = {
+  key: 1
 };
-var _hoisted_9 = {
+var _hoisted_8 = {
   "class": "bottom-container"
 };
-var _hoisted_10 = {
+var _hoisted_9 = {
   "class": "left-container"
 };
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "right-container"
+};
+var _hoisted_11 = {
+  key: 2,
+  "class": "w-full"
 };
 var _hoisted_12 = {
   key: 3,
-  "class": "w-full"
+  "class": "w-full text-center pt-24"
 };
-var _hoisted_13 = {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "h1 text-white",
+  style: {
+    "margin-bottom": "0.5rem"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <i class=\"fa-solid fa-robot\"></i> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-network-wired"
+})], -1 /* HOISTED */);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "loader"
+}, null, -1 /* HOISTED */);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "h2 mt-8"
+}, "Odesílám tvé výsledky na server...", -1 /* HOISTED */);
+var _hoisted_16 = [_hoisted_13, _hoisted_14, _hoisted_15];
+var _hoisted_17 = {
   key: 4,
+  "class": "w-full text-center text-error pt-40"
+};
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "h1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-sad-tear"
+})], -1 /* HOISTED */);
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "p"
+}, "Je mi líto, něco se porouchalo. Zkus prosím stránku za chvíli obnovit.", -1 /* HOISTED */);
+var _hoisted_20 = [_hoisted_18, _hoisted_19];
+var _hoisted_21 = {
+  key: 5,
   "class": "w-full"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19920,43 +20020,47 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PersonalInfoForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PersonalInfoForm");
   var _component_TestInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TestInfo");
   var _component_Test = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Test");
+  var _component_Finish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Finish");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.step == 'home' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Home), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary w-full",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.moveto('form');
     })
-  }, "Pokračovat")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'form' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PersonalInfoForm, {
+  }, "Pokračovat")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PersonalInfoForm, {
     ref: "personalInfoForm",
     onChange: _cache[1] || (_cache[1] = function ($event) {
       return $options.personalInfoFormChanged();
     })
-  }, null, 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary w-full",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.moveto('home');
     })
-  }, "Zpět")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "Zpět")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.moveto('info');
     }),
     disabled: $data.movetoInfoDisabled,
     "class": "btn btn-primary w-full"
-  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'info' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestInfo), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "Pokračovat", 8 /* PROPS */, _hoisted_6)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), $data.step == 'info' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestInfo), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary w-full",
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.moveto('form');
     })
-  }, "Zpět")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, "Zpět")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary w-full",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.moveto('test');
     })
-  }, "Pokračovat")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
+  }, "Pokračovat")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
     ref: "test",
+    email: _ctx.$refs.personalInfoForm.user['email'],
     onFinish: _cache[6] || (_cache[6] = function ($event) {
       return $options.testFinished();
     })
-  }, null, 512 /* NEED_PATCH */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["email"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
+    email: _ctx.$refs.personalInfoForm.user['email']
+  }, null, 8 /* PROPS */, ["email"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -19990,11 +20094,11 @@ var _hoisted_4 = {
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "label-text-alt text-warning"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-smile"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Vyplň prosím jméno i příjmení ")], -1 /* HOISTED */);
+  "class": "fa-regular fa-face-frown"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Tohle nevypadá jako e-mail ")], -1 /* HOISTED */);
 var _hoisted_6 = [_hoisted_5];
 var _hoisted_7 = {
-  "class": "form-control w-full"
+  "class": "form-control row w-full"
 };
 var _hoisted_8 = {
   "class": "label"
@@ -20006,8 +20110,8 @@ var _hoisted_9 = {
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "label-text-alt text-warning"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-smile-wink"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nee, tehdy ses určitě nenarodil/a ")], -1 /* HOISTED */);
+  "class": "fa-regular fa-face-smile"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Vyplň prosím jméno i příjmení ")], -1 /* HOISTED */);
 var _hoisted_11 = [_hoisted_10];
 var _hoisted_12 = {
   "class": "form-control w-full"
@@ -20015,115 +20119,140 @@ var _hoisted_12 = {
 var _hoisted_13 = {
   "class": "label"
 };
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazykům rozumíš? ");
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
-  "class": "small block opacity-75"
-}, "(Češtinu a Slovenštinu berme jako jeden jazyk)", -1 /* HOISTED */);
-var _hoisted_16 = [_hoisted_14, _hoisted_15];
-var _hoisted_17 = {
+var _hoisted_14 = {
   key: 0,
   "class": "label"
 };
-var _hoisted_18 = {
-  key: 0,
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "label-text-alt text-warning"
-};
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-grin-tongue-wink"
-}, null, -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě rozumíš alespoň jednomu jazyku ");
-var _hoisted_21 = [_hoisted_19, _hoisted_20];
-var _hoisted_22 = {
-  key: 1,
-  "class": "label-text-alt text-warning"
-};
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-grin-tears"
-}, null, -1 /* HOISTED */);
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
-var _hoisted_25 = [_hoisted_23, _hoisted_24];
-var _hoisted_26 = {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-smile-wink"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nee, tehdy ses určitě nenarodil/a ")], -1 /* HOISTED */);
+var _hoisted_16 = [_hoisted_15];
+var _hoisted_17 = {
   "class": "form-control w-full"
 };
-var _hoisted_27 = {
+var _hoisted_18 = {
   "class": "label"
 };
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazyky zvládneš mluvit? ");
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazykům rozumíš? ");
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
   "class": "small block opacity-75"
 }, "(Češtinu a Slovenštinu berme jako jeden jazyk)", -1 /* HOISTED */);
-var _hoisted_30 = [_hoisted_28, _hoisted_29];
-var _hoisted_31 = {
+var _hoisted_21 = [_hoisted_19, _hoisted_20];
+var _hoisted_22 = {
   key: 0,
   "class": "label"
 };
-var _hoisted_32 = {
+var _hoisted_23 = {
   key: 0,
   "class": "label-text-alt text-warning"
 };
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-grin-tongue-wink"
 }, null, -1 /* HOISTED */);
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě mluvíš alespoň jedním jazykem ");
-var _hoisted_35 = [_hoisted_33, _hoisted_34];
-var _hoisted_36 = {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě rozumíš alespoň jednomu jazyku ");
+var _hoisted_26 = [_hoisted_24, _hoisted_25];
+var _hoisted_27 = {
   key: 1,
   "class": "label-text-alt text-warning"
 };
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-grin-tears"
 }, null, -1 /* HOISTED */);
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
-var _hoisted_39 = [_hoisted_37, _hoisted_38];
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
+var _hoisted_30 = [_hoisted_28, _hoisted_29];
+var _hoisted_31 = {
+  "class": "form-control w-full"
+};
+var _hoisted_32 = {
+  "class": "label"
+};
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazyky zvládneš mluvit? ");
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+  "class": "small block opacity-75"
+}, "(Češtinu a Slovenštinu berme jako jeden jazyk)", -1 /* HOISTED */);
+var _hoisted_35 = [_hoisted_33, _hoisted_34];
+var _hoisted_36 = {
+  key: 0,
+  "class": "label"
+};
+var _hoisted_37 = {
+  key: 0,
+  "class": "label-text-alt text-warning"
+};
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-grin-tongue-wink"
+}, null, -1 /* HOISTED */);
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě mluvíš alespoň jedním jazykem ");
+var _hoisted_40 = [_hoisted_38, _hoisted_39];
+var _hoisted_41 = {
+  key: 1,
+  "class": "label-text-alt text-warning"
+};
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-grin-tears"
+}, null, -1 /* HOISTED */);
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
+var _hoisted_44 = [_hoisted_42, _hoisted_43];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onInput: _cache[4] || (_cache[4] = function ($event) {
+    onInput: _cache[5] || (_cache[5] = function ($event) {
       return _ctx.$emit('change');
     }),
     action: "",
     "class": "flex-col"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n        #######\n        #        ####  #####  #    #\n        #       #    # #    # ##  ##\n        #####   #    # #    # # ## #\n        #       #    # #####  #    #\n        #       #    # #   #  #    #\n        #        ####  #    # #    #\n        "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isEmailValid ? 'text-success' : 'text-warning'])
+  }, "Jaký je tvůj e-mail?", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.user['email'] = $event;
+    }),
+    ref: "inputEmail",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isEmailValid ? 'input-success' : 'input-warning']),
+    type: "email",
+    placeholder: "jan.novak@email.cz"
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['email']]]), !$options.isEmailValid && $data.user['email'].length >= 5 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_4, _hoisted_6)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isFullnameValid ? 'text-success' : 'text-warning'])
   }, "Jak se jmenuješ?", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.user['fullname'] = $event;
     }),
-    ref: "inputFullname",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isFullnameValid ? 'input-success' : 'input-warning']),
     type: "text",
     placeholder: "Jan Novák"
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['fullname']]]), !$options.isFullnameValid && $data.user['fullname'].length >= 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_4, _hoisted_6)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['fullname']]]), !$options.isFullnameValid && $data.user['fullname'].length >= 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_9, _hoisted_11)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isBirthdateValid ? 'text-success' : 'text-warning'])
   }, "Kdy ses narodil/a?", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.user['birthdate'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isBirthdateValid ? 'input-success' : 'input-warning']),
     type: "date",
     placeholder: "31.12.1990"
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['birthdate']]]), !$options.isBirthdateValid && $data.user['birthdate'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_9, _hoisted_11)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['birthdate']]]), !$options.isBirthdateValid && $data.user['birthdate'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_14, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isPassiveLanguageValid ? 'text-success' : 'text-warning'])
-  }, _hoisted_16, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.user['passiveLanguages'] = $event;
+  }, _hoisted_21, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.user['passive_languages'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isPassiveLanguageValid ? 'input-siccess' : 'input-warning']),
     min: "0",
     step: "1.0",
     type: "number",
     placeholder: ""
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['passiveLanguages']]]), !$options.isPassiveLanguageValid && $data.user['passiveLanguages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_17, [$data.user['passiveLanguages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_18, _hoisted_21)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['passiveLanguages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_22, _hoisted_25)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['passive_languages']]]), !$options.isPassiveLanguageValid && $data.user['passive_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_22, [$data.user['passive_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_23, _hoisted_26)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['passive_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_27, _hoisted_30)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isActiveLanguageValid ? 'text-success' : 'text-warning'])
-  }, _hoisted_30, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return $data.user['activeLanguages'] = $event;
+  }, _hoisted_35, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.user['active_languages'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isActiveLanguageValid ? 'input-siccess' : 'input-warning']),
     min: "0",
     step: "1.0",
     type: "number",
     placeholder: ""
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['activeLanguages']]]), !$options.isActiveLanguageValid && $data.user['activeLanguages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_31, [$data.user['activeLanguages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_32, _hoisted_35)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['activeLanguages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_36, _hoisted_39)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['active_languages']]]), !$options.isActiveLanguageValid && $data.user['active_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_36, [$data.user['active_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_37, _hoisted_40)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['active_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_41, _hoisted_44)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

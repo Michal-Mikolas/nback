@@ -11,7 +11,7 @@
     <h1 class="h1">Vítej!</h1>
 
     <p class="p">
-        <img src="/lea2.png" alt="Lea Slížová" class="float-left mt-[6px] mr-4 mb-4 w-28 rounded">
+        <img src="/lea2.png" alt="Lea Slížová" class="float-left mt-[3px] mr-4 mb-4 w-28 rounded"/>
         Děkuji, že jsi se rozhodl/a zúčastnit tohoto výzkumu. Podpoříš tím moji bakalářskou práci, ale také otestuješ jednu z&nbsp;částí své paměti a dozvíš se něco o sobě. </p>
 
     <p class="p clear-left">Na konci celého procesu můžeš své výsledky porovnat s ostatními. Můžeš si později test klidně zopakovat a vyzkoušet si, jestli sis vedl lépe než na poprvé. Do výzkumu ale použiji pouze tvůj první test.</p>

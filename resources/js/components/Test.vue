@@ -49,6 +49,7 @@ import axios from 'axios';
 
 export default {
     emits: ['finish'],
+    props: ['email'],
     data() {
         return {
             loading: true,
@@ -83,24 +84,28 @@ export default {
         }
     },
     mounted(){
-        axios.get('/test/find-user/test@gmail.com')
+        axios.get('/api/find-user/' + this.email)
             .then(response => {
                 console.log('response.data', response.data);
-                this.loading = false;
+                setTimeout(() => {  // enjoy the loader animation a bit :-P
+                    this.loading = false;
 
-                if ('user' in response.data) {
-                    console.log('user found', response.data['user']);
-                } else {
-                    console.log('no user');
-                    this.runRandomTest();
-                }
+                    if (response.data['user']) {
+                        console.log('user found', response.data['user']);
+                        this.runRandomTest();
+                    } else {
+                        console.log('no user');
+                        this.runRandomTest();
+                    }
+                }, 1000);
             }).catch(err => {
+                console.log('err', err);
                 this.error = true
             });
     },
     methods: {
         sameBtnClicked(){
-            this.card.clicked = true
+            this.cards[this.i].clicked = true
         },
         nextCard(){
             this.card['content'] = '';
@@ -108,7 +113,7 @@ export default {
             setTimeout(()=>{
                 this.i += 1
                 if (this.i in this.cards) {
-                    this.card = this.cards[this.i]
+                    this.card = JSON.parse(JSON.stringify(this.cards[this.i]))
                     this.card.clicked = false
 
                     if (this.card.type == 'symbol') {
@@ -116,6 +121,7 @@ export default {
                     }
 
                 } else {
+                    this.$emit('finish');
                     // console.log(this.cards)
                 }
             }, 500)
