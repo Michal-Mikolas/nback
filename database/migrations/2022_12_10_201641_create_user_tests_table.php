@@ -37,7 +37,7 @@ class CreateUserTestsTable extends Migration
             $t->foreignId('user_test_id')->constrained();
             $t->string('type');
             $t->text('content');
-            $t->smallInteger('same');
+            $t->smallInteger('same')->nullable();
             $t->string('badge')->nullable();
             $t->smallInteger('clicked')->default('0');
 

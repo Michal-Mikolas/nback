@@ -130,7 +130,7 @@ export default {
             if (!this.user['email']) {
                 return false;
             }
-            if (!this.user['email'].match(/^[^\s]+@[^\s]+\.[^\s]+/)) {
+            if (!this.user['email'].match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
                 return false;
             }
 

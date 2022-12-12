@@ -19560,15 +19560,12 @@ __webpack_require__.r(__webpack_exports__);
         'user': this.$refs.personalInfoForm.user,
         'cards': this.$refs.test.cards
       };
-      console.log('data to send: ', data); /**/
       data = JSON.parse(JSON.stringify(data));
-      console.log('data to send after cloning: ', data); /**/
-
       axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/save-test', data).then(function (response) {
         setTimeout(function () {
           // enjoy the loader animation a bit :-P
           _this.step = 'finish';
-        }, 1000);
+        }, 2000);
       })["catch"](function (error) {
         _this.step = 'error';
       });
@@ -19612,7 +19609,7 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.user['email']) {
         return false;
       }
-      if (!this.user['email'].match(/^[^\s]+@[^\s]+\.[^\s]+/)) {
+      if (!this.user['email'].match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         return false;
       }
       return true;
@@ -19868,29 +19865,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "h1"
-}, "Gratuluji!", -1 /* HOISTED */);
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "p text-justify"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/lea2.png",
-  alt: "Lea Slížová",
-  "class": "float-right mt-[3px] ml-5 mb-4 w-28 rounded"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Úspěšně jsi prošel celým testem. Velice jsi mi tím pomohl s bakalářskou prací a já ti jsem za to vděčná. ")], -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "p text-justify"
-}, " Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit. ", -1 /* HOISTED */);
-var _hoisted_4 = {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Gratuluji!</h1><p class=\"p text-justify\"><img src=\"/lea2.png\" alt=\"Lea Slížová\" class=\"float-right mt-[3px] ml-5 mb-4 w-28 rounded\"> Úspěšně jsi prošel celým testem. Velice jsi mi tím pomohl s bakalářskou prací a já ti jsem za to vděčná. </p><p class=\"p text-justify\"> Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit. </p><p class=\"p text-justify\"> Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání. </p>", 4);
+var _hoisted_5 = {
   "class": "p"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" A zde už slíbený odkaz: ");
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" A zde už slíbený odkaz: ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-up-right-from-square link link-primary mr-1"
 }, null, -1 /* HOISTED */);
-var _hoisted_8 = ["href"];
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_9 = ["href"];
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bottom-container text-center opacity-75"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-copyright"
@@ -19905,11 +19890,11 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "open-source"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")])], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, _hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, [_hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, [_hoisted_6, _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "link link-primary",
-    href: 'https://lea.michalm.cz/vysledky/' + $props.email,
+    href: 'https://lea.michalm.cz/' + $props.email,
     target: "_blank"
-  }, "lea.michalm.cz/vysledky/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.email), 9 /* TEXT, PROPS */, _hoisted_8)]), _hoisted_9], 64 /* STABLE_FRAGMENT */);
+  }, "lea.michalm.cz/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.email), 9 /* TEXT, PROPS */, _hoisted_9)]), _hoisted_10], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -20058,9 +20043,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onFinish: _cache[6] || (_cache[6] = function ($event) {
       return $options.testFinished();
     })
-  }, null, 8 /* PROPS */, ["email"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
+  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
     email: _ctx.$refs.personalInfoForm.user['email']
-  }, null, 8 /* PROPS */, ["email"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Finish email=\"nanuqcz@gmail.com\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

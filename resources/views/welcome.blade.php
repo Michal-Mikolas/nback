@@ -9,7 +9,7 @@
 
     <!-- Styles -->
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" media="all" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v=2" media="all" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,6 +29,6 @@
     </div>
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js'></script>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}?v=2"></script>
 </body>
 </html>

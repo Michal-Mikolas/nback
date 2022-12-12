@@ -22,6 +22,14 @@ class UserTest extends Model
         return $this->hasMany(UserTestCard::class);
     }
 
+    public function percentil()
+    {
+        $totalCount = UserTest::count();
+        $worseCount = UserTest::where('total_points', '<', $this->total_points)->count();
+
+        return $worseCount / $totalCount;
+    }
+
     public function refreshStats()
     {
         $stats = [
@@ -63,4 +71,5 @@ class UserTest extends Model
         $this->fill($stats);
         $this->save($stats);
     }
+
 }

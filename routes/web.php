@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Models\User;
+use App\Models\UserTest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/api/find-user/{email}', [ApiController::class, 'findUser']);
-Route::get('/api/save-test', [ApiController::class, 'saveTest']);
 Route::post('/api/save-test', [ApiController::class, 'saveTest']);
+Route::get('/{email}', function($email){
+    return view('results', [
+        'user' => User::where('email', $email)->firstOrFail(),
+        'allMainTests' => UserTest::where('is_main_test', 1),
+        'allMinorTests' => UserTest::where('is_main_test', 0),
+    ]);
+})->where('email', '[^\s@]+@[^\s@]+\.[^\s@]+');
 
 Route::get('/', function () {
     return view('welcome');

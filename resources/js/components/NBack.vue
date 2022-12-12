@@ -39,6 +39,7 @@
 
     <div class="w-full" v-if="step=='test'">
         <Test ref="test" v-bind:email="$refs.personalInfoForm.user['email']" v-on:finish="testFinished()"/>
+        <!-- <Test ref="test" email="nanuqcz@gmail.com" v-on:finish="testFinished()"/> -->
     </div>
 
 
@@ -62,6 +63,7 @@
 
     <div class="w-full" v-if="step=='finish'">
         <Finish v-bind:email="$refs.personalInfoForm.user['email']"/>
+        <!-- <Finish email="nanuqcz@gmail.com"/> -->
     </div>
 
 </template>
@@ -103,15 +105,13 @@ export default {
                 'user': this.$refs.personalInfoForm.user,
                 'cards': this.$refs.test.cards,
             };
-            console.log('data to send: ', data);  /**/
             data = JSON.parse(JSON.stringify(data));
-            console.log('data to send after cloning: ', data);  /**/
 
             axios.post('/api/save-test', data)
                 .then(response => {
                     setTimeout(() => {  // enjoy the loader animation a bit :-P
                         this.step = 'finish';
-                    }, 1000);
+                    }, 2000);
                 })
                 .catch(error => {
                     this.step = 'error';

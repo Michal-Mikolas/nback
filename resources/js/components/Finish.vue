@@ -19,10 +19,14 @@
         Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.
     </p>
 
+    <p class="p text-justify">
+        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.
+    </p>
+
     <p class="p">
         A zde už slíbený odkaz: <br/>
         <i class="fa-solid fa-up-right-from-square link link-primary mr-1"></i>
-        <a class="link link-primary" v-bind:href="'https://lea.michalm.cz/vysledky/' + email" target="_blank">lea.michalm.cz/vysledky/{{ email }}</a>
+        <a class="link link-primary" v-bind:href="'https://lea.michalm.cz/' + email" target="_blank">lea.michalm.cz/{{ email }}</a>
     </p>
 
     <div class="bottom-container text-center opacity-75">
