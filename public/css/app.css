@@ -2537,9 +2537,6 @@ html {
 .float-left {
   float: left;
 }
-.clear-left {
-  clear: left;
-}
 .mt-4 {
   margin-top: 1rem;
 }
@@ -2581,6 +2578,9 @@ html {
 }
 .w-28 {
   width: 7rem;
+}
+.w-36 {
+  width: 9rem;
 }
 .flex-col {
   flex-direction: column;

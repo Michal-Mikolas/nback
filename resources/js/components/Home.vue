@@ -8,15 +8,19 @@
     #     # #    # #    # #
     #     #  ####  #    # ######
     -->
-    <h1 class="h1">Vítej!</h1>
+    <h1 class="h1">Úvod!</h1>
 
     <p class="p">
-        <img src="/lea2.png" alt="Lea Slížová" class="float-left mt-[3px] mr-4 mb-4 w-28 rounded"/>
-        Děkuji, že jsi se rozhodl/a zúčastnit tohoto výzkumu. Podpoříš tím moji bakalářskou práci, ale také otestuješ jednu z&nbsp;částí své paměti a dozvíš se něco o sobě. </p>
-
-    <p class="p clear-left">Na konci celého procesu můžeš své výsledky porovnat s ostatními. Můžeš si později test klidně zopakovat a vyzkoušet si, jestli sis vedl lépe než na poprvé. Do výzkumu ale použiji pouze tvůj první test.</p>
-
-    <p class="p"><b>Celý test ti zabere cca 10 minut.</b> Po jeho dokončení ti na e-mail přijde odkaz s tvými výsledky a aktuálním porovnáním s ostatními. <b>Pokud jsi tedy připraven/a a jsi pro následujících 10 minut v prostředí, kde tě nic nebude rušit, klikni dole na tlačítko <i>Pokračovat</i></b>.</p>
+        <img src="/lea3.png" alt="Lea Slížová" class="float-left mt-[3px] mr-4 mb-4 w-36 rounded"/>
+        Přeji pěkný den! Děkuji, že jste se rozhodl/a zúčastnit se tohoto výzkumu. Jsem studentkou třetího ročníku psychologie na Ostravské univerzitě a momentálně píši bakalářskou práci na téma "<b>Bilingvismus a pracovní pamět</b>" pod vedením PhDr. Kláry Machů. Veškeré informace, které z výzkumu získám, jsou čistě anonymní a budou použity výhradně k účelu mé bakalářské práce.
+    </p>
+    <p class="p">
+        Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zajišťující kapacitu pracovní paměti</b>. Zdůrazňuji, že máte právo z výzkumu kdykoli v průběhu odstoupit. <br/>
+        Účastí na tomto výzkumu nejen pomůžete v realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o svojí paměti. V závěru uvidíte své skóre v porovnání s ostatními.
+    </p>
+    <p class="p">
+        Celý test nezabere více než <b>20 minut</b>. Prosím, vyhraďte si tento čas a soustřeďte se nyní čistě na výzkum, najděte si klidné prostředí a nenechte se ničím rozptylovat. Pokud jste tak již učinili, můžete kliknout na tlačítko Pokračovat.
+    </p>
 </template>
 
 

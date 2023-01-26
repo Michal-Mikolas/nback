@@ -1,5 +1,9 @@
 <template>
 
+    <div v-if="step=='reset'">
+    </div>
+
+
     <div v-if="step=='home'">
         <Home/>
 
@@ -93,7 +97,8 @@ export default {
     },
     methods: {
         moveto(step){
-            this.step = step
+            this.step = step;
+            this.scrollTop();
         },
         personalInfoFormChanged(){
             this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
@@ -116,6 +121,9 @@ export default {
                 .catch(error => {
                     this.step = 'error';
                 });
+        },
+        scrollTop(){
+            document.getElementById('app').scroll(0, 0);
         },
     },
     computed: {
