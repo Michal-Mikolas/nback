@@ -117,7 +117,7 @@ export default {
                     this.card.clicked = false
 
                     if (this.card.type == 'symbol') {
-                        setTimeout(this.nextCard, 2000)
+                        setTimeout(this.nextCard, 1000)
                     }
 
                 } else {
