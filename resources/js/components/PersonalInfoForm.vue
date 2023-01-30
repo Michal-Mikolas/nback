@@ -146,13 +146,33 @@ Má dobré kritické myšlení, dokáže proto bez problémů hledat chyby v odb
 
         <div class="form-control w-full">
             <label class="label">
+                <span v-bind:class="['label-text', isEducationValid? 'text-success': 'text-warning']">
+                    Jaký je Váš nejvyšší dosažený stupeň vzdělání?
+                </span>
+            </label>
+            <select v-model="user['education']"
+                v-bind:class="['select', 'select-bordered', 'w-full', isEducationValid? 'select-success': 'select-warning']" >
+                <option disabled selected></option>
+                <option value="0">Žádné / nedokončené základní</option>
+                <option value="1">Základní</option>
+                <option value="2">Střední s výučním listem</option>
+                <option value="3">Střední s maturitou</option>
+                <option value="4">Vyšší odborné - titul DiS.</option>
+                <option value="5">Vysokoškolské - bakalářský stupeň</option>
+                <option value="6">Vysokoškolské - magisterský stupeň</option>
+                <option value="7">Vysokoškolské - doktorský stupeň</option>
+            </select>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
                 <span v-bind:class="['label-text', isPassiveLanguageValid? 'text-success': 'text-warning']">
                     Kolika jazykům rozumíte?
                     <small class="small block text-secondary-content">Češtinu a Slovenštinu berme jako jeden jazyk.</small>
                 </span>
             </label>
             <input v-model="user['passive_languages']"
-                v-bind:class="['input', 'input-bordered', 'w-full', isPassiveLanguageValid? 'input-siccess': 'input-warning']"
+                v-bind:class="['input', 'input-bordered', 'w-full', isPassiveLanguageValid? 'input-success': 'input-warning']"
                 min="0" step="1.0" type="number" placeholder="" />
 
             <label class="label" v-if="(!isPassiveLanguageValid && user['passive_languages'] !== null)">
@@ -173,7 +193,7 @@ Má dobré kritické myšlení, dokáže proto bez problémů hledat chyby v odb
                 </span>
             </label>
             <input v-model="user['active_languages']"
-                v-bind:class="['input', 'input-bordered', 'w-full', isActiveLanguageValid? 'input-siccess': 'input-warning']"
+                v-bind:class="['input', 'input-bordered', 'w-full', isActiveLanguageValid? 'input-success': 'input-warning']"
                 min="0" step="1.0" type="number" placeholder="" />
 
             <label class="label" v-if="(!isActiveLanguageValid && user['active_languages'] !== null)">
@@ -198,26 +218,6 @@ Má dobré kritické myšlení, dokáže proto bez problémů hledat chyby v odb
                 <option disabled selected></option>
                 <option value="1">Ano</option>
                 <option value="0">Ne</option>
-            </select>
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isEducationValid? 'text-success': 'text-warning']">
-                    Jaký je Váš nejvyšší dosažený stupeň vzdělání?
-                </span>
-            </label>
-            <select v-model="user['education']"
-                v-bind:class="['select', 'select-bordered', 'w-full', isEducationValid? 'select-success': 'select-warning']" >
-                <option disabled selected></option>
-                <option value="0">Žádné / nedokončené základní</option>
-                <option value="1">Základní</option>
-                <option value="2">Střední s výučním listem</option>
-                <option value="3">Střední s maturitou</option>
-                <option value="4">Vyšší odborné - titul DiS.</option>
-                <option value="5">Vysokoškolské - bakalářský stupeň</option>
-                <option value="6">Vysokoškolské - magisterský stupeň</option>
-                <option value="7">Vysokoškolské - doktorský stupeň</option>
             </select>
         </div>
 
@@ -246,13 +246,13 @@ export default {
     },
     computed: {
         isValid(){
-            return this.isEmailValid
+            return this.isLangLevelValid
+                && this.isEmailValid
                 && this.isBirthdateValid
-                && this.isDisorderValid
                 && this.isEducationValid
                 && this.isActiveLanguageValid
                 && this.isPassiveLanguageValid
-                && this.isLangLevelValid;
+                && this.isDisorderValid;
         },
         isEmailValid(){
             if (!this.user['email']) {

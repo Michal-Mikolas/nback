@@ -19609,7 +19609,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {},
   computed: {
     isValid: function isValid() {
-      return this.isEmailValid && this.isBirthdateValid && this.isDisorderValid && this.isEducationValid && this.isActiveLanguageValid && this.isPassiveLanguageValid && this.isLangLevelValid;
+      return this.isLangLevelValid && this.isEmailValid && this.isBirthdateValid && this.isEducationValid && this.isActiveLanguageValid && this.isPassiveLanguageValid && this.isDisorderValid;
     },
     isEmailValid: function isEmailValid() {
       if (!this.user['email']) {
@@ -19927,9 +19927,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Úvod!</h1><p class=\"p\"><img src=\"/lea3.png\" alt=\"Lea Slížová\" class=\"float-left mt-[3px] mr-4 mb-4 w-36 rounded\"> Přeji pěkný den! Děkuji, že jste se rozhodl/a zúčastnit se tohoto výzkumu. Jsem studentkou třetího ročníku psychologie na Ostravské univerzitě a momentálně píši bakalářskou práci na téma &quot;<b>Bilingvismus a pracovní paměť</b>&quot; pod vedením <a class=\"link\" href=\"https://ff.osu.cz/kps/klara-machu/31199/\" target=\"_blank\">Dr. Kláry Machů</a>. Veškeré informace, které z výzkumu získám, budou použity výhradně k účelu mé bakalářské práce a budou zde prezentovány v anonymní formě. </p><p class=\"p\"> Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zajišťující kapacitu pracovní paměti</b>. Zdůrazňuji, že máte právo z výzkumu kdykoli v průběhu odstoupit. <br> Účastí na tomto výzkumu nejen pomůžete v realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o svojí paměti. V závěru uvidíte své skóre v porovnání s ostatními. </p><p class=\"p\"> Celý test nezabere více než <b>20 minut</b>. Prosím, vyhraďte si tento čas a soustřeďte se nyní čistě na výzkum, najděte si klidné prostředí a nenechte se ničím rozptylovat. Pokud jste tak již učinili, můžete kliknout na tlačítko Pokračovat. </p>", 4);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Úvod!</h1><p class=\"p\"><img src=\"/lea3.png\" alt=\"Lea Slížová\" class=\"float-left mt-[3px] mr-4 mb-4 w-36 rounded\"> Přeji pěkný den! Děkuji, že jste se rozhodl/a zúčastnit tohoto výzkumu. Jsem studentkou třetího ročníku psychologie na Ostravské univerzitě a momentálně píši bakalářskou práci na téma &quot;<b>Bilingvismus a pracovní paměť</b>&quot; pod vedením <a class=\"link\" href=\"https://ff.osu.cz/kps/klara-machu/31199/\" target=\"_blank\">Dr. Kláry Machů</a>. Veškeré informace, které z výzkumu získám, budou použity výhradně k účelu mé bakalářské práce a budou zde prezentovány v anonymní formě. </p><p class=\"p\"> Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zajišťující kapacitu pracovní paměti</b>. Zdůrazňuji, že máte právo z výzkumu kdykoli v průběhu odstoupit. <br> Účastí na tomto výzkumu nejen pomůžete v realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o svojí paměti. V závěru uvidíte své skóre v porovnání s ostatními. </p><p class=\"p\"> Celý test nezabere více než <b>20 minut</b>. Prosím, vyhraďte si tento čas a soustřeďte se nyní čistě na výzkum, najděte si klidné prostředí a nenechte se ničím rozptylovat. Pokud jste tak již učinili, můžete kliknout na tlačítko Pokračovat. </p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #     #\r\n    #     #  ####  #    # ######\r\n    #     # #    # ##  ## #\r\n    ####### #    # # ## # #####\r\n    #     # #    # #    # #\r\n    #     # #    # #    # #\r\n    #     #  ####  #    # ######\r\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #     #\n    #     #  ####  #    # ######\n    #     # #    # ##  ## #\n    ####### #    # # ## # #####\n    #     # #    # #    # #\n    #     # #    # #    # #\n    #     #  ####  #    # ######\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -20175,91 +20175,91 @@ var _hoisted_30 = {
 var _hoisted_31 = {
   "class": "label"
 };
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazykům rozumíte? ");
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled selected></option><option value=\"0\">Žádné / nedokončené základní</option><option value=\"1\">Základní</option><option value=\"2\">Střední s výučním listem</option><option value=\"3\">Střední s maturitou</option><option value=\"4\">Vyšší odborné - titul DiS.</option><option value=\"5\">Vysokoškolské - bakalářský stupeň</option><option value=\"6\">Vysokoškolské - magisterský stupeň</option><option value=\"7\">Vysokoškolské - doktorský stupeň</option>", 9);
+var _hoisted_41 = [_hoisted_32];
+var _hoisted_42 = {
+  "class": "form-control w-full"
+};
+var _hoisted_43 = {
+  "class": "label"
+};
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazykům rozumíte? ");
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
   "class": "small block text-secondary-content"
 }, "Češtinu a Slovenštinu berme jako jeden jazyk.", -1 /* HOISTED */);
-var _hoisted_34 = [_hoisted_32, _hoisted_33];
-var _hoisted_35 = {
+var _hoisted_46 = [_hoisted_44, _hoisted_45];
+var _hoisted_47 = {
   key: 0,
   "class": "label"
 };
-var _hoisted_36 = {
+var _hoisted_48 = {
   key: 0,
   "class": "label-text-alt text-warning"
 };
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-grin-tongue-wink"
 }, null, -1 /* HOISTED */);
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě rozumíte alespoň jednomu jazyku ");
-var _hoisted_39 = [_hoisted_37, _hoisted_38];
-var _hoisted_40 = {
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě rozumíte alespoň jednomu jazyku ");
+var _hoisted_51 = [_hoisted_49, _hoisted_50];
+var _hoisted_52 = {
   key: 1,
   "class": "label-text-alt text-warning"
 };
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-grin-tears"
 }, null, -1 /* HOISTED */);
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
-var _hoisted_43 = [_hoisted_41, _hoisted_42];
-var _hoisted_44 = {
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
+var _hoisted_55 = [_hoisted_53, _hoisted_54];
+var _hoisted_56 = {
   "class": "form-control w-full"
 };
-var _hoisted_45 = {
+var _hoisted_57 = {
   "class": "label"
 };
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazyky zvládnete mluvit? ");
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazyky zvládnete mluvit? ");
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
   "class": "small block text-secondary-content"
 }, "Češtinu a Slovenštinu berme jako jeden jazyk.", -1 /* HOISTED */);
-var _hoisted_48 = [_hoisted_46, _hoisted_47];
-var _hoisted_49 = {
+var _hoisted_60 = [_hoisted_58, _hoisted_59];
+var _hoisted_61 = {
   key: 0,
   "class": "label"
 };
-var _hoisted_50 = {
+var _hoisted_62 = {
   key: 0,
   "class": "label-text-alt text-warning"
 };
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-grin-tongue-wink"
 }, null, -1 /* HOISTED */);
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě mluvíte alespoň jedním jazykem ");
-var _hoisted_53 = [_hoisted_51, _hoisted_52];
-var _hoisted_54 = {
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě mluvíte alespoň jedním jazykem ");
+var _hoisted_65 = [_hoisted_63, _hoisted_64];
+var _hoisted_66 = {
   key: 1,
   "class": "label-text-alt text-warning"
 };
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-grin-tears"
 }, null, -1 /* HOISTED */);
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
-var _hoisted_57 = [_hoisted_55, _hoisted_56];
-var _hoisted_58 = {
+var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
+var _hoisted_69 = [_hoisted_67, _hoisted_68];
+var _hoisted_70 = {
   "class": "form-control w-full"
 };
-var _hoisted_59 = {
+var _hoisted_71 = {
   "class": "label"
 };
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   disabled: "",
   selected: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "1"
 }, "Ano", -1 /* HOISTED */);
-var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "0"
 }, "Ne", -1 /* HOISTED */);
-var _hoisted_63 = [_hoisted_60, _hoisted_61, _hoisted_62];
-var _hoisted_64 = {
-  "class": "form-control w-full"
-};
-var _hoisted_65 = {
-  "class": "label"
-};
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled selected></option><option value=\"0\">Žádné / nedokončené základní</option><option value=\"1\">Základní</option><option value=\"2\">Střední s výučním listem</option><option value=\"3\">Střední s maturitou</option><option value=\"4\">Vyšší odborné - titul DiS.</option><option value=\"5\">Vysokoškolské - bakalářský stupeň</option><option value=\"6\">Vysokoškolské - magisterský stupeň</option><option value=\"7\">Vysokoškolské - doktorský stupeň</option>", 9);
-var _hoisted_75 = [_hoisted_66];
+var _hoisted_75 = [_hoisted_72, _hoisted_73, _hoisted_74];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onInput: _cache[14] || (_cache[14] = function ($event) {
@@ -20328,42 +20328,42 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "date",
     placeholder: "31.12.1990"
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['birthdate']]]), !$options.isBirthdateValid && $data.user['birthdate'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_27, _hoisted_29)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isPassiveLanguageValid ? 'text-success' : 'text-warning'])
-  }, _hoisted_34, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-      return $data.user['passive_languages'] = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isPassiveLanguageValid ? 'input-siccess' : 'input-warning']),
-    min: "0",
-    step: "1.0",
-    type: "number",
-    placeholder: ""
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['passive_languages']]]), !$options.isPassiveLanguageValid && $data.user['passive_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_35, [$data.user['passive_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_36, _hoisted_39)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['passive_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_40, _hoisted_43)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isActiveLanguageValid ? 'text-success' : 'text-warning'])
-  }, _hoisted_48, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-      return $data.user['active_languages'] = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isActiveLanguageValid ? 'input-siccess' : 'input-warning']),
-    min: "0",
-    step: "1.0",
-    type: "number",
-    placeholder: ""
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['active_languages']]]), !$options.isActiveLanguageValid && $data.user['active_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_49, [$data.user['active_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_50, _hoisted_53)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['active_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_54, _hoisted_57)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isDisorderValid ? 'text-success' : 'text-warning'])
-  }, " Máte diagnostikováno ADD, ADHD, či poruchu pozornosti? ", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-      return $data.user['disorder'] = $event;
-    }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isDisorderValid ? 'select-success' : 'select-warning'])
-  }, _hoisted_63, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['disorder']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isEducationValid ? 'text-success' : 'text-warning'])
   }, " Jaký je Váš nejvyšší dosažený stupeň vzdělání? ", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $data.user['education'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isEducationValid ? 'select-success' : 'select-warning'])
-  }, _hoisted_75, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['education']]])])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
+  }, _hoisted_41, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['education']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isPassiveLanguageValid ? 'text-success' : 'text-warning'])
+  }, _hoisted_46, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+      return $data.user['passive_languages'] = $event;
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isPassiveLanguageValid ? 'input-success' : 'input-warning']),
+    min: "0",
+    step: "1.0",
+    type: "number",
+    placeholder: ""
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['passive_languages']]]), !$options.isPassiveLanguageValid && $data.user['passive_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_47, [$data.user['passive_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_48, _hoisted_51)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['passive_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_52, _hoisted_55)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isActiveLanguageValid ? 'text-success' : 'text-warning'])
+  }, _hoisted_60, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+      return $data.user['active_languages'] = $event;
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isActiveLanguageValid ? 'input-success' : 'input-warning']),
+    min: "0",
+    step: "1.0",
+    type: "number",
+    placeholder: ""
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['active_languages']]]), !$options.isActiveLanguageValid && $data.user['active_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_61, [$data.user['active_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_62, _hoisted_65)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['active_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_66, _hoisted_69)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isDisorderValid ? 'text-success' : 'text-warning'])
+  }, " Máte diagnostikováno ADD, ADHD, či poruchu pozornosti? ", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+      return $data.user['disorder'] = $event;
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isDisorderValid ? 'select-success' : 'select-warning'])
+  }, _hoisted_75, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['disorder']]])])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
