@@ -1,10 +1,10 @@
 <template>
     <h1 class="h1">Dotazník</h1>
     <p class="p">
-        První částí výzkumu je krátký sociodemograický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě.
+        První částí výzkumu je krátký sociodemograický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i&nbsp;dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě.
     </p>
 
-    <form @input="$emit('change')" action="" class="flex-col">
+    <form @input="$emit('change')" @change="$emit('change')" action="" class="flex-col">
         <!--
         #######
         #        ####  #####  #    #

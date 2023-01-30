@@ -2777,9 +2777,6 @@ html {
 .w-full {
   width: 100%;
 }
-.w-28 {
-  width: 7rem;
-}
 .w-36 {
   width: 9rem;
 }
@@ -2940,6 +2937,14 @@ html {
     border-radius: 1rem;
   }
 }
+
+@media (min-width: 768px) {
+
+  .bottom-container {
+    margin-left: -256px;
+    width: 32rem;
+  }
+}
 .bottom-container-wide {
   position: fixed;
   bottom: 0px;
@@ -2957,6 +2962,13 @@ html {
     margin-left: -192px;
     width: 24rem;
     border-radius: 1rem;
+  }
+}
+@media (min-width: 768px) {
+
+  .bottom-container-wide {
+    margin-left: -256px;
+    width: 32rem;
   }
 }
 .bottom-container-wide {
@@ -3268,6 +3280,12 @@ html {
   .sm\:card.image-full :where(figure) {
     overflow: hidden;
     border-radius: inherit;
+  }
+}
+@media (min-width: 768px) {
+
+  .md\:w-\[32rem\] {
+    width: 32rem;
   }
 }
 

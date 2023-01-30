@@ -26,6 +26,7 @@
 .bottom-container {
     @apply fixed bottom-0 left-0 p-4 w-full bg-base-100;
     @apply sm:w-96 sm:left-1/2 sm:ml-[-192px] sm:bottom-4 sm:rounded-2xl;
+    @apply md:w-[32rem] md:ml-[-256px];
 }
 .bottom-container-wide {
     @apply bottom-container;

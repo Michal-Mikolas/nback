@@ -11,7 +11,7 @@
     <h1 class="h1">Gratuluji!</h1>
 
     <p class="p text-justify">
-        <img src="/lea2.png" alt="Lea Slížová" class="float-right mt-[3px] ml-5 mb-4 w-28 rounded"/>
+        <img src="/lea2.png" alt="Lea Slížová" class="float-right mt-[3px] ml-5 mb-4 w-36 rounded"/>
         Úspěšně jsi prošel celým testem. Velice jsi mi tím pomohl s bakalářskou prací a já ti jsem za to vděčná.
     </p>
 

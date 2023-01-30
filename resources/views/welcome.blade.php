@@ -23,7 +23,8 @@
 
     <div id="app"
         class="w-full h-full overflow-y-auto pb-20
-            sm:card sm:w-96 sm:bg-base-100 sm:shadow-xl sm:relative sm:mx-auto sm:p-4 sm:pb-20"
+            sm:card sm:w-96 sm:bg-base-100 sm:shadow-xl sm:relative sm:mx-auto sm:p-4 sm:pb-20
+            md:w-[32rem]"
     >
         <nback/>
     </div>
