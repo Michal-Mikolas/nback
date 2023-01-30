@@ -14,119 +14,6 @@
         #       #    # #   #  #    #
         #        ####  #    # #    #
         -->
-        <div class="form-control row w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isEmailValid? 'text-success': 'text-warning']">
-                    Jaký je Váš e-mail?
-                    <small class="small block text-secondary-content">
-                        E-mail bude použit výhradně pro účely zaslání výsledku testu po dokončení výzkumu. Neobjeví se v bakalářské práci, ani ho nepředám třetí osobě.
-                    </small>
-                </span>
-            </label>
-            <input v-model="user['email']" ref="inputEmail"
-                v-bind:class="['input', 'input-bordered', 'w-full', isEmailValid? 'input-success': 'input-warning']"
-                type="email" placeholder="jan.novak@email.cz" />
-
-            <label class="label" v-if="(!isEmailValid && user['email'].length >= 5)">
-                <span class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-frown"></i> Tohle nevypadá jako e-mail
-                </span>
-            </label>
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isBirthdateValid? 'text-success': 'text-warning']">
-                    Uveďte prosím své datum narození
-                </span>
-            </label>
-            <input v-model="user['birthdate']"
-                v-bind:class="['input', 'input-bordered', 'w-full', isBirthdateValid? 'input-success': 'input-warning']"
-                type="date" placeholder="31.12.1990" />
-
-            <label class="label" v-if="(!isBirthdateValid && user['birthdate'])">
-                <span class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-smile-wink"></i> Tehdy jste se určitě nenarodil/a
-                </span>
-            </label>
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isDisorderValid? 'text-success': 'text-warning']">
-                    Máte diagnostikováno ADD, ADHD, či poruchu pozornosti?
-                </span>
-            </label>
-            <select v-model="user['disorder']"
-                v-bind:class="['select', 'select-bordered', 'w-full', isDisorderValid? 'select-success': 'select-warning']"
-                >
-                <option disabled selected></option>
-                <option value="1">Ano</option>
-                <option value="0">Ne</option>
-            </select>
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isEducationValid? 'text-success': 'text-warning']">
-                    Jaký je Váš nejvyšší dosažený stupeň vzdělání?
-                </span>
-            </label>
-            <select v-model="user['education']"
-                v-bind:class="['select', 'select-bordered', 'w-full', isEducationValid? 'select-success': 'select-warning']" >
-                <option disabled selected></option>
-                <option value="0">Žádné / nedokončené základní</option>
-                <option value="1">Základní</option>
-                <option value="2">Střední s výučním listem</option>
-                <option value="3">Střední s maturitou</option>
-                <option value="4">Vyšší odborné - titul DiS.</option>
-                <option value="5">Vysokoškolské - bakalářský stupeň</option>
-                <option value="6">Vysokoškolské - magisterský stupeň</option>
-                <option value="7">Vysokoškolské - doktorský stupeň</option>
-            </select>
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isPassiveLanguageValid? 'text-success': 'text-warning']">
-                    Kolika jazykům rozumíte?
-                    <small class="small block text-secondary-content">Češtinu a Slovenštinu berme jako jeden jazyk.</small>
-                </span>
-            </label>
-            <input v-model="user['passive_languages']"
-                v-bind:class="['input', 'input-bordered', 'w-full', isPassiveLanguageValid? 'input-siccess': 'input-warning']"
-                min="0" step="1.0" type="number" placeholder="" />
-
-            <label class="label" v-if="(!isPassiveLanguageValid && user['passive_languages'] !== null)">
-                <span v-if="user['passive_languages'] <= 0" class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-grin-tongue-wink"></i> Určitě rozumíte alespoň jednomu jazyku
-                </span>
-                <span v-if="user['passive_languages'] > 43" class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-grin-tears"></i> Nevěřím, to je víc než Guinessův rekord
-                </span>
-            </label>
-        </div>
-
-        <div class="form-control w-full">
-            <label class="label">
-                <span v-bind:class="['label-text', isActiveLanguageValid? 'text-success': 'text-warning']">
-                    Kolika jazyky zvládnete mluvit?
-                    <small class="small block text-secondary-content">Češtinu a Slovenštinu berme jako jeden jazyk.</small>
-                </span>
-            </label>
-            <input v-model="user['active_languages']"
-                v-bind:class="['input', 'input-bordered', 'w-full', isActiveLanguageValid? 'input-siccess': 'input-warning']"
-                min="0" step="1.0" type="number" placeholder="" />
-
-            <label class="label" v-if="(!isActiveLanguageValid && user['active_languages'] !== null)">
-                <span v-if="user['active_languages'] <= 0" class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-grin-tongue-wink"></i> Určitě mluvíte alespoň jedním jazykem
-                </span>
-                <span v-if="user['active_languages'] > 43" class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-grin-tears"></i> Nevěřím, to je víc než Guinessův rekord
-                </span>
-            </label>
-        </div>
 
         <div class="form-control w-full">
             <label class="label">
@@ -140,20 +27,20 @@
                 </span>
             </label>
             <input v-model="user['lang_level']" type="range" min="0" max="6" step="1"
-                v-bind:class="['range', 'w-full']"
+                v-bind:class="['range', 'w-full', 'range-success']"
                 />
             <div class="w-full flex justify-between text-xs px-2">
-                <span>A0</span>
-                <span>A1</span>
-                <span>A2</span>
-                <span>B1</span>
-                <span>B2</span>
-                <span>C1</span>
-                <span>C2</span>
+                <button @click="user['lang_level'] = 0">A0</button>
+                <button @click="user['lang_level'] = 1">A1</button>
+                <button @click="user['lang_level'] = 2">A2</button>
+                <button @click="user['lang_level'] = 3">B1</button>
+                <button @click="user['lang_level'] = 4">B2</button>
+                <button @click="user['lang_level'] = 5">C1</button>
+                <button @click="user['lang_level'] = 6">C2</button>
             </div>
 
             <span v-bind:class="[
-                'inline-block', 'mt-2', 'h-0', 'w-0', 'border-x-8', 'border-x-transparent', 'border-b-[8px]', 'border-b-secondary',
+                'inline-block', 'mt-2', 'h-0', 'w-0', 'border-x-8', 'border-x-transparent', 'border-b-[8px]', 'border-b-success',
                 user['lang_level'] == 0? 'ml-[2%]': '',
                 user['lang_level'] == 1? 'ml-[17%]': '',
                 user['lang_level'] == 2? 'ml-[33%]': '',
@@ -162,7 +49,7 @@
                 user['lang_level'] == 5? 'ml-[78%]': '',
                 user['lang_level'] == 6? 'ml-[93%]': '',
             ]"></span>
-            <span class="label-text-alt p-2 bg-secondary text-secondary-content">
+            <span class="label-text-alt p-2 bg-success text-success-content rounded-lg">
 
                 <pre class="whitespace-pre-wrap" v-if="user['lang_level'] == 0">
 A0 = Starter/ begginer = úplný začátečník. Žádná či velice malá znalost druhého jazyka.
@@ -219,6 +106,121 @@ Má dobré kritické myšlení, dokáže proto bez problémů hledat chyby v odb
 
             </span>
         </div>
+
+        <div class="form-control row w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isEmailValid? 'text-success': 'text-warning']">
+                    Jaký je Váš e-mail?
+                    <small class="small block text-secondary-content">
+                        E-mail bude použit výhradně pro účely zaslání výsledku testu po dokončení výzkumu. Neobjeví se v bakalářské práci, ani ho nepředám třetí osobě.
+                    </small>
+                </span>
+            </label>
+            <input v-model="user['email']" ref="inputEmail"
+                v-bind:class="['input', 'input-bordered', 'w-full', isEmailValid? 'input-success': 'input-warning']"
+                type="email" placeholder="jan.novak@email.cz" />
+
+            <label class="label" v-if="(!isEmailValid && user['email'].length >= 5)">
+                <span class="label-text-alt text-warning">
+                    <i class="fa-regular fa-face-frown"></i> Tohle nevypadá jako e-mail
+                </span>
+            </label>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isBirthdateValid? 'text-success': 'text-warning']">
+                    Uveďte prosím své datum narození
+                </span>
+            </label>
+            <input v-model="user['birthdate']"
+                v-bind:class="['input', 'input-bordered', 'w-full', isBirthdateValid? 'input-success': 'input-warning']"
+                type="date" placeholder="31.12.1990" />
+
+            <label class="label" v-if="(!isBirthdateValid && user['birthdate'])">
+                <span class="label-text-alt text-warning">
+                    <i class="fa-regular fa-face-smile-wink"></i> Tehdy jste se určitě nenarodil/a
+                </span>
+            </label>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isPassiveLanguageValid? 'text-success': 'text-warning']">
+                    Kolika jazykům rozumíte?
+                    <small class="small block text-secondary-content">Češtinu a Slovenštinu berme jako jeden jazyk.</small>
+                </span>
+            </label>
+            <input v-model="user['passive_languages']"
+                v-bind:class="['input', 'input-bordered', 'w-full', isPassiveLanguageValid? 'input-siccess': 'input-warning']"
+                min="0" step="1.0" type="number" placeholder="" />
+
+            <label class="label" v-if="(!isPassiveLanguageValid && user['passive_languages'] !== null)">
+                <span v-if="user['passive_languages'] <= 0" class="label-text-alt text-warning">
+                    <i class="fa-regular fa-face-grin-tongue-wink"></i> Určitě rozumíte alespoň jednomu jazyku
+                </span>
+                <span v-if="user['passive_languages'] > 43" class="label-text-alt text-warning">
+                    <i class="fa-regular fa-face-grin-tears"></i> Nevěřím, to je víc než Guinessův rekord
+                </span>
+            </label>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isActiveLanguageValid? 'text-success': 'text-warning']">
+                    Kolika jazyky zvládnete mluvit?
+                    <small class="small block text-secondary-content">Češtinu a Slovenštinu berme jako jeden jazyk.</small>
+                </span>
+            </label>
+            <input v-model="user['active_languages']"
+                v-bind:class="['input', 'input-bordered', 'w-full', isActiveLanguageValid? 'input-siccess': 'input-warning']"
+                min="0" step="1.0" type="number" placeholder="" />
+
+            <label class="label" v-if="(!isActiveLanguageValid && user['active_languages'] !== null)">
+                <span v-if="user['active_languages'] <= 0" class="label-text-alt text-warning">
+                    <i class="fa-regular fa-face-grin-tongue-wink"></i> Určitě mluvíte alespoň jedním jazykem
+                </span>
+                <span v-if="user['active_languages'] > 43" class="label-text-alt text-warning">
+                    <i class="fa-regular fa-face-grin-tears"></i> Nevěřím, to je víc než Guinessův rekord
+                </span>
+            </label>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isDisorderValid? 'text-success': 'text-warning']">
+                    Máte diagnostikováno ADD, ADHD, či poruchu pozornosti?
+                </span>
+            </label>
+            <select v-model="user['disorder']"
+                v-bind:class="['select', 'select-bordered', 'w-full', isDisorderValid? 'select-success': 'select-warning']"
+                >
+                <option disabled selected></option>
+                <option value="1">Ano</option>
+                <option value="0">Ne</option>
+            </select>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isEducationValid? 'text-success': 'text-warning']">
+                    Jaký je Váš nejvyšší dosažený stupeň vzdělání?
+                </span>
+            </label>
+            <select v-model="user['education']"
+                v-bind:class="['select', 'select-bordered', 'w-full', isEducationValid? 'select-success': 'select-warning']" >
+                <option disabled selected></option>
+                <option value="0">Žádné / nedokončené základní</option>
+                <option value="1">Základní</option>
+                <option value="2">Střední s výučním listem</option>
+                <option value="3">Střední s maturitou</option>
+                <option value="4">Vyšší odborné - titul DiS.</option>
+                <option value="5">Vysokoškolské - bakalářský stupeň</option>
+                <option value="6">Vysokoškolské - magisterský stupeň</option>
+                <option value="7">Vysokoškolské - doktorský stupeň</option>
+            </select>
+        </div>
+
     </form>
 
 </template>
@@ -322,7 +324,7 @@ export default {
         },
     },
     mounted(){
-        this.$refs.inputEmail.focus();
+        // this.$refs.inputEmail.focus();
     },
 }
 </script>

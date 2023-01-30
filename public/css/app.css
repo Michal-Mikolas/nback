@@ -2446,6 +2446,9 @@ html {
   --filler-offset: 0.5rem;
   box-shadow: 0 0 0 3px hsl(var(--range-shdw)) inset, var(--focus-shadow, 0 0), calc(var(--filler-size) * -1 - var(--filler-offset)) 0 0 var(--filler-size);
 }
+.range-success {
+  --range-shdw: var(--su);
+}
 @keyframes rating-pop {
 
   0% {
@@ -2801,6 +2804,9 @@ html {
 .rounded {
   border-radius: 0.25rem;
 }
+.rounded-lg {
+  border-radius: 0.5rem;
+}
 .border-x-8 {
   border-left-width: 8px;
   border-right-width: 8px;
@@ -2812,9 +2818,9 @@ html {
   border-left-color: transparent;
   border-right-color: transparent;
 }
-.border-b-secondary {
+.border-b-success {
   --tw-border-opacity: 1;
-  border-bottom-color: hsl(var(--s) / var(--tw-border-opacity));
+  border-bottom-color: hsl(var(--su) / var(--tw-border-opacity));
 }
 .bg-info-content {
   --tw-bg-opacity: 1;
@@ -2828,9 +2834,9 @@ html {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--wac, var(--nc)) / var(--tw-bg-opacity));
 }
-.bg-secondary {
+.bg-success {
   --tw-bg-opacity: 1;
-  background-color: hsl(var(--s) / var(--tw-bg-opacity));
+  background-color: hsl(var(--su) / var(--tw-bg-opacity));
 }
 .p-4 {
   padding: 1rem;
@@ -2880,6 +2886,10 @@ html {
 .text-secondary-content {
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
+}
+.text-success-content {
+  --tw-text-opacity: 1;
+  color: hsl(var(--suc, var(--nc)) / var(--tw-text-opacity));
 }
 .opacity-75 {
   opacity: 0.75;
