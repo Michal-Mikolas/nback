@@ -2702,6 +2702,9 @@ html {
 .relative {
   position: relative;
 }
+.top-\[1px\] {
+  top: 1px;
+}
 .float-right {
   float: right;
 }
@@ -2747,14 +2750,14 @@ html {
 .ml-\[48\%\] {
   margin-left: 48%;
 }
-.ml-\[63\%\] {
-  margin-left: 63%;
+.ml-\[64\%\] {
+  margin-left: 64%;
 }
-.ml-\[78\%\] {
-  margin-left: 78%;
+.ml-\[79\%\] {
+  margin-left: 79%;
 }
-.ml-\[93\%\] {
-  margin-left: 93%;
+.ml-\[94\%\] {
+  margin-left: 94%;
 }
 .block {
   display: block;
@@ -2808,8 +2811,8 @@ html {
   border-left-width: 8px;
   border-right-width: 8px;
 }
-.border-b-\[8px\] {
-  border-bottom-width: 8px;
+.border-b-\[9px\] {
+  border-bottom-width: 9px;
 }
 .border-x-transparent {
   border-left-color: transparent;
