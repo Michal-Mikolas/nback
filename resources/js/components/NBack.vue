@@ -21,13 +21,13 @@
                 <button class="btn btn-primary w-full" @click="moveto('home')">Zpět</button>
             </div>
             <div class="right-container">
-                <button @click="moveto('info')" v-bind:disabled="movetoInfoDisabled" class="btn btn-primary w-full">Pokračovat</button>
+                <button @click="moveto('test')" v-bind:disabled="movetoInfoDisabled" class="btn btn-primary w-full">Pokračovat</button>
             </div>
         </div>
     </div>
 
 
-    <div v-if="step=='info'">
+    <!-- <div v-if="step=='info'">
         <TestInfo/>
 
         <div class="bottom-container">
@@ -38,7 +38,7 @@
                 <button class="btn btn-primary w-full" @click="moveto('test')">Pokračovat</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="w-full" v-if="step=='test'">

@@ -4,7 +4,7 @@
         První částí výzkumu je krátký sociodemograický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i&nbsp;dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě.
     </p>
 
-    <form @input="$emit('change')" @change="$emit('change')" action="" class="flex-col">
+    <form @input="formChanged()" @change="formChanged()" action="" class="flex-col">
         <!--
         #######
         #        ####  #####  #    #
@@ -237,17 +237,27 @@ export default {
     data() {
         return {
             'user': {
+                'lang_level': 0,
                 'email': '@',
                 'birthdate': null,
                 'disorder': null,
                 'education': null,
                 'passive_languages': null,
                 'active_languages': null,
-                'lang_level': 0,
             },
         };
     },
     methods: {
+        formChanged(){
+            this.$emit('change');
+
+            var user = {};
+            for (var key in this.user) {
+                console.log(key, '=', this.user[key]);  /**/
+                user[key] = this.user[key];
+            }
+            localStorage.user = JSON.stringify(user);
+        },
     },
     computed: {
         isValid(){
@@ -330,6 +340,15 @@ export default {
     },
     mounted(){
         // this.$refs.inputEmail.focus();
+
+        if (localStorage.user) {
+            var user = JSON.parse(localStorage.user);
+            for (var key in user) {
+                this.user[key] = user[key];
+            }
+        }
+
+        this.$emit('change');
     },
 }
 </script>
