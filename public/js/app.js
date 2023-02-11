@@ -19717,36 +19717,135 @@ __webpack_require__.r(__webpack_exports__);
     return {
       loading: true,
       error: false,
-      cards: [{
-        type: 'symbol',
-        content: 'A',
-        same: false
+      cards: [
+      // #     #
+      // #  #  #   ##   #####  #    #       #    # #####
+      // #  #  #  #  #  #    # ##  ##       #    # #    #
+      // #  #  # #    # #    # # ## # ##### #    # #    #
+      // #  #  # ###### #####  #    #       #    # #####
+      // #  #  # #    # #   #  #    #       #    # #
+      //  ## ##  #    # #    # #    #        ####  #
+
+      {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - Lehk\xE1 \xFArove\u0148</h1>\n                    <p class=\"p\">Nyn\xED V\xE1s \u010Dek\xE1 test pracovn\xED pam\u011Bti. Test spo\u010D\xEDv\xE1 v&nbsp;tom, \u017Ee se V\xE1m na obrazovce zobraz\xED sled p\xEDsmen. Va\u0161\xEDm \xFAkolem bude stisknout tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;podn\u011Btem ob n\u011Bkolik podn\u011Bt\u016F zp\u011Bt. </p>\n\n                    <p class=\"p\">Ch\xE1pu, \u017Ee instrukce zat\xEDm zn\xED slo\u017Eit\u011B. Princip ale jist\u011B pochop\xEDte d\xEDky na\u0161\xED zku\u0161ebn\xED verzi.</p>\n\n                    <p class=\"p\">Nejd\u0159\xEDve budete m\xEDt za \xFAkol tla\u010D\xEDtko zm\xE1\u010Dknout v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;bezprost\u0159edn\u011B p\u0159edchoz\xEDm. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte na tla\u010D\xEDtko <i>Pokra\u010Dovat</i>.</p>\n                "
       }, {
         type: 'symbol',
-        content: 'B',
+        content: 'E',
         same: false
       }, {
         type: 'symbol',
         content: 'C',
         same: false
       }, {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Vede\u0161 si skv\u011Ble!</h1>\n                    <p class=\"p\">\xDAsp\u011B\u0161n\u011B jsi dokon\u010Dil zah\u0159\xEDvac\xED kolo. Zde jsi m\u011Bl kontrolovat, jestli je p\xEDsmeno shodn\xE9 s jeho <b><i>p\u0159\xEDm\xFDm p\u0159edch\u016Fdcem</i></b>. </p>\n\n                    <p class=\"p\">Zkus\xEDme to trochu zt\xED\u017Eit. Nyn\xED bude\u0161 porovn\xE1vat, jestli je symbol shodn\xFD se symbolem <b><i>p\u0159ed-p\u0159edchoz\xEDm</i></b>. <br/>\n                    Tedy nap\u0159\xEDklad v sekvenci <span class=\"badge\">A</span>-<span class=\"badge\">B</span>-<span class=\"badge\">A</span> je posledn\xED p\xEDsmeno shodn\xE9 - proto\u017Ee je stejn\xE9, jako <b><i>p\xEDsmeno p\u0159ed p\u0159edchoz\xEDm</i></b> (tak\u017Ee klik\xE1\u0161 na tla\u010D\xEDtko).</p>\n\n                    <p class=\"p\">V n\xE1sleduj\xEDc\xED sekvenci se ti tedy bude dole zobrazovat tla\u010D\xEDtko\n                        <button class=\"btn btn-secondary btn-xs\">\n                            Shodn\xE9 s <span class=\"badge badge-slim\">2.</span> p\u0159edchoz\xEDm\n                        </button>\n                    .</p>\n\n                    <p class=\"p\">Je v\u0161e srozumiteln\xE9? Jsi p\u0159ipraven pokra\u010Dovat? Klikni na tla\u010D\xEDtko n\xED\u017Ee.</p>\n                "
+        type: 'symbol',
+        content: 'P',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'C',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'L',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'L',
+        same: true
       }, {
         type: 'symbol',
         content: 'D',
-        same: false,
-        badge: '2.'
+        same: false
       }, {
         type: 'symbol',
-        content: 'E',
-        same: false,
-        badge: '2.'
+        content: 'W',
+        same: false
       }, {
         type: 'symbol',
         content: 'F',
-        same: false,
-        badge: '2.'
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'F',
+        same: true
+      }, {
+        type: 'break',
+        "if": "imperfect",
+        next: 0,
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - Lehk\xE1 \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m prvn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v \u0159ad\u011B za sebou budou shodovat. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v doln\xED \u010D\xE1sti obrazovky. </p>\n\n                    <p class=\"p\"><span class=\"badge\">B</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">V\xFDborn\u011B, prvn\xED kolo zku\u0161ebn\xED verze jste \xFAsp\u011B\u0161n\u011B absolvovali. Nyn\xED jste p\u0159ipraveni vyzkou\u0161et si t\u011B\u017E\u0161\xED \xFArove\u0148. V t\xE9to \xFArovni m\xE1te za \xFAkol stisknout tla\u010D\xEDtko v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s podn\u011Btem ob jeden zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'symbol',
+        content: 'V',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'S',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'V',
+        same: true
+      }, {
+        type: 'symbol',
+        content: 'Q',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'A',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'D',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'C',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'V',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'C',
+        same: true
+      }, {
+        type: 'symbol',
+        content: 'R',
+        same: false
+      }, {
+        type: 'break',
+        "if": "imperfect",
+        next: 0,
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m zku\u0161ebn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte cel\xE9 pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee v&nbsp;t\u011B\u017E\u0161\xED \xFArovni je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v&nbsp;\u0159ad\u011B budou shodovat ob-jedno. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky. <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      },
+      // ######
+      // #     # ######   ##   #         ##### ######  ####  #####
+      // #     # #       #  #  #           #   #      #        #
+      // ######  #####  #    # #           #   #####   ####    #
+      // #   #   #      ###### #           #   #           #   #
+      // #    #  #      #    # #           #   #      #    #   #
+      // #     # ###### #    # ######      #   ######  ####    #
+
+      {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo</h1>\n                    <p class=\"p\">V\xFDborn\u011B, zku\u0161ebn\xED verzi jste \xFAsp\u011B\u0161n\u011B absolvovali. Nyn\xED jste jist\u011B p\u0159ipraveni na prvn\xED kolo ostr\xE9ho testu. V&nbsp;tomto kole m\xE1te za \xFAkol stisknout tla\u010D\xEDtko v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;podn\u011Btem ob jeden zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'symbol',
+        content: 'D',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'E',
+        same: false
+      }, {
+        type: 'symbol',
+        content: 'F',
+        same: false
       }],
       i: -1,
       card: {
@@ -19756,6 +19855,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  //  #####
+  // #     #   ##   #    # ###### #####  #        ##   #   #
+  // #        #  #  ##  ## #      #    # #       #  #   # #
+  // #  #### #    # # ## # #####  #    # #      #    #   #
+  // #     # ###### #    # #      #####  #      ######   #
+  // #     # #    # #    # #      #      #      #    #   #
+  //  #####  #    # #    # ###### #      ###### #    #   #
   mounted: function mounted() {
     var _this = this;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/find-user/' + this.email).then(function (response) {
@@ -19765,10 +19871,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.loading = false;
         if (response.data['user']) {
           console.log('user found', response.data['user']);
-          _this.runRandomTest();
+          _this.nextCard(); /**/
+          // this.runRandomTest();
         } else {
           console.log('no user');
-          _this.runRandomTest();
+          _this.nextCard();
         }
       }, 1000);
     })["catch"](function (err) {
@@ -19778,30 +19885,71 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sameBtnClicked: function sameBtnClicked() {
-      this.cards[this.i].clicked = true;
+      this.cards[this.i]['clicked'] = true;
     },
     nextCard: function nextCard() {
       var _this2 = this;
+      // Force move to specific card ?
+      if (this.i in this.cards && this.cards[this.i]['next'] !== undefined) {
+        this.i = this.cards[this.i]['next'] - 1;
+      }
+
+      // Show blank and then selected card after small time
       this.card['content'] = '';
       setTimeout(function () {
-        _this2.i += 1;
+        // Skip cards that doesn't meet their "if" conditions
+        do {
+          _this2.i += 1;
+        } while (_this2.i in _this2.cards && _this2.validateCardConditions(_this2.i) == false);
+
+        // Show chosen card
         if (_this2.i in _this2.cards) {
+          _this2.cards[_this2.i]['clicked'] = false;
           _this2.card = JSON.parse(JSON.stringify(_this2.cards[_this2.i]));
-          _this2.card.clicked = false;
           if (_this2.card.type == 'symbol') {
             setTimeout(_this2.nextCard, 1000);
           }
+
+          // No more cards, finish
         } else {
           _this2.$emit('finish');
           // console.log(this.cards)
         }
       }, 500);
     },
+    validateCardConditions: function validateCardConditions(i) {
+      /**/console.log('validateCardConditions(i)', i);
+      /**/
+      console.log(this.cards);
+
+      // Imperfect?
+      if (this.cards[i]['if'] == 'imperfect') {
+        for (var j = 0; j < i; j++) {
+          var card = this.cards[j];
+          if (card['type'] == 'symbol' && card['same'] != card['clicked']) {
+            /**/console.log('found mistake:', j);
+            return true; // found mistake => is imperfect
+          }
+        }
+
+        return false; // no mistakes found => not imperfect
+      }
+
+      // No conditions, return true
+      return true;
+    },
+    // ######                                     #######
+    // #     #   ##   #    # #####   ####  #    #    #    ######  ####  #####
+    // #     #  #  #  ##   # #    # #    # ##  ##    #    #      #        #
+    // ######  #    # # #  # #    # #    # # ## #    #    #####   ####    #
+    // #   #   ###### #  # # #    # #    # #    #    #    #           #   #
+    // #    #  #    # #   ## #    # #    # #    #    #    #      #    #   #
+    // #     # #    # #    # #####   ####  #    #    #    ######  ####    #
     runRandomTest: function runRandomTest() {
       this.cards = this.generateCards(10, 1);
       this.cards.push({
         type: 'break',
-        content: "\n                    <h1 class=\"h1\">Vede\u0161 si skv\u011Ble!</h1>\n                    <p class=\"p\">\xDAsp\u011B\u0161n\u011B jsi dokon\u010Dil zah\u0159\xEDvac\xED kolo. Zde jsi m\u011Bl kontrolovat, jestli je p\xEDsmeno shodn\xE9 s jeho <b><i>p\u0159\xEDm\xFDm p\u0159edch\u016Fdcem</i></b>. </p>\n\n                    <p class=\"p\">Zkus\xEDme to trochu zt\xED\u017Eit. Nyn\xED bude\u0161 porovn\xE1vat, jestli je symbol shodn\xFD se symbolem <b><i>p\u0159ed-p\u0159edchoz\xEDm</i></b>. <br/>\n                    Tedy nap\u0159\xEDklad v sekvenci <span class=\"badge\">A</span>-<span class=\"badge\">B</span>-<span class=\"badge\">A</span> je posledn\xED p\xEDsmeno shodn\xE9 - proto\u017Ee je stejn\xE9, jako <b><i>p\xEDsmeno p\u0159ed p\u0159edchoz\xEDm</i></b> (tak\u017Ee klik\xE1\u0161 na tla\u010D\xEDtko).</p>\n\n                    <p class=\"p\">V n\xE1sleduj\xEDc\xED sekvenci se ti tedy bude dole zobrazovat tla\u010D\xEDtko\n                        <button class=\"btn btn-secondary btn-xs\">\n                            Shodn\xE9 s <span class=\"badge badge-slim\">2.</span> p\u0159edchoz\xEDm\n                        </button>\n                    .</p>\n\n                    <p class=\"p\">Je v\u0161e srozumiteln\xE9? Jsi p\u0159ipraven pokra\u010Dovat? Klikni na tla\u010D\xEDtko n\xED\u017Ee.</p>\n                "
+        content: "\n                    <h1 class=\"h1\">Vede\u0161 si skv\u011Ble!</h1>\n                    <p class=\"p\">\xDAsp\u011B\u0161n\u011B jsi dokon\u010Dil zah\u0159\xEDvac\xED kolo. Zde jsi m\u011Bl kontrolovat, jestli je p\xEDsmeno shodn\xE9 s jeho <b><i>p\u0159\xEDm\xFDm p\u0159edch\u016Fdcem</i></b>. </p>\n\n                    <p class=\"p\">Zkus\xEDme to trochu zt\xED\u017Eit. Nyn\xED bude\u0161 porovn\xE1vat, jestli je symbol shodn\xFD se symbolem <b><i>p\u0159ed-p\u0159edchoz\xEDm</i></b>. <br/>\n                    Tedy nap\u0159\xEDklad v sekvenci <span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span> je posledn\xED p\xEDsmeno shodn\xE9 - proto\u017Ee je stejn\xE9, jako <b><i>p\xEDsmeno p\u0159ed p\u0159edchoz\xEDm</i></b> (tak\u017Ee klik\xE1\u0161 na tla\u010D\xEDtko).</p>\n\n                    <p class=\"p\">V n\xE1sleduj\xEDc\xED sekvenci se ti tedy bude dole zobrazovat tla\u010D\xEDtko\n                        <button class=\"btn btn-secondary btn-xs\">\n                            Shodn\xE9 s <span class=\"badge badge-slim\">2.</span> p\u0159edchoz\xEDm\n                        </button>\n                    .</p>\n\n                    <p class=\"p\">Je v\u0161e srozumiteln\xE9? Jsi p\u0159ipraven pokra\u010Dovat? Klikni na tla\u010D\xEDtko n\xED\u017Ee.</p>\n                "
       });
       this.cards = this.cards.concat(this.generateCards(10, 2));
       this.nextCard();
@@ -19985,26 +20133,14 @@ var _hoisted_6 = {
 };
 var _hoisted_7 = ["disabled"];
 var _hoisted_8 = {
-  key: 2
-};
-var _hoisted_9 = {
-  "class": "bottom-container"
-};
-var _hoisted_10 = {
-  "class": "left-container"
-};
-var _hoisted_11 = {
-  "class": "right-container"
-};
-var _hoisted_12 = {
-  key: 3,
+  key: 2,
   "class": "w-full"
 };
-var _hoisted_13 = {
-  key: 4,
+var _hoisted_9 = {
+  key: 3,
   "class": "w-full text-center pt-24"
 };
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "h1 text-white",
   style: {
     "margin-bottom": "0.5rem"
@@ -20012,34 +20148,33 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <i class=\"fa-solid fa-robot\"></i> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-network-wired"
 })], -1 /* HOISTED */);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "loader"
 }, null, -1 /* HOISTED */);
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "h2 mt-8"
 }, "Odesílám tvé výsledky na server...", -1 /* HOISTED */);
-var _hoisted_17 = [_hoisted_14, _hoisted_15, _hoisted_16];
-var _hoisted_18 = {
-  key: 5,
+var _hoisted_13 = [_hoisted_10, _hoisted_11, _hoisted_12];
+var _hoisted_14 = {
+  key: 4,
   "class": "w-full text-center text-error pt-40"
 };
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "h1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-regular fa-face-sad-tear"
 })], -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "p"
 }, "Je mi líto, něco se porouchalo. Zkus prosím stránku za chvíli obnovit.", -1 /* HOISTED */);
-var _hoisted_21 = [_hoisted_19, _hoisted_20];
-var _hoisted_22 = {
-  key: 6,
+var _hoisted_17 = [_hoisted_15, _hoisted_16];
+var _hoisted_18 = {
+  key: 5,
   "class": "w-full"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Home = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Home");
   var _component_PersonalInfoForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PersonalInfoForm");
-  var _component_TestInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TestInfo");
   var _component_Test = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Test");
   var _component_Finish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Finish");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.step == 'reset' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'home' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Home), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -20059,27 +20194,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, "Zpět")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[3] || (_cache[3] = function ($event) {
-      return $options.moveto('info');
+      return $options.moveto('test');
     }),
     disabled: $data.movetoInfoDisabled,
     "class": "btn btn-primary w-full"
-  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), $data.step == 'info' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestInfo), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-primary w-full",
-    onClick: _cache[4] || (_cache[4] = function ($event) {
-      return $options.moveto('form');
-    })
-  }, "Zpět")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-primary w-full",
-    onClick: _cache[5] || (_cache[5] = function ($event) {
-      return $options.moveto('test');
-    })
-  }, "Pokračovat")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
+  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"step=='info'\">\n        <TestInfo/>\n\n        <div class=\"bottom-container\">\n            <div class=\"left-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('form')\">Zpět</button>\n            </div>\n            <div class=\"right-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('test')\">Pokračovat</button>\n            </div>\n        </div>\n    </div> "), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
     ref: "test",
     email: _ctx.$refs.personalInfoForm.user['email'],
-    onFinish: _cache[6] || (_cache[6] = function ($event) {
+    onFinish: _cache[4] || (_cache[4] = function ($event) {
       return $options.testFinished();
     })
-  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_21)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
+  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
     email: _ctx.$refs.personalInfoForm.user['email']
   }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Finish email=\"nanuqcz@gmail.com\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
@@ -20484,17 +20609,11 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "bottom-container"
 };
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Shodné s ");
-var _hoisted_12 = {
-  key: 0,
-  "class": "badge badge-slim"
-};
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" předchozím ");
-var _hoisted_14 = {
+var _hoisted_11 = {
   "class": "test-break"
 };
-var _hoisted_15 = ["innerHTML"];
-var _hoisted_16 = {
+var _hoisted_12 = ["innerHTML"];
+var _hoisted_13 = {
   "class": "bottom-container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -20505,11 +20624,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.sameBtnClicked();
     }),
     "class": "btn btn-secondary w-full"
-  }, [_hoisted_11, $data.card['badge'] && $data.card['badge'].length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['badge']), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13])])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, " Shodné "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"sameBtnClicked()\" class=\"btn btn-secondary w-full\">\n                Shodné s <span v-if=\"card['badge'] && card['badge'].length\" class=\"badge badge-slim\">{{ card['badge'] }}</span> předchozím\n            </button> ")])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 3
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     innerHTML: $data.card['content']
-  }, null, 8 /* PROPS */, _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-secondary w-full",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.nextCard();
