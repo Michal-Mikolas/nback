@@ -53,7 +53,7 @@
             <i class="fa-solid fa-network-wired"></i>
         </h1>
         <div class="loader"></div>
-        <h2 class="h2 mt-8">Odesílám tvé výsledky na server...</h2>
+        <h2 class="h2 mt-8">Odesílám vaše výsledky na server...</h2>
     </div>
 
 
@@ -61,7 +61,7 @@
         <h1 class="h1">
             <i class="fa-regular fa-face-sad-tear"></i>
         </h1>
-        <p class="p">Je mi líto, něco se porouchalo. Zkus prosím stránku za chvíli obnovit.</p>
+        <p class="p">Je mi líto, něco se porouchalo. Zkuste prosím stránku za chvíli obnovit.</p>
     </div>
 
 
