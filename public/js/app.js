@@ -19599,6 +19599,7 @@ __webpack_require__.r(__webpack_exports__);
         'lang_level': 0,
         'email': '@',
         'birthdate': null,
+        'sex': null,
         'disorder': null,
         'education': null,
         'passive_languages': null,
@@ -19619,7 +19620,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     isValid: function isValid() {
-      return this.isLangLevelValid && this.isEmailValid && this.isBirthdateValid && this.isEducationValid && this.isActiveLanguageValid && this.isPassiveLanguageValid && this.isDisorderValid;
+      return this.isLangLevelValid && this.isEmailValid && this.isBirthdateValid && this.isSexValid && this.isEducationValid && this.isActiveLanguageValid && this.isPassiveLanguageValid && this.isDisorderValid;
     },
     isLangLevelValid: function isLangLevelValid() {
       if (this.user['lang_level'] === null) {
@@ -19646,6 +19647,12 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
       if (this.user['birthdate'] > maxDate) {
+        return false;
+      }
+      return true;
+    },
+    isSexValid: function isSexValid() {
+      if (this.user['sex'] === null) {
         return false;
       }
       return true;
@@ -21124,7 +21131,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "open-source"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")])], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"p text-justify\">\n        Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.\n    </p>\n\n    <p class=\"p text-justify\">\n        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.\n    </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #######\r\n    #       # #    # #  ####  #    #\r\n    #       # ##   # # #      #    #\r\n    #####   # # #  # #  ####  ######\r\n    #       # #  # # #      # #    #\r\n    #       # #   ## # #    # #    #\r\n    #       # #    # #  ####  #    #\r\n    "), _hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"p text-justify\">\r\n        Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.\r\n    </p>\r\n\r\n    <p class=\"p text-justify\">\r\n        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.\r\n    </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "link link-primary",
     href: 'https://lea.michalm.cz/' + $props.email,
     target: "_blank"
@@ -21148,7 +21155,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Úvod!</h1><p class=\"p\"><img src=\"/lea3.png\" alt=\"Lea Slížová\" class=\"float-left mt-[3px] mr-4 mb-4 w-36 rounded\"> Přeji pěkný den! Děkuji, že jste se rozhodl/a zúčastnit tohoto výzkumu. Jsem studentkou třetího ročníku psychologie na Ostravské univerzitě a momentálně píši bakalářskou práci na téma &quot;<b>Bilingvismus a pracovní paměť</b>&quot; pod vedením <a class=\"link\" href=\"https://ff.osu.cz/kps/klara-machu/31199/\" target=\"_blank\">Dr. Kláry Machů</a>. Veškeré informace, které z výzkumu získám, budou použity výhradně k účelu mé bakalářské práce a budou zde prezentovány v anonymní formě. </p><p class=\"p\"> Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zajišťující kapacitu pracovní paměti</b>. Zdůrazňuji, že máte právo z výzkumu kdykoli v průběhu odstoupit. <br> Účastí na tomto výzkumu nejen pomůžete v realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o svojí paměti. V závěru uvidíte své skóre v porovnání s ostatními. </p><p class=\"p\"> Celý test nezabere více než <b>20 minut</b>. Prosím, vyhraďte si tento čas a soustřeďte se nyní čistě na výzkum, najděte si klidné prostředí a nenechte se ničím rozptylovat. Pokud jste tak již učinili, můžete kliknout na tlačítko <i>Pokračovat</i>. </p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #     #\n    #     #  ####  #    # ######\n    #     # #    # ##  ## #\n    ####### #    # # ## # #####\n    #     # #    # #    # #\n    #     # #    # #    # #\n    #     #  ####  #    # ######\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #     #\r\n    #     #  ####  #    # ######\r\n    #     # #    # ##  ## #\r\n    ####### #    # # ## # #####\r\n    #     # #    # #    # #\r\n    #     # #    # #    # #\r\n    #     #  ####  #    # ######\r\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -21251,7 +21258,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     disabled: $data.movetoInfoDisabled,
     "class": "btn btn-primary w-full"
-  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"step=='info'\">\n        <TestInfo/>\n\n        <div class=\"bottom-container\">\n            <div class=\"left-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('form')\">Zpět</button>\n            </div>\n            <div class=\"right-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('test')\">Pokračovat</button>\n            </div>\n        </div>\n    </div> "), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
+  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"step=='info'\">\r\n        <TestInfo/>\r\n\r\n        <div class=\"bottom-container\">\r\n            <div class=\"left-container\">\r\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('form')\">Zpět</button>\r\n            </div>\r\n            <div class=\"right-container\">\r\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('test')\">Pokračovat</button>\r\n            </div>\r\n        </div>\r\n    </div> "), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
     ref: "test",
     email: _ctx.$refs.personalInfoForm.user['email'],
     onFinish: _cache[4] || (_cache[4] = function ($event) {
@@ -21423,97 +21430,117 @@ var _hoisted_82 = {
 var _hoisted_83 = {
   "class": "label"
 };
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled selected></option><option value=\"0\">Žádné / nedokončené základní</option><option value=\"1\">Základní</option><option value=\"2\">Střední s výučním listem</option><option value=\"3\">Střední s maturitou</option><option value=\"4\">Vyšší odborné - titul DiS.</option><option value=\"5\">Vysokoškolské - bakalářský stupeň</option><option value=\"6\">Vysokoškolské - magisterský stupeň</option><option value=\"7\">Vysokoškolské - doktorský stupeň</option>", 9);
-var _hoisted_93 = [_hoisted_84];
-var _hoisted_94 = {
-  "class": "form-control w-full"
-};
-var _hoisted_95 = {
-  "class": "label"
-};
-var _hoisted_96 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazykům rozumíte? ");
-var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
-  "class": "small block text-secondary-content"
-}, "Češtinu a Slovenštinu berme jako jeden jazyk.", -1 /* HOISTED */);
-var _hoisted_98 = [_hoisted_96, _hoisted_97];
-var _hoisted_99 = {
-  key: 0,
-  "class": "label"
-};
-var _hoisted_100 = {
-  key: 0,
-  "class": "label-text-alt text-warning"
-};
-var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-grin-tongue-wink"
-}, null, -1 /* HOISTED */);
-var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě rozumíte alespoň jednomu jazyku ");
-var _hoisted_103 = [_hoisted_101, _hoisted_102];
-var _hoisted_104 = {
-  key: 1,
-  "class": "label-text-alt text-warning"
-};
-var _hoisted_105 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-grin-tears"
-}, null, -1 /* HOISTED */);
-var _hoisted_106 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
-var _hoisted_107 = [_hoisted_105, _hoisted_106];
-var _hoisted_108 = {
-  "class": "form-control w-full"
-};
-var _hoisted_109 = {
-  "class": "label"
-};
-var _hoisted_110 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazyky zvládnete mluvit? ");
-var _hoisted_111 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
-  "class": "small block text-secondary-content"
-}, "Češtinu a Slovenštinu berme jako jeden jazyk.", -1 /* HOISTED */);
-var _hoisted_112 = [_hoisted_110, _hoisted_111];
-var _hoisted_113 = {
-  key: 0,
-  "class": "label"
-};
-var _hoisted_114 = {
-  key: 0,
-  "class": "label-text-alt text-warning"
-};
-var _hoisted_115 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-grin-tongue-wink"
-}, null, -1 /* HOISTED */);
-var _hoisted_116 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě mluvíte alespoň jedním jazykem ");
-var _hoisted_117 = [_hoisted_115, _hoisted_116];
-var _hoisted_118 = {
-  key: 1,
-  "class": "label-text-alt text-warning"
-};
-var _hoisted_119 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-grin-tears"
-}, null, -1 /* HOISTED */);
-var _hoisted_120 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
-var _hoisted_121 = [_hoisted_119, _hoisted_120];
-var _hoisted_122 = {
-  "class": "form-control w-full"
-};
-var _hoisted_123 = {
-  "class": "label"
-};
-var _hoisted_124 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   disabled: "",
   selected: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_125 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "0"
+}, "Muž", -1 /* HOISTED */);
+var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "1"
+}, "Žena", -1 /* HOISTED */);
+var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "2"
+}, "Nechci uvést / Jiné", -1 /* HOISTED */);
+var _hoisted_88 = [_hoisted_84, _hoisted_85, _hoisted_86, _hoisted_87];
+var _hoisted_89 = {
+  "class": "form-control w-full"
+};
+var _hoisted_90 = {
+  "class": "label"
+};
+var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option disabled selected></option><option value=\"0\">Žádné / nedokončené základní</option><option value=\"1\">Základní</option><option value=\"2\">Střední s výučním listem</option><option value=\"3\">Střední s maturitou</option><option value=\"4\">Vyšší odborné - titul DiS.</option><option value=\"5\">Vysokoškolské - bakalářský stupeň</option><option value=\"6\">Vysokoškolské - magisterský stupeň</option><option value=\"7\">Vysokoškolské - doktorský stupeň</option>", 9);
+var _hoisted_100 = [_hoisted_91];
+var _hoisted_101 = {
+  "class": "form-control w-full"
+};
+var _hoisted_102 = {
+  "class": "label"
+};
+var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazykům rozumíte? ");
+var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+  "class": "small block text-secondary-content"
+}, "Češtinu a Slovenštinu berme jako jeden jazyk.", -1 /* HOISTED */);
+var _hoisted_105 = [_hoisted_103, _hoisted_104];
+var _hoisted_106 = {
+  key: 0,
+  "class": "label"
+};
+var _hoisted_107 = {
+  key: 0,
+  "class": "label-text-alt text-warning"
+};
+var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-grin-tongue-wink"
+}, null, -1 /* HOISTED */);
+var _hoisted_109 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě rozumíte alespoň jednomu jazyku ");
+var _hoisted_110 = [_hoisted_108, _hoisted_109];
+var _hoisted_111 = {
+  key: 1,
+  "class": "label-text-alt text-warning"
+};
+var _hoisted_112 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-grin-tears"
+}, null, -1 /* HOISTED */);
+var _hoisted_113 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
+var _hoisted_114 = [_hoisted_112, _hoisted_113];
+var _hoisted_115 = {
+  "class": "form-control w-full"
+};
+var _hoisted_116 = {
+  "class": "label"
+};
+var _hoisted_117 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kolika jazyky zvládnete mluvit? ");
+var _hoisted_118 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", {
+  "class": "small block text-secondary-content"
+}, "Češtinu a Slovenštinu berme jako jeden jazyk.", -1 /* HOISTED */);
+var _hoisted_119 = [_hoisted_117, _hoisted_118];
+var _hoisted_120 = {
+  key: 0,
+  "class": "label"
+};
+var _hoisted_121 = {
+  key: 0,
+  "class": "label-text-alt text-warning"
+};
+var _hoisted_122 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-grin-tongue-wink"
+}, null, -1 /* HOISTED */);
+var _hoisted_123 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Určitě mluvíte alespoň jedním jazykem ");
+var _hoisted_124 = [_hoisted_122, _hoisted_123];
+var _hoisted_125 = {
+  key: 1,
+  "class": "label-text-alt text-warning"
+};
+var _hoisted_126 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-grin-tears"
+}, null, -1 /* HOISTED */);
+var _hoisted_127 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nevěřím, to je víc než Guinessův rekord ");
+var _hoisted_128 = [_hoisted_126, _hoisted_127];
+var _hoisted_129 = {
+  "class": "form-control w-full"
+};
+var _hoisted_130 = {
+  "class": "label"
+};
+var _hoisted_131 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  disabled: "",
+  selected: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_132 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "1"
 }, "Ano", -1 /* HOISTED */);
-var _hoisted_126 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_133 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "0"
 }, "Ne", -1 /* HOISTED */);
-var _hoisted_127 = [_hoisted_124, _hoisted_125, _hoisted_126];
+var _hoisted_134 = [_hoisted_131, _hoisted_132, _hoisted_133];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onInput: _cache[14] || (_cache[14] = function ($event) {
+    onInput: _cache[15] || (_cache[15] = function ($event) {
       return $options.formChanged();
     }),
-    onChange: _cache[15] || (_cache[15] = function ($event) {
+    onChange: _cache[16] || (_cache[16] = function ($event) {
       return $options.formChanged();
     }),
     action: "",
@@ -21579,16 +21606,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "date",
     placeholder: "31.12.1990"
   }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['birthdate']]]), !$options.isBirthdateValid && $data.user['birthdate'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_79, _hoisted_81)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_82, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isSexValid ? 'text-success' : 'text-warning'])
+  }, " Jaké je Vaše pohlaví? ", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+      return $data.user['sex'] = $event;
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isSexValid ? 'select-success' : 'select-warning'])
+  }, _hoisted_88, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['sex']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_89, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_90, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isEducationValid ? 'text-success' : 'text-warning'])
   }, " Jaký je Váš nejvyšší dosažený stupeň vzdělání? ", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $data.user['education'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isEducationValid ? 'select-success' : 'select-warning'])
-  }, _hoisted_93, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['education']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_94, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_95, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, _hoisted_100, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['education']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_101, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_102, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isPassiveLanguageValid ? 'text-success' : 'text-warning'])
-  }, _hoisted_98, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+  }, _hoisted_105, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $data.user['passive_languages'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isPassiveLanguageValid ? 'input-success' : 'input-warning']),
@@ -21596,10 +21630,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     step: "1.0",
     type: "number",
     placeholder: ""
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['passive_languages']]]), !$options.isPassiveLanguageValid && $data.user['passive_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_99, [$data.user['passive_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_100, _hoisted_103)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['passive_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_104, _hoisted_107)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_108, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_109, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['passive_languages']]]), !$options.isPassiveLanguageValid && $data.user['passive_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_106, [$data.user['passive_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_107, _hoisted_110)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['passive_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_111, _hoisted_114)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_115, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_116, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isActiveLanguageValid ? 'text-success' : 'text-warning'])
-  }, _hoisted_112, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+  }, _hoisted_119, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
       return $data.user['active_languages'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['input', 'input-bordered', 'w-full', $options.isActiveLanguageValid ? 'input-success' : 'input-warning']),
@@ -21607,14 +21641,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     step: "1.0",
     type: "number",
     placeholder: ""
-  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['active_languages']]]), !$options.isActiveLanguageValid && $data.user['active_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_113, [$data.user['active_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_114, _hoisted_117)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['active_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_118, _hoisted_121)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_122, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_123, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.user['active_languages']]]), !$options.isActiveLanguageValid && $data.user['active_languages'] !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", _hoisted_120, [$data.user['active_languages'] <= 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_121, _hoisted_124)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.user['active_languages'] > 43 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_125, _hoisted_128)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_130, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isDisorderValid ? 'text-success' : 'text-warning'])
   }, " Máte diagnostikováno ADD, ADHD, či poruchu pozornosti? ", 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+    "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
       return $data.user['disorder'] = $event;
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isDisorderValid ? 'select-success' : 'select-warning'])
-  }, _hoisted_127, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['disorder']]])])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
+  }, _hoisted_134, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['disorder']]])])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -21674,14 +21708,14 @@ var _hoisted_17 = {
   "class": "bottom-container"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n     #######\n        #    ######  ####  #####\n        #    #      #        #\n        #    #####   ####    #\n        #    #           #   #\n        #    #      #    #   #\n        #    ######  ####    #\n    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" LOADING & ERROR "), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4)) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_8)) : $data.card['type'] == 'symbol' || $data.card['type'] == 'trial' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n     #######\r\n        #    ######  ####  #####\r\n        #    #      #        #\r\n        #    #####   ####    #\r\n        #    #           #   #\r\n        #    #      #    #   #\r\n        #    ######  ####    #\r\n    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" LOADING & ERROR "), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4)) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_8)) : $data.card['type'] == 'symbol' || $data.card['type'] == 'trial' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 2
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SYMBOL "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['content']) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.sameBtnClicked();
     }),
     "class": "btn btn-secondary w-full"
-  }, " Shodné "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"sameBtnClicked()\" class=\"btn btn-secondary w-full\">\n                Shodné s <span v-if=\"card['badge'] && card['badge'].length\" class=\"badge badge-slim\">{{ card['badge'] }}</span> předchozím\n            </button> "), $data.i > 0 && ($props.email == 'nanuqcz@gmail.com' || $props.email == 'leaslizova311@seznam.cz') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, " Shodné "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"sameBtnClicked()\" class=\"btn btn-secondary w-full\">\r\n                Shodné s <span v-if=\"card['badge'] && card['badge'].length\" class=\"badge badge-slim\">{{ card['badge'] }}</span> předchozím\r\n            </button> "), $data.i > 0 && ($props.email == 'nanuqcz@gmail.com' || $props.email == 'leaslizova311@seznam.cz') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.skipSection();

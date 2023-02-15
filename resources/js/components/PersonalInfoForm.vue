@@ -151,6 +151,21 @@ B)	<b>Čtení a psaní</b> - má dobré kritické myšlení, dokáže proto bez 
 
         <div class="form-control w-full">
             <label class="label">
+                <span v-bind:class="['label-text', isSexValid? 'text-success': 'text-warning']">
+                    Jaké je Vaše pohlaví?
+                </span>
+            </label>
+            <select v-model="user['sex']"
+                v-bind:class="['select', 'select-bordered', 'w-full', isSexValid? 'select-success': 'select-warning']" >
+                <option disabled selected></option>
+                <option value="0">Muž</option>
+                <option value="1">Žena</option>
+                <option value="2">Nechci uvést / Jiné</option>
+            </select>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
                 <span v-bind:class="['label-text', isEducationValid? 'text-success': 'text-warning']">
                     Jaký je Váš nejvyšší dosažený stupeň vzdělání?
                 </span>
@@ -240,6 +255,7 @@ export default {
                 'lang_level': 0,
                 'email': '@',
                 'birthdate': null,
+                'sex': null,
                 'disorder': null,
                 'education': null,
                 'passive_languages': null,
@@ -264,6 +280,7 @@ export default {
             return this.isLangLevelValid
                 && this.isEmailValid
                 && this.isBirthdateValid
+                && this.isSexValid
                 && this.isEducationValid
                 && this.isActiveLanguageValid
                 && this.isPassiveLanguageValid
@@ -298,6 +315,13 @@ export default {
                 return false;
             }
             if (this.user['birthdate'] > maxDate) {
+                return false;
+            }
+
+            return true;
+        },
+        isSexValid(){
+            if (this.user['sex'] === null) {
                 return false;
             }
 
