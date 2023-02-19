@@ -117,7 +117,7 @@ B)	<b>Čtení a psaní</b> - má dobré kritické myšlení, dokáže proto bez 
                 <span v-bind:class="['label-text', isEmailValid? 'text-success': 'text-warning']">
                     Jaký je Váš e-mail?
                     <small class="small block text-secondary-content">
-                        E-mail bude použit výhradně pro účely zaslání výsledku testu po dokončení výzkumu. Neobjeví se v bakalářské práci, ani ho nepředám třetí osobě.
+                        E-mail bude použit pro účely zaslání výsledku testu po dokončení výzkumu. Neobjeví se v bakalářské práci, ani ho nepředám třetí osobě.
                     </small>
                 </span>
             </label>
@@ -134,17 +134,17 @@ B)	<b>Čtení a psaní</b> - má dobré kritické myšlení, dokáže proto bez 
 
         <div class="form-control w-full">
             <label class="label">
-                <span v-bind:class="['label-text', isBirthdateValid? 'text-success': 'text-warning']">
-                    Uveďte prosím své datum narození
+                <span v-bind:class="['label-text', isAgeValid? 'text-success': 'text-warning']">
+                    Uveďte prosím váš věk
                 </span>
             </label>
-            <input v-model="user['birthdate']"
-                v-bind:class="['input', 'input-bordered', 'w-full', isBirthdateValid? 'input-success': 'input-warning']"
-                type="date" placeholder="31.12.1990" />
+            <input v-model="user['age']"
+                v-bind:class="['input', 'input-bordered', 'w-full', isAgeValid? 'input-success': 'input-warning']"
+                type="number" step="1" placeholder="18" />
 
-            <label class="label" v-if="(!isBirthdateValid && user['birthdate'])">
+            <label class="label" v-if="(!isAgeValid && user['age'])">
                 <span class="label-text-alt text-warning">
-                    <i class="fa-regular fa-face-smile-wink"></i> Tehdy jste se určitě nenarodil/a
+                    <i class="fa-regular fa-face-smile-wink"></i> Toto určitě není váš věk
                 </span>
             </label>
         </div>
@@ -254,7 +254,7 @@ export default {
             'user': {
                 'lang_level': 0,
                 'email': '@',
-                'birthdate': null,
+                'age': null,
                 'sex': null,
                 'disorder': null,
                 'education': null,
@@ -279,7 +279,7 @@ export default {
         isValid(){
             return this.isLangLevelValid
                 && this.isEmailValid
-                && this.isBirthdateValid
+                && this.isAgeValid
                 && this.isSexValid
                 && this.isEducationValid
                 && this.isActiveLanguageValid
@@ -303,18 +303,15 @@ export default {
 
             return true;
         },
-        isBirthdateValid(){
-            if (!this.user['birthdate']) {
+        isAgeValid(){
+            if (!this.user['age']) {
                 return false;
             }
 
-            var minDate = dayjs(new Date()).subtract(120, 'years').toISOString().split('T')[0];
-            var maxDate = dayjs(new Date()).subtract(3, 'years').toISOString().split('T')[0];
-
-            if (this.user['birthdate'] < minDate) {
+            if (this.user['age'] < 3) {
                 return false;
             }
-            if (this.user['birthdate'] > maxDate) {
+            if (this.user['age'] > 120) {
                 return false;
             }
 
@@ -368,7 +365,9 @@ export default {
         if (localStorage.user) {
             var user = JSON.parse(localStorage.user);
             for (var key in user) {
-                this.user[key] = user[key];
+                if (this.user[key] !== undefined) {
+                    this.user[key] = user[key];
+                }
             }
         }
 

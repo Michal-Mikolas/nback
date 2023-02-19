@@ -532,7 +532,7 @@ export default {
                     this.card = this.prepareCard(this.i);
 
                     if (this.card['type'] == 'symbol' || this.card['type'] == 'trial') {
-                        this.cardTimeout = setTimeout(this.nextCard, 1000);
+                        this.cardTimeout = setTimeout(this.nextCard, 800);
                     }
 
                     // No more cards, finish
@@ -540,7 +540,7 @@ export default {
                     this.$emit('finish');
                     // console.log(this.cards)
                 }
-            }, 500);
+            }, 200);
         },
         prepareCard(i){
             if (!this.cards[i]) {
