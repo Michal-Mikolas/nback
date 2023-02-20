@@ -64,6 +64,10 @@
     position: static;
 }
 
+.tooltip.tooltip-open:before, .tooltip.tooltip-open:after, .tooltip:hover:before, .tooltip:hover:after {
+    white-space: pre-line;
+}
+
 /*~~~~~~ SPINNERs */
 .lds-grid {
     display: inline-block;

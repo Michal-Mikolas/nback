@@ -18,11 +18,18 @@
         <div class="form-control w-full">
             <label class="label">
                 <span v-bind:class="['label-text', isLangLevelValid? 'text-success': 'text-warning']">
-                    Na této škále zaznačte svůj subjektivní názor na to, na jaké úrovni si vedete ve znalosti nejvíce rozvinutého dalšího jazyka
+                    Na této škále zaznačte svůj subjektivní názor na to, na jaké úrovni si vedete ve znalosti nejvíce rozvinutého
+                    <i class="tooltip tooltip-right sm:tooltip-top whitespace-nowrap"
+                        data-tip="Češtinu a slovenštinu
+                            prosím berme jako
+                            jeden jazyk."
+                    >
+                        dalšího jazyka <sup><i class="fa-solid fa-circle-info"></i></sup>
+                    </i>
                     <small class="small block text-secondary-content">
                         A = základní uživatel <br/>
                         B = samostatný uživatel <br/>
-                        C = zkušený uživatel
+                        C = zkušený uživatel <br/>
                     </small>
                 </span>
             </label>
@@ -110,6 +117,31 @@ A)	<b>Poslech a mluva</b> - rozumí každému rozhovoru, který v cizím jazyce 
 B)	<b>Čtení a psaní</b> - má dobré kritické myšlení, dokáže proto bez problémů hledat chyby v odborných textech a lidé jej považují za rodilého mluvčího.</pre>
 
             </span>
+        </div>
+
+        <div class="form-control w-full">
+            <label class="label">
+                <span v-bind:class="['label-text', isLangStartValid? 'text-success': 'text-warning']">
+                    Kdy jste začal získávat znalost vašeho dalšího jazyka?
+                </span>
+            </label>
+            <select v-model="user['lang_start']"
+                v-bind:class="['select', 'select-bordered', 'w-full', isLangStartValid? 'select-success': 'select-warning']"
+            >
+                <option disabled selected></option>
+                <option value="-1">Neumím další jazyk</option>
+                <option value="0">V mých 0 - 3 letech</option>
+                <option value="3">V mých 3 - 6 letech</option>
+                <option value="6">Během studia na základní škole (cca 6 - 15 let)</option>
+                <option value="16">Po základní škole (16 a více let)</option>
+            </select>
+
+            <label class="label" v-if="(!isLangStartValid && user['lang_start'] == -1)">
+                <span class="label-text-alt text-warning">
+                    <i class="fa-solid fa-face-surprise mr-1"></i> V předešlé otázce jste vyplnil, že máte další jazyk na úrovni
+                    {{ ({0: 'A0', 1: 'A1', 2: 'A2', 3: 'B1', 4: 'B2', 5: 'C1', 6: 'C2'})[ user['lang_level'] ] }}
+                </span>
+            </label>
         </div>
 
         <div class="form-control row w-full">
@@ -253,6 +285,7 @@ export default {
         return {
             'user': {
                 'lang_level': 0,
+                'lang_start': null,
                 'email': '@',
                 'age': null,
                 'sex': null,
@@ -278,6 +311,7 @@ export default {
     computed: {
         isValid(){
             return this.isLangLevelValid
+                && this.isLangStartValid
                 && this.isEmailValid
                 && this.isAgeValid
                 && this.isSexValid
@@ -288,6 +322,16 @@ export default {
         },
         isLangLevelValid(){
             if (this.user['lang_level'] === null) {
+                return false;
+            }
+
+            return true;
+        },
+        isLangStartValid(){
+            if (this.user['lang_start'] === null) {
+                return false;
+            }
+            if (this.user['lang_start'] == -1 && this.user['lang_level'] >= 3) {
                 return false;
             }
 
