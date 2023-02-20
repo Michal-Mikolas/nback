@@ -14,6 +14,17 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css'/>
+
+    @if ($_SERVER['HTTP_HOST'] == 'lea.michalm.cz')
+        <script type='text/javascript'>
+        window.smartlook||(function(d) {
+        var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+        var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+        c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+        })(document);
+        smartlook('init', '0d5e2de465730c562785b0a478bda770c75bc67e', { region: 'eu' });
+        </script>
+    @endif
 </head>
 
 <body
