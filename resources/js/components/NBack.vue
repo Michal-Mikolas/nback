@@ -108,6 +108,9 @@ export default {
 
             var data = {
                 'user': this.$refs.personalInfoForm.user,
+                'test': {
+                    'browser_info': JSON.stringify(this.getBrowserInfo()),
+                },
                 'cards': this.$refs.test.cards,
             };
             data = JSON.parse(JSON.stringify(data));
@@ -124,6 +127,30 @@ export default {
         },
         scrollTop(){
             document.getElementById('app').scroll(0, 0);
+        },
+        getBrowserInfo(){
+            var bi = {};
+
+            bi['navigator'] = {};
+            for (var k in navigator) {
+                bi['navigator'][k] = navigator[k];
+            }
+
+            bi['screen'] = {};
+            for (var k in screen) {
+                bi['screen'][k] = screen[k];
+            }
+
+            bi['location'] = {};
+            for (var k in location) {
+                bi['location'][k] = location[k];
+            }
+
+            bi['innerWidth'] = window.innerWidth;
+            bi['innerHeight'] = window.innerHeight;
+            bi['referer'] = document.referer;
+
+            return bi;
         },
     },
     computed: {

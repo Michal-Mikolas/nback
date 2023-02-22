@@ -23,6 +23,7 @@ class ApiController extends Controller
          * Init
          */
         $inputUser = $request->input('user');
+        $inputTest = $request->input('test');
         $inputCards = $request->input('cards');
 
         /*
@@ -37,6 +38,7 @@ class ApiController extends Controller
         // TEST & CARDS
         $test = $user->tests()->create([
             'is_main_test' => ($user->tests()->count() == 0),
+            'browser_info' => $inputTest['browser_info'],
         ]);
 
         foreach ($inputCards as $inputCard) {
