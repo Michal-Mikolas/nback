@@ -38,6 +38,8 @@ class ApiController extends Controller
         // TEST & CARDS
         $test = $user->tests()->create([
             'is_main_test' => ($user->tests()->count() == 0),
+            'interruption' => $inputTest['interruption'],
+            'interruption_reason' => $inputTest['interruption_reason'],
             'browser_info' => $inputTest['browser_info'],
         ]);
 
@@ -57,6 +59,7 @@ class ApiController extends Controller
             'status' => '200',
             'message' => 'ok',
             '$request->input(\'user\')' => $request->input('user'),
+            '$request->input(\'test\')' => $request->input('test'),
             '$request->input(\'cards\')' => $request->input('cards'),
         ]);
     }

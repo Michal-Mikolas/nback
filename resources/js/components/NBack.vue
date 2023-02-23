@@ -42,7 +42,7 @@
 
 
     <div class="w-full" v-if="step=='test'">
-        <Test ref="test" v-bind:email="$refs.personalInfoForm.user['email']" v-on:test-finished="step = 'pre-finish'"/>
+        <Test ref="test" v-bind:email="$refs.personalInfoForm.user['email']" v-on:finish="step = 'test-finish'"/>
         <!-- <Test ref="test" email="nanuqcz@gmail.com" v-on:finish="testFinished()"/> -->
     </div>
 
@@ -65,18 +65,18 @@
     </div>
 
 
-    <div class="w-full" v-if="step=='pre-finish'">
-        <PreFinish ref="preFinish" v-on:change="preFinishChanged()"/>
+    <div class="w-full" v-if="step=='test-finish'">
+        <TestFinish ref="testFinish" v-on:change="testFinishChanged()"/>
 
         <div class="bottom-container">
-            <button v-bind:disabled="finishDisabled" class="btn btn-primary w-full" @click="finish()">Pokračovat</button>
+            <button v-bind:disabled="appFinishDisabled" class="btn btn-primary w-full" @click="appFinish()">Pokračovat</button>
         </div>
     </div>
 
 
-    <div class="w-full" v-if="step=='finish'">
-        <Finish v-bind:email="$refs.personalInfoForm.user['email']"/>
-        <!-- <Finish email="nanuqcz@gmail.com"/> -->
+    <div class="w-full" v-if="step=='app-finish'">
+        <AppFinish v-bind:email="$refs.personalInfoForm.user['email']"/>
+        <!-- <AppFinish email="nanuqcz@gmail.com"/> -->
     </div>
 
 </template>
@@ -87,16 +87,16 @@ import Home from './Home.vue'
 import PersonalInfoForm from './PersonalInfoForm.vue'
 import TestInfo from './TestInfo.vue'
 import Test from './Test.vue'
-import PreFinish from './PreFinish.vue'
-import Finish from './Finish.vue'
+import TestFinish from './TestFinish.vue'
+import AppFinish from './AppFinish.vue'
 import axios from 'axios'
 
 export default {
     data() {
         return {
-            step: 'pre-finish',
+            step: 'home',
             movetoInfoDisabled: true,
-            finishDisabled: true,
+            appFinishDisabled: true,
         }
     },
     components: {
@@ -104,8 +104,8 @@ export default {
         PersonalInfoForm,
         TestInfo,
         Test,
-        PreFinish,
-        Finish,
+        TestFinish,
+        AppFinish,
     },
     methods: {
         moveto(step){
@@ -115,15 +115,17 @@ export default {
         personalInfoFormChanged(){
             this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
         },
-        preFinishChanged(){
-            this.finishDisabled = !this.$refs.preFinish || this.$refs.preFinish.interruption === null;
+        testFinishChanged(){
+            this.appFinishDisabled = !this.$refs.testFinish || this.$refs.testFinish.interruption === null;
         },
-        finish(){
+        appFinish(){
             this.step = 'loading';
 
             var data = {
                 'user': this.$refs.personalInfoForm.user,
                 'test': {
+                    'interruption': this.$refs.testFinish.interruption,
+                    'interruption_reason': this.$refs.testFinish.interruption_reason,
                     'browser_info': JSON.stringify(this.getBrowserInfo()),
                 },
                 'cards': this.$refs.test.cards,
@@ -133,7 +135,7 @@ export default {
             axios.post('/api/save-test', data)
                 .then(response => {
                     setTimeout(() => {  // enjoy the loader animation a bit :-P
-                        this.step = 'finish';
+                        this.step = 'app-finish';
                     }, 2000);
                 })
                 .catch(error => {

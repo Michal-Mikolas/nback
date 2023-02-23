@@ -19467,10 +19467,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Finish.vue?vue&type=script&lang=js":
-/*!************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Finish.vue?vue&type=script&lang=js ***!
-  \************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AppFinish.vue?vue&type=script&lang=js":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AppFinish.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19523,8 +19523,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PersonalInfoForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PersonalInfoForm.vue */ "./resources/js/components/PersonalInfoForm.vue");
 /* harmony import */ var _TestInfo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TestInfo.vue */ "./resources/js/components/TestInfo.vue");
 /* harmony import */ var _Test_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Test.vue */ "./resources/js/components/Test.vue");
-/* harmony import */ var _PreFinish_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PreFinish.vue */ "./resources/js/components/PreFinish.vue");
-/* harmony import */ var _Finish_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Finish.vue */ "./resources/js/components/Finish.vue");
+/* harmony import */ var _TestFinish_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TestFinish.vue */ "./resources/js/components/TestFinish.vue");
+/* harmony import */ var _AppFinish_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppFinish.vue */ "./resources/js/components/AppFinish.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 
@@ -19537,9 +19537,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      step: 'pre-finish',
+      step: 'home',
       movetoInfoDisabled: true,
-      finishDisabled: true
+      appFinishDisabled: true
     };
   },
   components: {
@@ -19547,8 +19547,8 @@ __webpack_require__.r(__webpack_exports__);
     PersonalInfoForm: _PersonalInfoForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     TestInfo: _TestInfo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     Test: _Test_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    PreFinish: _PreFinish_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Finish: _Finish_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    TestFinish: _TestFinish_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    AppFinish: _AppFinish_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   methods: {
     moveto: function moveto(step) {
@@ -19558,15 +19558,17 @@ __webpack_require__.r(__webpack_exports__);
     personalInfoFormChanged: function personalInfoFormChanged() {
       this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
     },
-    preFinishChanged: function preFinishChanged() {
-      this.finishDisabled = !this.$refs.preFinish || this.$refs.preFinish.interruption === null;
+    testFinishChanged: function testFinishChanged() {
+      this.appFinishDisabled = !this.$refs.testFinish || this.$refs.testFinish.interruption === null;
     },
-    finish: function finish() {
+    appFinish: function appFinish() {
       var _this = this;
       this.step = 'loading';
       var data = {
         'user': this.$refs.personalInfoForm.user,
         'test': {
+          'interruption': this.$refs.testFinish.interruption,
+          'interruption_reason': this.$refs.testFinish.interruption_reason,
           'browser_info': JSON.stringify(this.getBrowserInfo())
         },
         'cards': this.$refs.test.cards
@@ -19575,7 +19577,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_6___default().post('/api/save-test', data).then(function (response) {
         setTimeout(function () {
           // enjoy the loader animation a bit :-P
-          _this.step = 'finish';
+          _this.step = 'app-finish';
         }, 2000);
       })["catch"](function (error) {
         _this.step = 'error';
@@ -19742,31 +19744,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=script&lang=js":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=script&lang=js ***!
-  \***************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ['change'],
-  data: function data() {
-    return {
-      'interruption': null,
-      'interruption_reason': null
-    };
-  },
-  methods: {},
-  computed: {}
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=script&lang=js ***!
@@ -19782,7 +19759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ['test-finished'],
+  emits: ['finish'],
   props: ['email'],
   data: function data() {
     return {
@@ -19797,73 +19774,103 @@ __webpack_require__.r(__webpack_exports__);
       // #  #  # #    # #   #  #    #       #    # #
       //  ## ##  #    # #    # #    #        ####  #
 
-      // { type: 'break', content: `
-      //     <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
-      //     <p class="p">Nyní Vás čeká test pracovní paměti. Test spočívá v&nbsp;tom, že se Vám na obrazovce zobrazí sled písmen. Vaším úkolem bude stisknout tlačítko v&nbsp;dolní části obrazovky vždy, když se aktuální podnět bude shodovat s&nbsp;podnětem ob několik podnětů zpět. </p>
-
-      //     <p class="p">Chápu, že instrukce zatím zní složitě. Princip ale jistě pochopíte díky naší zkušební verzi.</p>
-
-      //     <p class="p">Nejdříve budete mít za úkol tlačítko zmáčknout vždy, když se aktuální podnět bude shodovat s&nbsp;bezprostředně předchozím. </p>
-
-      //     <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stisk tlačítka.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte na tlačítko <i>Pokračovat</i>.</p>
-      // ` },
-      // { type: 'trial', content: 'E', level: 1 },
-      // { type: 'trial', content: 'C', level: 1 },
-      // { type: 'trial', content: 'P', level: 1 },
-      // { type: 'trial', content: 'C', level: 1 },
-      // { type: 'trial', content: 'L', level: 1 },
-      // { type: 'trial', content: 'L', level: 1 },
-      // { type: 'trial', content: 'D', level: 1 },
-      // { type: 'trial', content: 'W', level: 1 },
-      // { type: 'trial', content: 'F', level: 1 },
-      // { type: 'trial', content: 'F', level: 1 },
-
-      // { type: 'break', if: "imperfect", next: 0, content: `
-      //     <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
-      //     <p class="p">Je mi líto, zdá se, že Vám první kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
-
-      //     <p class="p">Nyní si zkušební kolo projděte pro jistotu znovu.</p>
-
-      //     <p class="p">Nezapomeňte, že je nutné tlačítko stisknout vždy, když se podněty v řadě za sebou budou shodovat. Tzn. když na obrazovce uvidíte <span class="badge">B</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v dolní části obrazovky. </p>
-
-      //     <p class="p"><span class="badge">B</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-
-      // { type: 'break', content: `
-      //     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
-      //     <p class="p">Výborně, první kolo zkušební verze jste úspěšně absolvovali. Nyní jste připraveni vyzkoušet si těžší úroveň. V této úrovni máte za úkol stisknout tlačítko vždy, když se aktuální podnět bude shodovat s podnětem ob jeden zpět. </p>
-
-      //     <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">B</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-
-      // { type: 'trial', content: 'V', level: 2 },
-      // { type: 'trial', content: 'S', level: 2 },
-      // { type: 'trial', content: 'V', level: 2 },
-      // { type: 'trial', content: 'Q', level: 2 },
-      // { type: 'trial', content: 'A', level: 2 },
-      // { type: 'trial', content: 'D', level: 2 },
-      // { type: 'trial', content: 'C', level: 2 },
-      // { type: 'trial', content: 'V', level: 2 },
-      // { type: 'trial', content: 'C', level: 2 },
-      // { type: 'trial', content: 'R', level: 2 },
-
-      // { type: 'break', if: "imperfect", next: 0, content: `
-      //     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
-      //     <p class="p">Je mi líto, zdá se, že Vám zkušební kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
-
-      //     <p class="p">Nyní si zkušební kolo projděte celé pro jistotu znovu.</p>
-
-      //     <p class="p">Nezapomeňte, že v&nbsp;těžší úrovni je nutné tlačítko stisknout vždy, když se podněty v&nbsp;řadě budou shodovat ob-jedno. Tzn. když na obrazovce uvidíte <span class="badge">B</span>&rarr;<span class="badge">A</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v&nbsp;dolní části obrazovky. <span class="badge">B</span>&rarr;<span class="badge">A</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-
+      {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - Lehk\xE1 \xFArove\u0148</h1>\n                    <p class=\"p\">Nyn\xED V\xE1s \u010Dek\xE1 test pracovn\xED pam\u011Bti. Test spo\u010D\xEDv\xE1 v&nbsp;tom, \u017Ee se V\xE1m na obrazovce zobraz\xED sled p\xEDsmen. Va\u0161\xEDm \xFAkolem bude stisknout tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;podn\u011Btem ob n\u011Bkolik podn\u011Bt\u016F zp\u011Bt. </p>\n\n                    <p class=\"p\">Ch\xE1pu, \u017Ee instrukce zat\xEDm zn\xED slo\u017Eit\u011B. Princip ale jist\u011B pochop\xEDte d\xEDky na\u0161\xED zku\u0161ebn\xED verzi.</p>\n\n                    <p class=\"p\">Nejd\u0159\xEDve budete m\xEDt za \xFAkol tla\u010D\xEDtko zm\xE1\u010Dknout v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;bezprost\u0159edn\u011B p\u0159edchoz\xEDm. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte na tla\u010D\xEDtko <i>Pokra\u010Dovat</i>.</p>\n                "
+      }, {
+        type: 'trial',
+        content: 'E',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'C',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'P',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'C',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'L',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'L',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'D',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'W',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'F',
+        level: 1
+      }, {
+        type: 'trial',
+        content: 'F',
+        level: 1
+      }, {
+        type: 'break',
+        "if": "imperfect",
+        next: 0,
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - Lehk\xE1 \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m prvn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v \u0159ad\u011B za sebou budou shodovat. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v doln\xED \u010D\xE1sti obrazovky. </p>\n\n                    <p class=\"p\"><span class=\"badge\">B</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">V\xFDborn\u011B, prvn\xED kolo zku\u0161ebn\xED verze jste \xFAsp\u011B\u0161n\u011B absolvovali. Nyn\xED jste p\u0159ipraveni vyzkou\u0161et si t\u011B\u017E\u0161\xED \xFArove\u0148. V t\xE9to \xFArovni m\xE1te za \xFAkol stisknout tla\u010D\xEDtko v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s podn\u011Btem ob jeden zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'trial',
+        content: 'V',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'S',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'V',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'Q',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'A',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'D',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'C',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'V',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'C',
+        level: 2
+      }, {
+        type: 'trial',
+        content: 'R',
+        level: 2
+      }, {
+        type: 'break',
+        "if": "imperfect",
+        next: 0,
+        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m zku\u0161ebn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte cel\xE9 pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee v&nbsp;t\u011B\u017E\u0161\xED \xFArovni je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v&nbsp;\u0159ad\u011B budou shodovat ob-jedno. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky. <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      },
       // ######
       // #     # ######   ##   #         ##### ######  ####  #####
       // #     # #       #  #  #           #   #      #        #
@@ -20075,66 +20082,210 @@ __webpack_require__.r(__webpack_exports__);
         type: 'symbol',
         content: 'V',
         level: 2
+      }, {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 3</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 3 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">R</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">R</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'W',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Q',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'V',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'V',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
       }
-
-      // { type: 'break', content: `
-      //     <h1 class="h1">Ostrý test - Úroveň 3</h1>
-      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 3 zpět. </p>
-
-      //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'W', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'Q', level: 3 },
-      // { type: 'symbol', content: 'K', level: 3 },
-      // { type: 'symbol', content: 'L', level: 3 },
-      // { type: 'symbol', content: 'O', level: 3 },
-      // { type: 'symbol', content: 'L', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'O', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'B', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'P', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'P', level: 3 },
-      // { type: 'symbol', content: 'P', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'Z', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'G', level: 3 },
-      // { type: 'symbol', content: 'B', level: 3 },
-      // { type: 'symbol', content: 'V', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'V', level: 3 },
-      // { type: 'symbol', content: 'Z', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'Z', level: 3 },
-      // { type: 'symbol', content: 'G', level: 3 },
-      // { type: 'symbol', content: 'B', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'K', level: 3 },
-      // { type: 'symbol', content: 'N', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'N', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'K', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
 
       // { type: 'break', content: `
       //     <h1 class="h1">Ostrý test - Úroveň 4</h1>
@@ -20374,7 +20525,7 @@ __webpack_require__.r(__webpack_exports__);
 
           // No next card? Finish the test.
         } else if (!_this2.card) {
-          _this2.$emit('test-finished');
+          _this2.$emit('finish');
 
           // Next card is break/info card? Manage it standard way.
         } else {
@@ -20406,7 +20557,7 @@ __webpack_require__.r(__webpack_exports__);
 
           // No more cards, finish
         } else {
-          _this3.$emit('test-finished');
+          _this3.$emit('finish');
           // console.log(this.cards)
         }
       }, 200);
@@ -20524,6 +20675,31 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestFinish.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestFinish.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  emits: ['change'],
+  data: function data() {
+    return {
+      'interruption': null,
+      'interruption_reason': null
+    };
+  },
+  methods: {},
+  computed: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestInfo.vue?vue&type=script&lang=js":
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestInfo.vue?vue&type=script&lang=js ***!
@@ -20544,10 +20720,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Finish.vue?vue&type=template&id=81ba8d84":
-/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Finish.vue?vue&type=template&id=81ba8d84 ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AppFinish.vue?vue&type=template&id=6ac8d38e":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AppFinish.vue?vue&type=template&id=6ac8d38e ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20591,7 +20767,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "open-source"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")])], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #######\r\n    #       # #    # #  ####  #    #\r\n    #       # ##   # # #      #    #\r\n    #####   # # #  # #  ####  ######\r\n    #       # #  # # #      # #    #\r\n    #       # #   ## # #    # #    #\r\n    #       # #    # #  ####  #    #\r\n    "), _hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"p text-justify\">\r\n        Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.\r\n    </p>\r\n\r\n    <p class=\"p text-justify\">\r\n        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.\r\n    </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"p text-justify\">\n        Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.\n    </p>\n\n    <p class=\"p text-justify\">\n        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.\n    </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "link link-primary",
     href: 'https://lea.michalm.cz/' + $props.email,
     target: "_blank"
@@ -20615,7 +20791,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Úvod!</h1><p class=\"p\"><img src=\"/lea3.png\" alt=\"Lea Slížová\" class=\"float-left mt-[3px] mr-4 mb-4 w-36 rounded\"><!-- Přeji pěkný den! Děkuji, že jste se rozhodl/a zúčastnit tohoto výzkumu.  --> Jsem studentkou třetího ročníku psychologie na Ostravské univerzitě a momentálně píši bakalářskou práci na téma &quot;<b>Bilingvismus a pracovní paměť</b>&quot; pod vedením <a class=\"link\" href=\"https://ff.osu.cz/kps/klara-machu/31199/\" target=\"_blank\">Dr. Kláry Machů</a>. <!-- Veškeré informace, které z výzkumu získám, budou použity výhradně k účelu mé bakalářské práce a budou zde prezentovány v&amp;nbsp;anonymní formě. --> Budu Vám moc vděčná, pokud se rozhodnete účastnit našeho výzkumu. Účast je však samozřejmě dobrovolná a můžete ji kdykoliv ukončit. Veškerá získaná data budou anonymizována. </p><p class=\"p\"> Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zjišťující kapacitu pracovní paměti</b>. <br> Účastí na tomto výzkumu nejen pomůžete v realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o své paměti. V závěru uvidíte své skóre v porovnání s ostatními. </p><p class=\"p\"> Celý test nezabere více než <b>20 minut</b>. Prosím, vyhraďte si tento čas a soustřeďte se nyní čistě na výzkum, najděte si klidné prostředí a nenechte se ničím rozptylovat. Pokud jste tak již učinili, můžete kliknout na tlačítko <i>Pokračovat</i>. </p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #     #\n    #     #  ####  #    # ######\n    #     # #    # ##  ## #\n    ####### #    # # ## # #####\n    #     # #    # #    # #\n    #     # #    # #    # #\n    #     #  ####  #    # ######\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #     #\r\n    #     #  ####  #    # ######\r\n    #     # #    # ##  ## #\r\n    ####### #    # # ## # #####\r\n    #     # #    # #    # #\r\n    #     # #    # #    # #\r\n    #     #  ####  #    # ######\r\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -20653,11 +20829,10 @@ var _hoisted_6 = {
 };
 var _hoisted_7 = ["disabled"];
 var _hoisted_8 = {
-  key: 2,
   "class": "w-full"
 };
 var _hoisted_9 = {
-  key: 3,
+  key: 2,
   "class": "w-full text-center pt-24"
 };
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
@@ -20676,7 +20851,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "Odesílám vaše výsledky na server...", -1 /* HOISTED */);
 var _hoisted_13 = [_hoisted_10, _hoisted_11, _hoisted_12];
 var _hoisted_14 = {
-  key: 4,
+  key: 3,
   "class": "w-full text-center text-error pt-40"
 };
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
@@ -20689,7 +20864,6 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, "Je mi líto, něco se porouchalo. Zkuste prosím stránku za chvíli obnovit.", -1 /* HOISTED */);
 var _hoisted_17 = [_hoisted_15, _hoisted_16];
 var _hoisted_18 = {
-  key: 5,
   "class": "w-full"
 };
 var _hoisted_19 = {
@@ -20697,15 +20871,15 @@ var _hoisted_19 = {
 };
 var _hoisted_20 = ["disabled"];
 var _hoisted_21 = {
-  key: 6,
+  key: 4,
   "class": "w-full"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Home = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Home");
   var _component_PersonalInfoForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PersonalInfoForm");
   var _component_Test = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Test");
-  var _component_PreFinish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PreFinish");
-  var _component_Finish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Finish");
+  var _component_TestFinish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TestFinish");
+  var _component_AppFinish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("AppFinish");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.step == 'reset' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'home' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Home), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary w-full",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -20727,26 +20901,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     disabled: $data.movetoInfoDisabled,
     "class": "btn btn-primary w-full"
-  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"step=='info'\">\n        <TestInfo/>\n\n        <div class=\"bottom-container\">\n            <div class=\"left-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('form')\">Zpět</button>\n            </div>\n            <div class=\"right-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('test')\">Pokračovat</button>\n            </div>\n        </div>\n    </div> "), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
+  }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"step=='info'\">\n        <TestInfo/>\n\n        <div class=\"bottom-container\">\n            <div class=\"left-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('form')\">Zpět</button>\n            </div>\n            <div class=\"right-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('test')\">Pokračovat</button>\n            </div>\n        </div>\n    </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
     ref: "test",
     email: _ctx.$refs.personalInfoForm.user['email'],
-    onTestFinished: _cache[4] || (_cache[4] = function ($event) {
-      return $data.step = 'pre-finish';
+    onFinish: _cache[4] || (_cache[4] = function ($event) {
+      return $data.step = 'test-finish';
     })
-  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'pre-finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PreFinish, {
-    ref: "preFinish",
+  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'test']]), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TestFinish, {
+    ref: "testFinish",
     onChange: _cache[5] || (_cache[5] = function ($event) {
-      return $options.preFinishChanged();
+      return $options.testFinishChanged();
     })
   }, null, 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    disabled: $data.finishDisabled,
+    disabled: $data.appFinishDisabled,
     "class": "btn btn-primary w-full",
     onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $options.finish();
+      return $options.appFinish();
     })
-  }, "Pokračovat", 8 /* PROPS */, _hoisted_20)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
+  }, "Pokračovat", 8 /* PROPS */, _hoisted_20)])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'test-finish']]), $data.step == 'app-finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_AppFinish, {
     email: _ctx.$refs.personalInfoForm.user['email']
-  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Finish email=\"nanuqcz@gmail.com\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <AppFinish email=\"nanuqcz@gmail.com\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -20779,7 +20953,7 @@ var _hoisted_4 = {
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Na této škále zaznačte svůj subjektivní názor na to, na jaké úrovni si vedete ve znalosti nejvíce rozvinutého ");
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "tooltip tooltip-right sm:tooltip-top whitespace-nowrap",
-  "data-tip": "Češtinu a slovenštinu\r\n                            prosím berme jako\r\n                            jeden jazyk."
+  "data-tip": "Češtinu a slovenštinu\n                            prosím berme jako\n                            jeden jazyk."
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" dalšího jazyka "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("sup", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fa-solid fa-circle-info"
 })])], -1 /* HOISTED */);
@@ -20799,7 +20973,7 @@ var _hoisted_11 = {
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "A0 = Starter / begginer = úplný začátečník", -1 /* HOISTED */);
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nŽádná či velice malá znalost druhého jazyka.\r\n\r\n-\tDruhý jazyk nikdy nestudoval\r\n-\tPasivně umí jen pár slovíček\r\n-\tUmí se představit v jedné nebo dvou větách\r\n-\tPoznávat výslovnost");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nŽádná či velice malá znalost druhého jazyka.\n\n-\tDruhý jazyk nikdy nestudoval\n-\tPasivně umí jen pár slovíček\n-\tUmí se představit v jedné nebo dvou větách\n-\tPoznávat výslovnost");
 var _hoisted_15 = [_hoisted_12, _hoisted_13, _hoisted_14];
 var _hoisted_16 = {
   key: 1,
@@ -20807,9 +20981,9 @@ var _hoisted_16 = {
 };
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "A1 = začátečník", -1 /* HOISTED */);
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nRozumí každodenním výrazům a zcela základním frázím, jejichž cílem je vyhovět konkrétním potřebám, a umí tyto výrazy a fráze používat. Uživatel umí představit sebe a ostatní a klást jednoduché otázky týkající se informací osobního rázu, např. o místě, kde žije, o lidech, které zná, a věcech, jež vlastní.\r\n\r\nA)\t");
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nRozumí každodenním výrazům a zcela základním frázím, jejichž cílem je vyhovět konkrétním potřebám, a umí tyto výrazy a fráze používat. Uživatel umí představit sebe a ostatní a klást jednoduché otázky týkající se informací osobního rázu, např. o místě, kde žije, o lidech, které zná, a věcech, jež vlastní.\n\nA)\t");
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Poslech a mluva", -1 /* HOISTED */);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" – dokáže se jednoduchým způsobem domluvit, mluví-li partner pomalu a jasně. Umí se zeptat na jednoduché otázky, např. kde je obchod, kolik je hodin …\r\nB)\t");
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" – dokáže se jednoduchým způsobem domluvit, mluví-li partner pomalu a jasně. Umí se zeptat na jednoduché otázky, např. kde je obchod, kolik je hodin …\nB)\t");
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Čtení a psaní", -1 /* HOISTED */);
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" – dokáže přečíst a napsat text na pohledu z dovolené.");
 var _hoisted_24 = [_hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23];
@@ -20819,9 +20993,9 @@ var _hoisted_25 = {
 };
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "A2 = mírně pokročilí", -1 /* HOISTED */);
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nRozumí větám a často používaným výrazům vztahujícím se k oblastem, které se jej bezprostředně týkají (např. základní informace o něm/jí, jeho/její rodině, o nakupování, bezprostředním okolí a o zaměstnání). Dokáže komunikovat o známých a běžných skutečnostech, jež vyžadují jednoduchou a přímou výměnu informací. Umí jednoduchým způsobem popsat svou vlastní rodinu, bezprostřední okolí a záležitosti týkající se jeho/jejích nejnaléhavějších potřeb.\r\n\r\nA)\t");
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nRozumí větám a často používaným výrazům vztahujícím se k oblastem, které se jej bezprostředně týkají (např. základní informace o něm/jí, jeho/její rodině, o nakupování, bezprostředním okolí a o zaměstnání). Dokáže komunikovat o známých a běžných skutečnostech, jež vyžadují jednoduchou a přímou výměnu informací. Umí jednoduchým způsobem popsat svou vlastní rodinu, bezprostřední okolí a záležitosti týkající se jeho/jejích nejnaléhavějších potřeb.\n\nA)\t");
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Poslech a mluva", -1 /* HOISTED */);
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - poměrně plynulý mluvený projev o jednoduchých tématech\r\nB)\t");
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - poměrně plynulý mluvený projev o jednoduchých tématech\nB)\t");
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Čtení a psaní", -1 /* HOISTED */);
 var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" – schopnost komunikovat slovem i písmem o jednoduchých konverzačních tématech");
 var _hoisted_33 = [_hoisted_26, _hoisted_27, _hoisted_28, _hoisted_29, _hoisted_30, _hoisted_31, _hoisted_32];
@@ -20831,9 +21005,9 @@ var _hoisted_34 = {
 };
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "B1 = středně pokročilí", -1 /* HOISTED */);
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nZvládá většinu konverzačních situací, které mohou nastat při cestování v místě, kde se hovoří danou řečí. Bez přípravy dokáže konverzovat na téma, které je běžné, zajímavé nebo souvisí s každodenní realitou (např. rodina, zájmy, práce, cestování a aktuální události).\r\n\r\nA)\t");
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nZvládá většinu konverzačních situací, které mohou nastat při cestování v místě, kde se hovoří danou řečí. Bez přípravy dokáže konverzovat na téma, které je běžné, zajímavé nebo souvisí s každodenní realitou (např. rodina, zájmy, práce, cestování a aktuální události).\n\nA)\t");
 var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Poslech a mluva", -1 /* HOISTED */);
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže porozumět přímým pokynům nebo veřejným oznámením. Dokáže limitovaným způsobem vyjadřovat své názory na abstraktní / kulturní témata nebo nabídnout radu v oblasti, které rozumí. Dokáže dobře přepínat mezi formálním a neformálním jazykem.\r\nB)\t");
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže porozumět přímým pokynům nebo veřejným oznámením. Dokáže limitovaným způsobem vyjadřovat své názory na abstraktní / kulturní témata nebo nabídnout radu v oblasti, které rozumí. Dokáže dobře přepínat mezi formálním a neformálním jazykem.\nB)\t");
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Čtení a psaní", -1 /* HOISTED */);
 var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - Dokáže porozumět běžným nařízením a předpisům. Dokáže napsat dopis nebo vytvořit poznámky ohledně známých nebo předvídatelných záležitostí. Bez problémů vyjádří svůj názor na aktuální situaci, hovoří plynule a na otázky odpovídá spontánně.");
 var _hoisted_42 = [_hoisted_35, _hoisted_36, _hoisted_37, _hoisted_38, _hoisted_39, _hoisted_40, _hoisted_41];
@@ -20843,9 +21017,9 @@ var _hoisted_43 = {
 };
 var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "B2 = vyšší středně pokročilí", -1 /* HOISTED */);
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nUmí se vyjadřovat plynule a spontánně bez výrazného pátrání po vhodných výrazech. Dokáže pružně a efektivně užívat jazyk pro účely společenské i profesionální. Dokáže přesně formulovat své myšlenky a názory a konfrontovat je s myšlenkami a názory ostatních mluvčích.\r\n\r\nA)\t");
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nUmí se vyjadřovat plynule a spontánně bez výrazného pátrání po vhodných výrazech. Dokáže pružně a efektivně užívat jazyk pro účely společenské i profesionální. Dokáže přesně formulovat své myšlenky a názory a konfrontovat je s myšlenkami a názory ostatních mluvčích.\n\nA)\t");
 var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Poslech a mluva", -1 /* HOISTED */);
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže nejen vést rozhovor na známé téma, ale také zvládne udržet krok s konverzací na širší škále témat. Jakožto turista v cizí zemi dokáže požádat o ujasnění nebo lepší vysvětlení, a pravděpodobně porozumí odpovědi. V zaměstnání se dokáže zeptat na faktické informace a porozumět odpovědi. Dokáže vyjádřit svůj názor, a odprezentovat argumenty v limitovaném rozsahu. V roli studenta dokáže zodpovědět věcné otázky. Dokáže zkontrolovat, zda rozumí všem pokynům. Nedělá mu problém číst v cizím jazyce odborné články, sledovat cizojazyčné filmy či rozumět vysílaným zprávám na zahraničních stanicích.\r\nB)\t");
+var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže nejen vést rozhovor na známé téma, ale také zvládne udržet krok s konverzací na širší škále témat. Jakožto turista v cizí zemi dokáže požádat o ujasnění nebo lepší vysvětlení, a pravděpodobně porozumí odpovědi. V zaměstnání se dokáže zeptat na faktické informace a porozumět odpovědi. Dokáže vyjádřit svůj názor, a odprezentovat argumenty v limitovaném rozsahu. V roli studenta dokáže zodpovědět věcné otázky. Dokáže zkontrolovat, zda rozumí všem pokynům. Nedělá mu problém číst v cizím jazyce odborné články, sledovat cizojazyčné filmy či rozumět vysílaným zprávám na zahraničních stanicích.\nB)\t");
 var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Čtení a psaní", -1 /* HOISTED */);
 var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - umí vyhledávat v textu relevantní informace. Dokáže si vést poznámky zatímco někdo hovoří nebo napsat dopis obsahující nadstandardní požadavky. Dokáže rychle a s dobrým porozuměním přečíst informativní médium. Zvládá vyjádřit názory a obhájit si je. Umí napsat jednoduchou zprávu faktografické povahy ve které hodnotí, radí apod. Prezentuje názory s obsahem odborných výrazů. ");
 var _hoisted_51 = [_hoisted_44, _hoisted_45, _hoisted_46, _hoisted_47, _hoisted_48, _hoisted_49, _hoisted_50];
@@ -20855,9 +21029,9 @@ var _hoisted_52 = {
 };
 var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "C1 = pokročilý", -1 /* HOISTED */);
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nRozumí širokému rejstříku náročných a dlouhých textů a rozpozná implicitní významy textů. Umí se plynule a pohotově vyjadřovat bez zjevného hledání výrazů. Umí jazyk užívat pružně a efektivně pro společenské, akademické a profesní účely.\r\n\r\nA)\t");
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nRozumí širokému rejstříku náročných a dlouhých textů a rozpozná implicitní významy textů. Umí se plynule a pohotově vyjadřovat bez zjevného hledání výrazů. Umí jazyk užívat pružně a efektivně pro společenské, akademické a profesní účely.\n\nA)\t");
 var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Poslech a mluva", -1 /* HOISTED */);
-var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže efektivně přispět na schůzkách a seminářích v rámci své pracovní oblasti a také udržet krok s konverzací s dobrou mírou plynulosti, používá i abstraktní výrazy. Rozumí celému spektru různých odborných i publicistických textů. Porozumí i osobám mluvícím netypickým dialektem.\r\nB)\t");
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže efektivně přispět na schůzkách a seminářích v rámci své pracovní oblasti a také udržet krok s konverzací s dobrou mírou plynulosti, používá i abstraktní výrazy. Rozumí celému spektru různých odborných i publicistických textů. Porozumí i osobám mluvícím netypickým dialektem.\nB)\t");
 var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Čtení a psaní", -1 /* HOISTED */);
 var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - dokáže číst dostatečně rychle na to se vypořádat s akademickým kurzem, a dokáže rozumně a přesně vyjadřovat své připomínky na pracovních schůzkách nebo napsat kus práce která vyjadřuje schopnost komunikovat. V psaném jazyce rozumí nejrůznějším idiomům a bez problémů chápe odbornou literaturu. Zvládá sepsat odborné texty bez gramatických chyb, které obsahují neobvyklé slovní spojení.");
 var _hoisted_60 = [_hoisted_53, _hoisted_54, _hoisted_55, _hoisted_56, _hoisted_57, _hoisted_58, _hoisted_59];
@@ -20867,9 +21041,9 @@ var _hoisted_61 = {
 };
 var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("");
 var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "C2 = expert / jazyk na úrovni rodilého mluvčího", -1 /* HOISTED */);
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\r\n\r\nSnadno rozumí téměř všemu, co si vyslechne nebo přečte. Dokáže shrnout informace z různých mluvených a psaných zdrojů a přitom dokáže přednést polemiku a vysvětlení v logicky uspořádané podobě.\r\n\r\nA)\t");
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("\n\nSnadno rozumí téměř všemu, co si vyslechne nebo přečte. Dokáže shrnout informace z různých mluvených a psaných zdrojů a přitom dokáže přednést polemiku a vysvětlení v logicky uspořádané podobě.\n\nA)\t");
 var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Poslech a mluva", -1 /* HOISTED */);
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - rozumí každému rozhovoru, který v cizím jazyce zaslechne. Dokáže porozumět i dialogům a nářečím. Chápe slangové výrazy i odbornou terminologii.\r\nB)\t");
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - rozumí každému rozhovoru, který v cizím jazyce zaslechne. Dokáže porozumět i dialogům a nářečím. Chápe slangové výrazy i odbornou terminologii.\nB)\t");
 var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Čtení a psaní", -1 /* HOISTED */);
 var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" - má dobré kritické myšlení, dokáže proto bez problémů hledat chyby v odborných textech a lidé jej považují za rodilého mluvčího.");
 var _hoisted_69 = [_hoisted_62, _hoisted_63, _hoisted_64, _hoisted_65, _hoisted_66, _hoisted_67, _hoisted_68];
@@ -21049,7 +21223,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     action: "",
     "class": "flex-col"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n        #######\r\n        #        ####  #####  #    #\r\n        #       #    # #    # ##  ##\r\n        #####   #    # #    # # ## #\r\n        #       #    # #####  #    #\r\n        #       #    # #   #  #    #\r\n        #        ####  #    # #    #\r\n        "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n        #######\n        #        ####  #####  #    #\n        #       #    # #    # ##  ##\n        #####   #    # #    # # ## #\n        #       #    # #####  #    #\n        #       #    # #   #  #    #\n        #        ####  #    # #    #\n        "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['label-text', $options.isLangLevelValid ? 'text-success' : 'text-warning'])
   }, _hoisted_8, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
@@ -21173,10 +21347,92 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=template&id=5f45227d":
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=template&id=5f45227d ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "test-error"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "h1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-regular fa-face-sad-tear"
+})], -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "p"
+}, "Je mi líto, něco se porouchalo. Zkuste prosím stránku za chvíli obnovit.", -1 /* HOISTED */);
+var _hoisted_4 = [_hoisted_2, _hoisted_3];
+var _hoisted_5 = {
+  key: 1,
+  "class": "test-loading"
+};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "lds-grid"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div")], -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "h2"
+}, "Načítám test...", -1 /* HOISTED */);
+var _hoisted_8 = [_hoisted_6, _hoisted_7];
+var _hoisted_9 = {
+  "class": "test-symbol"
+};
+var _hoisted_10 = {
+  "class": "bottom-container"
+};
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Přeskočit");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" sekci ");
+var _hoisted_14 = [_hoisted_11, _hoisted_12, _hoisted_13];
+var _hoisted_15 = {
+  "class": "test-break"
+};
+var _hoisted_16 = ["innerHTML"];
+var _hoisted_17 = {
+  "class": "bottom-container"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n     #######\n        #    ######  ####  #####\n        #    #      #        #\n        #    #####   ####    #\n        #    #           #   #\n        #    #      #    #   #\n        #    ######  ####    #\n    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" LOADING & ERROR "), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4)) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_8)) : $data.card['type'] == 'symbol' || $data.card['type'] == 'trial' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 2
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SYMBOL "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['content']) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.sameBtnClicked();
+    }),
+    "class": "btn btn-secondary w-full"
+  }, " Shodné "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"sameBtnClicked()\" class=\"btn btn-secondary w-full\">\n                Shodné s <span v-if=\"card['badge'] && card['badge'].length\" class=\"badge badge-slim\">{{ card['badge'] }}</span> předchozím\n            </button> "), $data.i > 0 && ($props.email == 'nanuqcz@gmail.com' || $props.email == 'leaslizova311@seznam.cz') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.skipSection();
+    }),
+    "class": "btn btn-default absolute bottom-20 right-4"
+  }, _hoisted_14)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    key: 3
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    innerHTML: $data.card['content']
+  }, null, 8 /* PROPS */, _hoisted_16), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-secondary w-full",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.nextCard();
+    })
+  }, "Pokračovat")])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestFinish.vue?vue&type=template&id=b4946c20":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestFinish.vue?vue&type=template&id=b4946c20 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21238,88 +21494,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": "textarea textarea-md textarea-bordered w-full"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.interruption_reason]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
-}
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=template&id=5f45227d":
-/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=template&id=5f45227d ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var _hoisted_1 = {
-  key: 0,
-  "class": "test-error"
-};
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "h1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fa-regular fa-face-sad-tear"
-})], -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "p"
-}, "Je mi líto, něco se porouchalo. Zkuste prosím stránku za chvíli obnovit.", -1 /* HOISTED */);
-var _hoisted_4 = [_hoisted_2, _hoisted_3];
-var _hoisted_5 = {
-  key: 1,
-  "class": "test-loading"
-};
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "lds-grid"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div")], -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "h2"
-}, "Načítám test...", -1 /* HOISTED */);
-var _hoisted_8 = [_hoisted_6, _hoisted_7];
-var _hoisted_9 = {
-  "class": "test-symbol"
-};
-var _hoisted_10 = {
-  "class": "bottom-container"
-};
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Přeskočit");
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" sekci ");
-var _hoisted_14 = [_hoisted_11, _hoisted_12, _hoisted_13];
-var _hoisted_15 = {
-  "class": "test-break"
-};
-var _hoisted_16 = ["innerHTML"];
-var _hoisted_17 = {
-  "class": "bottom-container"
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n     #######\r\n        #    ######  ####  #####\r\n        #    #      #        #\r\n        #    #####   ####    #\r\n        #    #           #   #\r\n        #    #      #    #   #\r\n        #    ######  ####    #\r\n    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" LOADING & ERROR "), $data.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4)) : $data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_8)) : $data.card['type'] == 'symbol' || $data.card['type'] == 'trial' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    key: 2
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" SYMBOL "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.card['content']) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.sameBtnClicked();
-    }),
-    "class": "btn btn-secondary w-full"
-  }, " Shodné "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"sameBtnClicked()\" class=\"btn btn-secondary w-full\">\r\n                Shodné s <span v-if=\"card['badge'] && card['badge'].length\" class=\"badge badge-slim\">{{ card['badge'] }}</span> předchozím\r\n            </button> "), $data.i > 0 && ($props.email == 'nanuqcz@gmail.com' || $props.email == 'leaslizova311@seznam.cz') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
-    key: 0,
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.skipSection();
-    }),
-    "class": "btn btn-default absolute bottom-20 right-4"
-  }, _hoisted_14)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : $data.card['type'] == 'break' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    key: 3
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" BREAK "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    innerHTML: $data.card['content']
-  }, null, 8 /* PROPS */, _hoisted_16), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-secondary w-full",
-    onClick: _cache[2] || (_cache[2] = function ($event) {
-      return $options.nextCard();
-    })
-  }, "Pokračovat")])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -38848,10 +39022,10 @@ exports["default"] = (sfc, props) => {
 
 /***/ }),
 
-/***/ "./resources/js/components/Finish.vue":
-/*!********************************************!*\
-  !*** ./resources/js/components/Finish.vue ***!
-  \********************************************/
+/***/ "./resources/js/components/AppFinish.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/AppFinish.vue ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -38859,15 +39033,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Finish_vue_vue_type_template_id_81ba8d84__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Finish.vue?vue&type=template&id=81ba8d84 */ "./resources/js/components/Finish.vue?vue&type=template&id=81ba8d84");
-/* harmony import */ var _Finish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Finish.vue?vue&type=script&lang=js */ "./resources/js/components/Finish.vue?vue&type=script&lang=js");
+/* harmony import */ var _AppFinish_vue_vue_type_template_id_6ac8d38e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppFinish.vue?vue&type=template&id=6ac8d38e */ "./resources/js/components/AppFinish.vue?vue&type=template&id=6ac8d38e");
+/* harmony import */ var _AppFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppFinish.vue?vue&type=script&lang=js */ "./resources/js/components/AppFinish.vue?vue&type=script&lang=js");
 /* harmony import */ var C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Finish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Finish_vue_vue_type_template_id_81ba8d84__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Finish.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AppFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AppFinish_vue_vue_type_template_id_6ac8d38e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/AppFinish.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -38960,34 +39134,6 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/PreFinish.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/PreFinish.vue ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PreFinish.vue?vue&type=template&id=6dd8943b */ "./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b");
-/* harmony import */ var _PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PreFinish.vue?vue&type=script&lang=js */ "./resources/js/components/PreFinish.vue?vue&type=script&lang=js");
-/* harmony import */ var C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-
-
-
-
-;
-const __exports__ = /*#__PURE__*/(0,C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PreFinish.vue"]])
-/* hot reload */
-if (false) {}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
-
-/***/ }),
-
 /***/ "./resources/js/components/Test.vue":
 /*!******************************************!*\
   !*** ./resources/js/components/Test.vue ***!
@@ -39008,6 +39154,34 @@ __webpack_require__.r(__webpack_exports__);
 
 ;
 const __exports__ = /*#__PURE__*/(0,C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Test_vue_vue_type_template_id_5f45227d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Test.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/TestFinish.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/TestFinish.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _TestFinish_vue_vue_type_template_id_b4946c20__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TestFinish.vue?vue&type=template&id=b4946c20 */ "./resources/js/components/TestFinish.vue?vue&type=template&id=b4946c20");
+/* harmony import */ var _TestFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TestFinish.vue?vue&type=script&lang=js */ "./resources/js/components/TestFinish.vue?vue&type=script&lang=js");
+/* harmony import */ var C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TestFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TestFinish_vue_vue_type_template_id_b4946c20__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/TestFinish.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -39044,18 +39218,18 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/Finish.vue?vue&type=script&lang=js":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/Finish.vue?vue&type=script&lang=js ***!
-  \********************************************************************/
+/***/ "./resources/js/components/AppFinish.vue?vue&type=script&lang=js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/AppFinish.vue?vue&type=script&lang=js ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Finish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AppFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Finish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Finish.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Finish.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AppFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AppFinish.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AppFinish.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -39108,22 +39282,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/PreFinish.vue?vue&type=script&lang=js":
-/*!***********************************************************************!*\
-  !*** ./resources/js/components/PreFinish.vue?vue&type=script&lang=js ***!
-  \***********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PreFinish.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=script&lang=js");
- 
-
-/***/ }),
-
 /***/ "./resources/js/components/Test.vue?vue&type=script&lang=js":
 /*!******************************************************************!*\
   !*** ./resources/js/components/Test.vue?vue&type=script&lang=js ***!
@@ -39136,6 +39294,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Test.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/TestFinish.vue?vue&type=script&lang=js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/TestFinish.vue?vue&type=script&lang=js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TestFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TestFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TestFinish.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestFinish.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -39156,18 +39330,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Finish.vue?vue&type=template&id=81ba8d84":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/Finish.vue?vue&type=template&id=81ba8d84 ***!
-  \**************************************************************************/
+/***/ "./resources/js/components/AppFinish.vue?vue&type=template&id=6ac8d38e":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/AppFinish.vue?vue&type=template&id=6ac8d38e ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Finish_vue_vue_type_template_id_81ba8d84__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AppFinish_vue_vue_type_template_id_6ac8d38e__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Finish_vue_vue_type_template_id_81ba8d84__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Finish.vue?vue&type=template&id=81ba8d84 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Finish.vue?vue&type=template&id=81ba8d84");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AppFinish_vue_vue_type_template_id_6ac8d38e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AppFinish.vue?vue&type=template&id=6ac8d38e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AppFinish.vue?vue&type=template&id=6ac8d38e");
 
 
 /***/ }),
@@ -39220,22 +39394,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__.render)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PreFinish.vue?vue&type=template&id=6dd8943b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/Test.vue?vue&type=template&id=5f45227d":
 /*!************************************************************************!*\
   !*** ./resources/js/components/Test.vue?vue&type=template&id=5f45227d ***!
@@ -39248,6 +39406,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_template_id_5f45227d__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Test_vue_vue_type_template_id_5f45227d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Test.vue?vue&type=template&id=5f45227d */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=template&id=5f45227d");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TestFinish.vue?vue&type=template&id=b4946c20":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/TestFinish.vue?vue&type=template&id=b4946c20 ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TestFinish_vue_vue_type_template_id_b4946c20__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TestFinish_vue_vue_type_template_id_b4946c20__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TestFinish.vue?vue&type=template&id=b4946c20 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TestFinish.vue?vue&type=template&id=b4946c20");
 
 
 /***/ }),

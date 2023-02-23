@@ -58,7 +58,7 @@
 import axios from 'axios';
 
 export default {
-    emits: ['test-finished'],
+    emits: ['finish'],
     props: ['email'],
     data() {
         return {
@@ -74,72 +74,72 @@ export default {
                 // #  #  # #    # #   #  #    #       #    # #
                 //  ## ##  #    # #    # #    #        ####  #
 
-                // { type: 'break', content: `
-                //     <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
-                //     <p class="p">Nyní Vás čeká test pracovní paměti. Test spočívá v&nbsp;tom, že se Vám na obrazovce zobrazí sled písmen. Vaším úkolem bude stisknout tlačítko v&nbsp;dolní části obrazovky vždy, když se aktuální podnět bude shodovat s&nbsp;podnětem ob několik podnětů zpět. </p>
+                { type: 'break', content: `
+                    <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
+                    <p class="p">Nyní Vás čeká test pracovní paměti. Test spočívá v&nbsp;tom, že se Vám na obrazovce zobrazí sled písmen. Vaším úkolem bude stisknout tlačítko v&nbsp;dolní části obrazovky vždy, když se aktuální podnět bude shodovat s&nbsp;podnětem ob několik podnětů zpět. </p>
 
-                //     <p class="p">Chápu, že instrukce zatím zní složitě. Princip ale jistě pochopíte díky naší zkušební verzi.</p>
+                    <p class="p">Chápu, že instrukce zatím zní složitě. Princip ale jistě pochopíte díky naší zkušební verzi.</p>
 
-                //     <p class="p">Nejdříve budete mít za úkol tlačítko zmáčknout vždy, když se aktuální podnět bude shodovat s&nbsp;bezprostředně předchozím. </p>
+                    <p class="p">Nejdříve budete mít za úkol tlačítko zmáčknout vždy, když se aktuální podnět bude shodovat s&nbsp;bezprostředně předchozím. </p>
 
-                //     <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stisk tlačítka.</p>
+                    <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stisk tlačítka.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte na tlačítko <i>Pokračovat</i>.</p>
-                // ` },
-                // { type: 'trial', content: 'E', level: 1 },
-                // { type: 'trial', content: 'C', level: 1 },
-                // { type: 'trial', content: 'P', level: 1 },
-                // { type: 'trial', content: 'C', level: 1 },
-                // { type: 'trial', content: 'L', level: 1 },
-                // { type: 'trial', content: 'L', level: 1 },
-                // { type: 'trial', content: 'D', level: 1 },
-                // { type: 'trial', content: 'W', level: 1 },
-                // { type: 'trial', content: 'F', level: 1 },
-                // { type: 'trial', content: 'F', level: 1 },
+                    <p class="p">Pokud jste připraveni, stiskněte na tlačítko <i>Pokračovat</i>.</p>
+                ` },
+                { type: 'trial', content: 'E', level: 1 },
+                { type: 'trial', content: 'C', level: 1 },
+                { type: 'trial', content: 'P', level: 1 },
+                { type: 'trial', content: 'C', level: 1 },
+                { type: 'trial', content: 'L', level: 1 },
+                { type: 'trial', content: 'L', level: 1 },
+                { type: 'trial', content: 'D', level: 1 },
+                { type: 'trial', content: 'W', level: 1 },
+                { type: 'trial', content: 'F', level: 1 },
+                { type: 'trial', content: 'F', level: 1 },
 
-                // { type: 'break', if: "imperfect", next: 0, content: `
-                //     <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
-                //     <p class="p">Je mi líto, zdá se, že Vám první kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
+                { type: 'break', if: "imperfect", next: 0, content: `
+                    <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
+                    <p class="p">Je mi líto, zdá se, že Vám první kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
 
-                //     <p class="p">Nyní si zkušební kolo projděte pro jistotu znovu.</p>
+                    <p class="p">Nyní si zkušební kolo projděte pro jistotu znovu.</p>
 
-                //     <p class="p">Nezapomeňte, že je nutné tlačítko stisknout vždy, když se podněty v řadě za sebou budou shodovat. Tzn. když na obrazovce uvidíte <span class="badge">B</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v dolní části obrazovky. </p>
+                    <p class="p">Nezapomeňte, že je nutné tlačítko stisknout vždy, když se podněty v řadě za sebou budou shodovat. Tzn. když na obrazovce uvidíte <span class="badge">B</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v dolní části obrazovky. </p>
 
-                //     <p class="p"><span class="badge">B</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
+                    <p class="p"><span class="badge">B</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
 
-                // { type: 'break', content: `
-                //     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
-                //     <p class="p">Výborně, první kolo zkušební verze jste úspěšně absolvovali. Nyní jste připraveni vyzkoušet si těžší úroveň. V této úrovni máte za úkol stisknout tlačítko vždy, když se aktuální podnět bude shodovat s podnětem ob jeden zpět. </p>
+                { type: 'break', content: `
+                    <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
+                    <p class="p">Výborně, první kolo zkušební verze jste úspěšně absolvovali. Nyní jste připraveni vyzkoušet si těžší úroveň. V této úrovni máte za úkol stisknout tlačítko vždy, když se aktuální podnět bude shodovat s podnětem ob jeden zpět. </p>
 
-                //     <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">B</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+                    <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">B</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
 
-                // { type: 'trial', content: 'V', level: 2 },
-                // { type: 'trial', content: 'S', level: 2 },
-                // { type: 'trial', content: 'V', level: 2 },
-                // { type: 'trial', content: 'Q', level: 2 },
-                // { type: 'trial', content: 'A', level: 2 },
-                // { type: 'trial', content: 'D', level: 2 },
-                // { type: 'trial', content: 'C', level: 2 },
-                // { type: 'trial', content: 'V', level: 2 },
-                // { type: 'trial', content: 'C', level: 2 },
-                // { type: 'trial', content: 'R', level: 2 },
+                { type: 'trial', content: 'V', level: 2 },
+                { type: 'trial', content: 'S', level: 2 },
+                { type: 'trial', content: 'V', level: 2 },
+                { type: 'trial', content: 'Q', level: 2 },
+                { type: 'trial', content: 'A', level: 2 },
+                { type: 'trial', content: 'D', level: 2 },
+                { type: 'trial', content: 'C', level: 2 },
+                { type: 'trial', content: 'V', level: 2 },
+                { type: 'trial', content: 'C', level: 2 },
+                { type: 'trial', content: 'R', level: 2 },
 
-                // { type: 'break', if: "imperfect", next: 0, content: `
-                //     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
-                //     <p class="p">Je mi líto, zdá se, že Vám zkušební kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
+                { type: 'break', if: "imperfect", next: 0, content: `
+                    <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
+                    <p class="p">Je mi líto, zdá se, že Vám zkušební kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
 
-                //     <p class="p">Nyní si zkušební kolo projděte celé pro jistotu znovu.</p>
+                    <p class="p">Nyní si zkušební kolo projděte celé pro jistotu znovu.</p>
 
-                //     <p class="p">Nezapomeňte, že v&nbsp;těžší úrovni je nutné tlačítko stisknout vždy, když se podněty v&nbsp;řadě budou shodovat ob-jedno. Tzn. když na obrazovce uvidíte <span class="badge">B</span>&rarr;<span class="badge">A</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v&nbsp;dolní části obrazovky. <span class="badge">B</span>&rarr;<span class="badge">A</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
+                    <p class="p">Nezapomeňte, že v&nbsp;těžší úrovni je nutné tlačítko stisknout vždy, když se podněty v&nbsp;řadě budou shodovat ob-jedno. Tzn. když na obrazovce uvidíte <span class="badge">B</span>&rarr;<span class="badge">A</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v&nbsp;dolní části obrazovky. <span class="badge">B</span>&rarr;<span class="badge">A</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
 
                 // ######
                 // #     # ######   ##   #         ##### ######  ####  #####
@@ -208,241 +208,241 @@ export default {
                 { type: 'symbol', content: 'F', level: 2 },
                 { type: 'symbol', content: 'V', level: 2 },
 
-                // { type: 'break', content: `
-                //     <h1 class="h1">Ostrý test - Úroveň 3</h1>
-                //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 3 zpět. </p>
+                { type: 'break', content: `
+                    <h1 class="h1">Ostrý test - Úroveň 3</h1>
+                    <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 3 zpět. </p>
 
-                //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+                    <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'U', level: 3 },
-                // { type: 'symbol', content: 'W', level: 3 },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'Q', level: 3 },
-                // { type: 'symbol', content: 'K', level: 3 },
-                // { type: 'symbol', content: 'L', level: 3 },
-                // { type: 'symbol', content: 'O', level: 3 },
-                // { type: 'symbol', content: 'L', level: 3 },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'O', level: 3 },
-                // { type: 'symbol', content: 'H', level: 3 },
-                // { type: 'symbol', content: 'T', level: 3 },
-                // { type: 'symbol', content: 'B', level: 3 },
-                // { type: 'symbol', content: 'F', level: 3 },
-                // { type: 'symbol', content: 'T', level: 3 },
-                // { type: 'symbol', content: 'P', level: 3 },
-                // { type: 'symbol', content: 'H', level: 3 },
-                // { type: 'symbol', content: 'P', level: 3 },
-                // { type: 'symbol', content: 'P', level: 3 },
-                // { type: 'symbol', content: 'F', level: 3 },
-                // { type: 'symbol', content: 'T', level: 3 },
-                // { type: 'symbol', content: 'Z', level: 3 },
-                // { type: 'symbol', content: 'F', level: 3 },
-                // { type: 'symbol', content: 'G', level: 3 },
-                // { type: 'symbol', content: 'B', level: 3 },
-                // { type: 'symbol', content: 'V', level: 3 },
-                // { type: 'symbol', content: 'F', level: 3 },
-                // { type: 'symbol', content: 'U', level: 3 },
-                // { type: 'symbol', content: 'V', level: 3 },
-                // { type: 'symbol', content: 'Z', level: 3 },
-                // { type: 'symbol', content: 'H', level: 3 },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'Z', level: 3 },
-                // { type: 'symbol', content: 'G', level: 3 },
-                // { type: 'symbol', content: 'B', level: 3 },
-                // { type: 'symbol', content: 'H', level: 3 },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'K', level: 3 },
-                // { type: 'symbol', content: 'N', level: 3 },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'U', level: 3 },
-                // { type: 'symbol', content: 'T', level: 3 },
-                // { type: 'symbol', content: 'N', level: 3 },
-                // { type: 'symbol', content: 'J', level: 3 },
-                // { type: 'symbol', content: 'T', level: 3 },
-                // { type: 'symbol', content: 'H', level: 3 },
-                // { type: 'symbol', content: 'U', level: 3 },
-                // { type: 'symbol', content: 'K', level: 3 },
-                // { type: 'symbol', content: 'H', level: 3 },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'U', level: 3 },
+                { type: 'symbol', content: 'W', level: 3 },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'Q', level: 3 },
+                { type: 'symbol', content: 'K', level: 3 },
+                { type: 'symbol', content: 'L', level: 3 },
+                { type: 'symbol', content: 'O', level: 3 },
+                { type: 'symbol', content: 'L', level: 3 },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'O', level: 3 },
+                { type: 'symbol', content: 'H', level: 3 },
+                { type: 'symbol', content: 'T', level: 3 },
+                { type: 'symbol', content: 'B', level: 3 },
+                { type: 'symbol', content: 'F', level: 3 },
+                { type: 'symbol', content: 'T', level: 3 },
+                { type: 'symbol', content: 'P', level: 3 },
+                { type: 'symbol', content: 'H', level: 3 },
+                { type: 'symbol', content: 'P', level: 3 },
+                { type: 'symbol', content: 'P', level: 3 },
+                { type: 'symbol', content: 'F', level: 3 },
+                { type: 'symbol', content: 'T', level: 3 },
+                { type: 'symbol', content: 'Z', level: 3 },
+                { type: 'symbol', content: 'F', level: 3 },
+                { type: 'symbol', content: 'G', level: 3 },
+                { type: 'symbol', content: 'B', level: 3 },
+                { type: 'symbol', content: 'V', level: 3 },
+                { type: 'symbol', content: 'F', level: 3 },
+                { type: 'symbol', content: 'U', level: 3 },
+                { type: 'symbol', content: 'V', level: 3 },
+                { type: 'symbol', content: 'Z', level: 3 },
+                { type: 'symbol', content: 'H', level: 3 },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'Z', level: 3 },
+                { type: 'symbol', content: 'G', level: 3 },
+                { type: 'symbol', content: 'B', level: 3 },
+                { type: 'symbol', content: 'H', level: 3 },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'K', level: 3 },
+                { type: 'symbol', content: 'N', level: 3 },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'U', level: 3 },
+                { type: 'symbol', content: 'T', level: 3 },
+                { type: 'symbol', content: 'N', level: 3 },
+                { type: 'symbol', content: 'J', level: 3 },
+                { type: 'symbol', content: 'T', level: 3 },
+                { type: 'symbol', content: 'H', level: 3 },
+                { type: 'symbol', content: 'U', level: 3 },
+                { type: 'symbol', content: 'K', level: 3 },
+                { type: 'symbol', content: 'H', level: 3 },
 
-                // { type: 'break', content: `
-                //     <h1 class="h1">Ostrý test - Úroveň 4</h1>
-                //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 4 zpět. </p>
+                { type: 'break', content: `
+                    <h1 class="h1">Ostrý test - Úroveň 4</h1>
+                    <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 4 zpět. </p>
 
-                //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">G</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+                    <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">G</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
-                // { type: 'symbol', content: 'R', level: 4 },
-                // { type: 'symbol', content: 'J', level: 4 },
-                // { type: 'symbol', content: 'K', level: 4 },
-                // { type: 'symbol', content: 'G', level: 4 },
-                // { type: 'symbol', content: 'R', level: 4 },
-                // { type: 'symbol', content: 'H', level: 4 },
-                // { type: 'symbol', content: 'U', level: 4 },
-                // { type: 'symbol', content: 'T', level: 4 },
-                // { type: 'symbol', content: 'K', level: 4 },
-                // { type: 'symbol', content: 'H', level: 4 },
-                // { type: 'symbol', content: 'G', level: 4 },
-                // { type: 'symbol', content: 'F', level: 4 },
-                // { type: 'symbol', content: 'K', level: 4 },
-                // { type: 'symbol', content: 'U', level: 4 },
-                // { type: 'symbol', content: 'G', level: 4 },
-                // { type: 'symbol', content: 'J', level: 4 },
-                // { type: 'symbol', content: 'F', level: 4 },
-                // { type: 'symbol', content: 'R', level: 4 },
-                // { type: 'symbol', content: 'K', level: 4 },
-                // { type: 'symbol', content: 'P', level: 4 },
-                // { type: 'symbol', content: 'F', level: 4 },
-                // { type: 'symbol', content: 'Z', level: 4 },
-                // { type: 'symbol', content: 'E', level: 4 },
-                // { type: 'symbol', content: 'D', level: 4 },
-                // { type: 'symbol', content: 'F', level: 4 },
-                // { type: 'symbol', content: 'T', level: 4 },
-                // { type: 'symbol', content: 'K', level: 4 },
-                // { type: 'symbol', content: 'D', level: 4 },
-                // { type: 'symbol', content: 'I', level: 4 },
-                // { type: 'symbol', content: 'J', level: 4 },
-                // { type: 'symbol', content: 'K', level: 4 },
-                // { type: 'symbol', content: 'L', level: 4 },
-                // { type: 'symbol', content: 'I', level: 4 },
-                // { type: 'symbol', content: 'O', level: 4 },
-                // { type: 'symbol', content: 'M', level: 4 },
-                // { type: 'symbol', content: 'U', level: 4 },
-                // { type: 'symbol', content: 'F', level: 4 },
-                // { type: 'symbol', content: 'O', level: 4 },
-                // { type: 'symbol', content: 'H', level: 4 },
-                // { type: 'symbol', content: 'Z', level: 4 },
-                // { type: 'symbol', content: 'X', level: 4 },
-                // { type: 'symbol', content: 'Y', level: 4 },
-                // { type: 'symbol', content: 'J', level: 4 },
-                // { type: 'symbol', content: 'X', level: 4 },
-                // { type: 'symbol', content: 'N', level: 4 },
-                // { type: 'symbol', content: 'U', level: 4 },
-                // { type: 'symbol', content: 'O', level: 4 },
-                // { type: 'symbol', content: 'P', level: 4 },
-                // { type: 'symbol', content: 'N', level: 4 },
-                // { type: 'symbol', content: 'A', level: 4 },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
+                { type: 'symbol', content: 'R', level: 4 },
+                { type: 'symbol', content: 'J', level: 4 },
+                { type: 'symbol', content: 'K', level: 4 },
+                { type: 'symbol', content: 'G', level: 4 },
+                { type: 'symbol', content: 'R', level: 4 },
+                { type: 'symbol', content: 'H', level: 4 },
+                { type: 'symbol', content: 'U', level: 4 },
+                { type: 'symbol', content: 'T', level: 4 },
+                { type: 'symbol', content: 'K', level: 4 },
+                { type: 'symbol', content: 'H', level: 4 },
+                { type: 'symbol', content: 'G', level: 4 },
+                { type: 'symbol', content: 'F', level: 4 },
+                { type: 'symbol', content: 'K', level: 4 },
+                { type: 'symbol', content: 'U', level: 4 },
+                { type: 'symbol', content: 'G', level: 4 },
+                { type: 'symbol', content: 'J', level: 4 },
+                { type: 'symbol', content: 'F', level: 4 },
+                { type: 'symbol', content: 'R', level: 4 },
+                { type: 'symbol', content: 'K', level: 4 },
+                { type: 'symbol', content: 'P', level: 4 },
+                { type: 'symbol', content: 'F', level: 4 },
+                { type: 'symbol', content: 'Z', level: 4 },
+                { type: 'symbol', content: 'E', level: 4 },
+                { type: 'symbol', content: 'D', level: 4 },
+                { type: 'symbol', content: 'F', level: 4 },
+                { type: 'symbol', content: 'T', level: 4 },
+                { type: 'symbol', content: 'K', level: 4 },
+                { type: 'symbol', content: 'D', level: 4 },
+                { type: 'symbol', content: 'I', level: 4 },
+                { type: 'symbol', content: 'J', level: 4 },
+                { type: 'symbol', content: 'K', level: 4 },
+                { type: 'symbol', content: 'L', level: 4 },
+                { type: 'symbol', content: 'I', level: 4 },
+                { type: 'symbol', content: 'O', level: 4 },
+                { type: 'symbol', content: 'M', level: 4 },
+                { type: 'symbol', content: 'U', level: 4 },
+                { type: 'symbol', content: 'F', level: 4 },
+                { type: 'symbol', content: 'O', level: 4 },
+                { type: 'symbol', content: 'H', level: 4 },
+                { type: 'symbol', content: 'Z', level: 4 },
+                { type: 'symbol', content: 'X', level: 4 },
+                { type: 'symbol', content: 'Y', level: 4 },
+                { type: 'symbol', content: 'J', level: 4 },
+                { type: 'symbol', content: 'X', level: 4 },
+                { type: 'symbol', content: 'N', level: 4 },
+                { type: 'symbol', content: 'U', level: 4 },
+                { type: 'symbol', content: 'O', level: 4 },
+                { type: 'symbol', content: 'P', level: 4 },
+                { type: 'symbol', content: 'N', level: 4 },
+                { type: 'symbol', content: 'A', level: 4 },
 
-                // { type: 'break', content: `
-                //     <h1 class="h1">Ostrý test - Úroveň 5</h1>
-                //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 5 zpět. </p>
+                { type: 'break', content: `
+                    <h1 class="h1">Ostrý test - Úroveň 5</h1>
+                    <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 5 zpět. </p>
 
-                //     <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+                    <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
-                // { type: 'symbol', content: 'G', level: 5 },
-                // { type: 'symbol', content: 'T', level: 5 },
-                // { type: 'symbol', content: 'R', level: 5 },
-                // { type: 'symbol', content: 'K', level: 5 },
-                // { type: 'symbol', content: 'J', level: 5 },
-                // { type: 'symbol', content: 'L', level: 5 },
-                // { type: 'symbol', content: 'R', level: 5 },
-                // { type: 'symbol', content: 'G', level: 5 },
-                // { type: 'symbol', content: 'N', level: 5 },
-                // { type: 'symbol', content: 'J', level: 5 },
-                // { type: 'symbol', content: 'K', level: 5 },
-                // { type: 'symbol', content: 'G', level: 5 },
-                // { type: 'symbol', content: 'R', level: 5 },
-                // { type: 'symbol', content: 'K', level: 5 },
-                // { type: 'symbol', content: 'D', level: 5 },
-                // { type: 'symbol', content: 'W', level: 5 },
-                // { type: 'symbol', content: 'Q', level: 5 },
-                // { type: 'symbol', content: 'S', level: 5 },
-                // { type: 'symbol', content: 'L', level: 5 },
-                // { type: 'symbol', content: 'R', level: 5 },
-                // { type: 'symbol', content: 'D', level: 5 },
-                // { type: 'symbol', content: 'S', level: 5 },
-                // { type: 'symbol', content: 'S', level: 5 },
-                // { type: 'symbol', content: 'R', level: 5 },
-                // { type: 'symbol', content: 'K', level: 5 },
-                // { type: 'symbol', content: 'N', level: 5 },
-                // { type: 'symbol', content: 'F', level: 5 },
-                // { type: 'symbol', content: 'R', level: 5 },
-                // { type: 'symbol', content: 'J', level: 5 },
-                // { type: 'symbol', content: 'O', level: 5 },
-                // { type: 'symbol', content: 'N', level: 5 },
-                // { type: 'symbol', content: 'T', level: 5 },
-                // { type: 'symbol', content: 'H', level: 5 },
-                // { type: 'symbol', content: 'J', level: 5 },
-                // { type: 'symbol', content: 'B', level: 5 },
-                // { type: 'symbol', content: 'N', level: 5 },
-                // { type: 'symbol', content: 'H', level: 5 },
-                // { type: 'symbol', content: 'U', level: 5 },
-                // { type: 'symbol', content: 'I', level: 5 },
-                // { type: 'symbol', content: 'B', level: 5 },
-                // { type: 'symbol', content: 'D', level: 5 },
-                // { type: 'symbol', content: 'H', level: 5 },
-                // { type: 'symbol', content: 'N', level: 5 },
-                // { type: 'symbol', content: 'V', level: 5 },
-                // { type: 'symbol', content: 'Z', level: 5 },
-                // { type: 'symbol', content: 'D', level: 5 },
-                // { type: 'symbol', content: 'H', level: 5 },
-                // { type: 'symbol', content: 'N', level: 5 },
-                // { type: 'symbol', content: 'M', level: 5 },
-                // { type: 'symbol', content: 'U', level: 5 },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
+                { type: 'symbol', content: 'G', level: 5 },
+                { type: 'symbol', content: 'T', level: 5 },
+                { type: 'symbol', content: 'R', level: 5 },
+                { type: 'symbol', content: 'K', level: 5 },
+                { type: 'symbol', content: 'J', level: 5 },
+                { type: 'symbol', content: 'L', level: 5 },
+                { type: 'symbol', content: 'R', level: 5 },
+                { type: 'symbol', content: 'G', level: 5 },
+                { type: 'symbol', content: 'N', level: 5 },
+                { type: 'symbol', content: 'J', level: 5 },
+                { type: 'symbol', content: 'K', level: 5 },
+                { type: 'symbol', content: 'G', level: 5 },
+                { type: 'symbol', content: 'R', level: 5 },
+                { type: 'symbol', content: 'K', level: 5 },
+                { type: 'symbol', content: 'D', level: 5 },
+                { type: 'symbol', content: 'W', level: 5 },
+                { type: 'symbol', content: 'Q', level: 5 },
+                { type: 'symbol', content: 'S', level: 5 },
+                { type: 'symbol', content: 'L', level: 5 },
+                { type: 'symbol', content: 'R', level: 5 },
+                { type: 'symbol', content: 'D', level: 5 },
+                { type: 'symbol', content: 'S', level: 5 },
+                { type: 'symbol', content: 'S', level: 5 },
+                { type: 'symbol', content: 'R', level: 5 },
+                { type: 'symbol', content: 'K', level: 5 },
+                { type: 'symbol', content: 'N', level: 5 },
+                { type: 'symbol', content: 'F', level: 5 },
+                { type: 'symbol', content: 'R', level: 5 },
+                { type: 'symbol', content: 'J', level: 5 },
+                { type: 'symbol', content: 'O', level: 5 },
+                { type: 'symbol', content: 'N', level: 5 },
+                { type: 'symbol', content: 'T', level: 5 },
+                { type: 'symbol', content: 'H', level: 5 },
+                { type: 'symbol', content: 'J', level: 5 },
+                { type: 'symbol', content: 'B', level: 5 },
+                { type: 'symbol', content: 'N', level: 5 },
+                { type: 'symbol', content: 'H', level: 5 },
+                { type: 'symbol', content: 'U', level: 5 },
+                { type: 'symbol', content: 'I', level: 5 },
+                { type: 'symbol', content: 'B', level: 5 },
+                { type: 'symbol', content: 'D', level: 5 },
+                { type: 'symbol', content: 'H', level: 5 },
+                { type: 'symbol', content: 'N', level: 5 },
+                { type: 'symbol', content: 'V', level: 5 },
+                { type: 'symbol', content: 'Z', level: 5 },
+                { type: 'symbol', content: 'D', level: 5 },
+                { type: 'symbol', content: 'H', level: 5 },
+                { type: 'symbol', content: 'N', level: 5 },
+                { type: 'symbol', content: 'M', level: 5 },
+                { type: 'symbol', content: 'U', level: 5 },
 
-                // { type: 'break', content: `
-                //     <h1 class="h1">Ostrý test - Úroveň 6</h1>
-                //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 6 zpět. </p>
+                { type: 'break', content: `
+                    <h1 class="h1">Ostrý test - Úroveň 6</h1>
+                    <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 6 zpět. </p>
 
-                //     <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">I</span>&rarr;<span class="badge">O</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+                    <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">I</span>&rarr;<span class="badge">O</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
 
-                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                // ` },
-                // { type: 'symbol', content: 'F', level: 6 },
-                // { type: 'symbol', content: 'E', level: 6 },
-                // { type: 'symbol', content: 'K', level: 6 },
-                // { type: 'symbol', content: 'L', level: 6 },
-                // { type: 'symbol', content: 'K', level: 6 },
-                // { type: 'symbol', content: 'N', level: 6 },
-                // { type: 'symbol', content: 'E', level: 6 },
-                // { type: 'symbol', content: 'F', level: 6 },
-                // { type: 'symbol', content: 'D', level: 6 },
-                // { type: 'symbol', content: 'S', level: 6 },
-                // { type: 'symbol', content: 'N', level: 6 },
-                // { type: 'symbol', content: 'D', level: 6 },
-                // { type: 'symbol', content: 'W', level: 6 },
-                // { type: 'symbol', content: 'D', level: 6 },
-                // { type: 'symbol', content: 'V', level: 6 },
-                // { type: 'symbol', content: 'C', level: 6 },
-                // { type: 'symbol', content: 'E', level: 6 },
-                // { type: 'symbol', content: 'R', level: 6 },
-                // { type: 'symbol', content: 'W', level: 6 },
-                // { type: 'symbol', content: 'X', level: 6 },
-                // { type: 'symbol', content: 'O', level: 6 },
-                // { type: 'symbol', content: 'L', level: 6 },
-                // { type: 'symbol', content: 'P', level: 6 },
-                // { type: 'symbol', content: 'N', level: 6 },
-                // { type: 'symbol', content: 'X', level: 6 },
-                // { type: 'symbol', content: 'B', level: 6 },
-                // { type: 'symbol', content: 'G', level: 6 },
-                // { type: 'symbol', content: 'R', level: 6 },
-                // { type: 'symbol', content: 'E', level: 6 },
-                // { type: 'symbol', content: 'T', level: 6 },
-                // { type: 'symbol', content: 'X', level: 6 },
-                // { type: 'symbol', content: 'J', level: 6 },
-                // { type: 'symbol', content: 'K', level: 6 },
-                // { type: 'symbol', content: 'L', level: 6 },
-                // { type: 'symbol', content: 'P', level: 6 },
-                // { type: 'symbol', content: 'X', level: 6 },
-                // { type: 'symbol', content: 'K', level: 6 },
-                // { type: 'symbol', content: 'O', level: 6 },
-                // { type: 'symbol', content: 'L', level: 6 },
-                // { type: 'symbol', content: 'P', level: 6 },
-                // { type: 'symbol', content: 'B', level: 6 },
-                // { type: 'symbol', content: 'A', level: 6 },
-                // { type: 'symbol', content: 'N', level: 6 },
-                // { type: 'symbol', content: 'C', level: 6 },
-                // { type: 'symbol', content: 'P', level: 6 },
-                // { type: 'symbol', content: 'D', level: 6 },
-                // { type: 'symbol', content: 'E', level: 6 },
-                // { type: 'symbol', content: 'K', level: 6 },
-                // { type: 'symbol', content: 'Z', level: 6 },
-                // { type: 'symbol', content: 'P', level: 6 },
+                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                ` },
+                { type: 'symbol', content: 'F', level: 6 },
+                { type: 'symbol', content: 'E', level: 6 },
+                { type: 'symbol', content: 'K', level: 6 },
+                { type: 'symbol', content: 'L', level: 6 },
+                { type: 'symbol', content: 'K', level: 6 },
+                { type: 'symbol', content: 'N', level: 6 },
+                { type: 'symbol', content: 'E', level: 6 },
+                { type: 'symbol', content: 'F', level: 6 },
+                { type: 'symbol', content: 'D', level: 6 },
+                { type: 'symbol', content: 'S', level: 6 },
+                { type: 'symbol', content: 'N', level: 6 },
+                { type: 'symbol', content: 'D', level: 6 },
+                { type: 'symbol', content: 'W', level: 6 },
+                { type: 'symbol', content: 'D', level: 6 },
+                { type: 'symbol', content: 'V', level: 6 },
+                { type: 'symbol', content: 'C', level: 6 },
+                { type: 'symbol', content: 'E', level: 6 },
+                { type: 'symbol', content: 'R', level: 6 },
+                { type: 'symbol', content: 'W', level: 6 },
+                { type: 'symbol', content: 'X', level: 6 },
+                { type: 'symbol', content: 'O', level: 6 },
+                { type: 'symbol', content: 'L', level: 6 },
+                { type: 'symbol', content: 'P', level: 6 },
+                { type: 'symbol', content: 'N', level: 6 },
+                { type: 'symbol', content: 'X', level: 6 },
+                { type: 'symbol', content: 'B', level: 6 },
+                { type: 'symbol', content: 'G', level: 6 },
+                { type: 'symbol', content: 'R', level: 6 },
+                { type: 'symbol', content: 'E', level: 6 },
+                { type: 'symbol', content: 'T', level: 6 },
+                { type: 'symbol', content: 'X', level: 6 },
+                { type: 'symbol', content: 'J', level: 6 },
+                { type: 'symbol', content: 'K', level: 6 },
+                { type: 'symbol', content: 'L', level: 6 },
+                { type: 'symbol', content: 'P', level: 6 },
+                { type: 'symbol', content: 'X', level: 6 },
+                { type: 'symbol', content: 'K', level: 6 },
+                { type: 'symbol', content: 'O', level: 6 },
+                { type: 'symbol', content: 'L', level: 6 },
+                { type: 'symbol', content: 'P', level: 6 },
+                { type: 'symbol', content: 'B', level: 6 },
+                { type: 'symbol', content: 'A', level: 6 },
+                { type: 'symbol', content: 'N', level: 6 },
+                { type: 'symbol', content: 'C', level: 6 },
+                { type: 'symbol', content: 'P', level: 6 },
+                { type: 'symbol', content: 'D', level: 6 },
+                { type: 'symbol', content: 'E', level: 6 },
+                { type: 'symbol', content: 'K', level: 6 },
+                { type: 'symbol', content: 'Z', level: 6 },
+                { type: 'symbol', content: 'P', level: 6 },
             ],
 
             i: -1,
@@ -504,7 +504,7 @@ export default {
 
                 // No next card? Finish the test.
                 } else if (!this.card) {
-                    this.$emit('test-finished');
+                    this.$emit('finish');
 
                     // Next card is break/info card? Manage it standard way.
                 } else {
@@ -537,7 +537,7 @@ export default {
 
                     // No more cards, finish
                 } else {
-                    this.$emit('test-finished');
+                    this.$emit('finish');
                     // console.log(this.cards)
                 }
             }, 200);
