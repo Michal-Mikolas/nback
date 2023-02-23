@@ -17,7 +17,7 @@
         Budu Vám moc vděčná, pokud se rozhodnete účastnit našeho výzkumu. Účast je však samozřejmě dobrovolná a můžete ji kdykoliv ukončit. Veškerá získaná data budou anonymizována.
     </p>
     <p class="p">
-        Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zjišťující kapacitu pracovní paměti</b>. Zdůrazňuji, že máte právo z výzkumu kdykoli v&nbsp;průběhu odstoupit. <br/>
+        Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zjišťující kapacitu pracovní paměti</b>. <br/>
         Účastí na tomto výzkumu nejen pomůžete v&nbsp;realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o své paměti. V&nbsp;závěru uvidíte své skóre v&nbsp;porovnání s ostatními.
     </p>
     <p class="p">
