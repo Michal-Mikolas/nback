@@ -19523,9 +19523,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PersonalInfoForm_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PersonalInfoForm.vue */ "./resources/js/components/PersonalInfoForm.vue");
 /* harmony import */ var _TestInfo_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TestInfo.vue */ "./resources/js/components/TestInfo.vue");
 /* harmony import */ var _Test_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Test.vue */ "./resources/js/components/Test.vue");
-/* harmony import */ var _Finish_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Finish.vue */ "./resources/js/components/Finish.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _PreFinish_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PreFinish.vue */ "./resources/js/components/PreFinish.vue");
+/* harmony import */ var _Finish_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Finish.vue */ "./resources/js/components/Finish.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -19535,8 +19537,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      step: 'home',
-      movetoInfoDisabled: true
+      step: 'pre-finish',
+      movetoInfoDisabled: true,
+      finishDisabled: true
     };
   },
   components: {
@@ -19544,7 +19547,8 @@ __webpack_require__.r(__webpack_exports__);
     PersonalInfoForm: _PersonalInfoForm_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     TestInfo: _TestInfo_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     Test: _Test_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Finish: _Finish_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    PreFinish: _PreFinish_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Finish: _Finish_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   methods: {
     moveto: function moveto(step) {
@@ -19554,7 +19558,10 @@ __webpack_require__.r(__webpack_exports__);
     personalInfoFormChanged: function personalInfoFormChanged() {
       this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
     },
-    testFinished: function testFinished() {
+    preFinishChanged: function preFinishChanged() {
+      this.finishDisabled = !this.$refs.preFinish || this.$refs.preFinish.interruption === null;
+    },
+    finish: function finish() {
       var _this = this;
       this.step = 'loading';
       var data = {
@@ -19562,7 +19569,7 @@ __webpack_require__.r(__webpack_exports__);
         'cards': this.$refs.test.cards
       };
       data = JSON.parse(JSON.stringify(data));
-      axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/save-test', data).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_6___default().post('/api/save-test', data).then(function (response) {
         setTimeout(function () {
           // enjoy the loader animation a bit :-P
           _this.step = 'finish';
@@ -19713,6 +19720,31 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=script&lang=js":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=script&lang=js ***!
+  \***************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  emits: ['change'],
+  data: function data() {
+    return {
+      'interruption': null,
+      'interruption_reason': null
+    };
+  },
+  methods: {},
+  computed: {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Test.vue?vue&type=script&lang=js ***!
@@ -19728,7 +19760,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  emits: ['finish'],
+  emits: ['test-finished'],
   props: ['email'],
   data: function data() {
     return {
@@ -19743,103 +19775,73 @@ __webpack_require__.r(__webpack_exports__);
       // #  #  # #    # #   #  #    #       #    # #
       //  ## ##  #    # #    # #    #        ####  #
 
-      {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - Lehk\xE1 \xFArove\u0148</h1>\n                    <p class=\"p\">Nyn\xED V\xE1s \u010Dek\xE1 test pracovn\xED pam\u011Bti. Test spo\u010D\xEDv\xE1 v&nbsp;tom, \u017Ee se V\xE1m na obrazovce zobraz\xED sled p\xEDsmen. Va\u0161\xEDm \xFAkolem bude stisknout tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;podn\u011Btem ob n\u011Bkolik podn\u011Bt\u016F zp\u011Bt. </p>\n\n                    <p class=\"p\">Ch\xE1pu, \u017Ee instrukce zat\xEDm zn\xED slo\u017Eit\u011B. Princip ale jist\u011B pochop\xEDte d\xEDky na\u0161\xED zku\u0161ebn\xED verzi.</p>\n\n                    <p class=\"p\">Nejd\u0159\xEDve budete m\xEDt za \xFAkol tla\u010D\xEDtko zm\xE1\u010Dknout v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s&nbsp;bezprost\u0159edn\u011B p\u0159edchoz\xEDm. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte na tla\u010D\xEDtko <i>Pokra\u010Dovat</i>.</p>\n                "
-      }, {
-        type: 'trial',
-        content: 'E',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'C',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'P',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'C',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'L',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'L',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'D',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'W',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'F',
-        level: 1
-      }, {
-        type: 'trial',
-        content: 'F',
-        level: 1
-      }, {
-        type: 'break',
-        "if": "imperfect",
-        next: 0,
-        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - Lehk\xE1 \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m prvn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v \u0159ad\u011B za sebou budou shodovat. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v doln\xED \u010D\xE1sti obrazovky. </p>\n\n                    <p class=\"p\"><span class=\"badge\">B</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      }, {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">V\xFDborn\u011B, prvn\xED kolo zku\u0161ebn\xED verze jste \xFAsp\u011B\u0161n\u011B absolvovali. Nyn\xED jste p\u0159ipraveni vyzkou\u0161et si t\u011B\u017E\u0161\xED \xFArove\u0148. V t\xE9to \xFArovni m\xE1te za \xFAkol stisknout tla\u010D\xEDtko v\u017Edy, kdy\u017E se aktu\xE1ln\xED podn\u011Bt bude shodovat s podn\u011Btem ob jeden zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      }, {
-        type: 'trial',
-        content: 'V',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'S',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'V',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'Q',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'A',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'D',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'C',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'V',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'C',
-        level: 2
-      }, {
-        type: 'trial',
-        content: 'R',
-        level: 2
-      }, {
-        type: 'break',
-        "if": "imperfect",
-        next: 0,
-        content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m zku\u0161ebn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte cel\xE9 pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee v&nbsp;t\u011B\u017E\u0161\xED \xFArovni je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v&nbsp;\u0159ad\u011B budou shodovat ob-jedno. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky. <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      },
+      // { type: 'break', content: `
+      //     <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
+      //     <p class="p">Nyní Vás čeká test pracovní paměti. Test spočívá v&nbsp;tom, že se Vám na obrazovce zobrazí sled písmen. Vaším úkolem bude stisknout tlačítko v&nbsp;dolní části obrazovky vždy, když se aktuální podnět bude shodovat s&nbsp;podnětem ob několik podnětů zpět. </p>
+
+      //     <p class="p">Chápu, že instrukce zatím zní složitě. Princip ale jistě pochopíte díky naší zkušební verzi.</p>
+
+      //     <p class="p">Nejdříve budete mít za úkol tlačítko zmáčknout vždy, když se aktuální podnět bude shodovat s&nbsp;bezprostředně předchozím. </p>
+
+      //     <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stisk tlačítka.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte na tlačítko <i>Pokračovat</i>.</p>
+      // ` },
+      // { type: 'trial', content: 'E', level: 1 },
+      // { type: 'trial', content: 'C', level: 1 },
+      // { type: 'trial', content: 'P', level: 1 },
+      // { type: 'trial', content: 'C', level: 1 },
+      // { type: 'trial', content: 'L', level: 1 },
+      // { type: 'trial', content: 'L', level: 1 },
+      // { type: 'trial', content: 'D', level: 1 },
+      // { type: 'trial', content: 'W', level: 1 },
+      // { type: 'trial', content: 'F', level: 1 },
+      // { type: 'trial', content: 'F', level: 1 },
+
+      // { type: 'break', if: "imperfect", next: 0, content: `
+      //     <h1 class="h1">Zkušební kolo - Lehká úroveň</h1>
+      //     <p class="p">Je mi líto, zdá se, že Vám první kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
+
+      //     <p class="p">Nyní si zkušební kolo projděte pro jistotu znovu.</p>
+
+      //     <p class="p">Nezapomeňte, že je nutné tlačítko stisknout vždy, když se podněty v řadě za sebou budou shodovat. Tzn. když na obrazovce uvidíte <span class="badge">B</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v dolní části obrazovky. </p>
+
+      //     <p class="p"><span class="badge">B</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+
+      // { type: 'break', content: `
+      //     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
+      //     <p class="p">Výborně, první kolo zkušební verze jste úspěšně absolvovali. Nyní jste připraveni vyzkoušet si těžší úroveň. V této úrovni máte za úkol stisknout tlačítko vždy, když se aktuální podnět bude shodovat s podnětem ob jeden zpět. </p>
+
+      //     <p class="p">Tzn. <span class="badge">A</span>&rarr;<span class="badge">B</span>&rarr;<span class="badge">A</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+
+      // { type: 'trial', content: 'V', level: 2 },
+      // { type: 'trial', content: 'S', level: 2 },
+      // { type: 'trial', content: 'V', level: 2 },
+      // { type: 'trial', content: 'Q', level: 2 },
+      // { type: 'trial', content: 'A', level: 2 },
+      // { type: 'trial', content: 'D', level: 2 },
+      // { type: 'trial', content: 'C', level: 2 },
+      // { type: 'trial', content: 'V', level: 2 },
+      // { type: 'trial', content: 'C', level: 2 },
+      // { type: 'trial', content: 'R', level: 2 },
+
+      // { type: 'break', if: "imperfect", next: 0, content: `
+      //     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
+      //     <p class="p">Je mi líto, zdá se, že Vám zkušební kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
+
+      //     <p class="p">Nyní si zkušební kolo projděte celé pro jistotu znovu.</p>
+
+      //     <p class="p">Nezapomeňte, že v&nbsp;těžší úrovni je nutné tlačítko stisknout vždy, když se podněty v&nbsp;řadě budou shodovat ob-jedno. Tzn. když na obrazovce uvidíte <span class="badge">B</span>&rarr;<span class="badge">A</span>, a&nbsp;za ním se opět objeví další <span class="badge">B</span>, stisknete tlačítko v&nbsp;dolní části obrazovky. <span class="badge">B</span>&rarr;<span class="badge">A</span>&rarr;<span class="badge">B</span>&nbsp;=&nbsp;stisk tlačítka.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+
       // ######
       // #     # ######   ##   #         ##### ######  ####  #####
       // #     # #       #  #  #           #   #      #        #
@@ -20051,819 +20053,245 @@ __webpack_require__.r(__webpack_exports__);
         type: 'symbol',
         content: 'V',
         level: 2
-      }, {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 3</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 3 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">R</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">R</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'W',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'Q',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'V',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'V',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 3
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 3
-      }, {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 4</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 4 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">R</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">G</span>&rarr;<span class=\"badge\">R</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'E',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'I',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'I',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'M',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'X',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'Y',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'X',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 4
-      }, {
-        type: 'symbol',
-        content: 'A',
-        level: 4
-      }, {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 5</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 5 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">N</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">H</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">L</span>&rarr;<span class=\"badge\">N</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'W',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'Q',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'S',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'S',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'S',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'I',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'V',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'H',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'M',
-        level: 5
-      }, {
-        type: 'symbol',
-        content: 'U',
-        level: 5
-      }, {
-        type: 'break',
-        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 6</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 6 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">N</span>&rarr;<span class=\"badge\">H</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">I</span>&rarr;<span class=\"badge\">O</span>&rarr;<span class=\"badge\">L</span>&rarr;<span class=\"badge\">N</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'E',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'E',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'F',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'S',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'W',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'V',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'C',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'E',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'W',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'X',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'X',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'G',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'R',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'E',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'T',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'X',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'J',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'X',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'O',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'L',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'B',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'A',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'N',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'C',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'D',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'E',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'K',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'Z',
-        level: 6
-      }, {
-        type: 'symbol',
-        content: 'P',
-        level: 6
-      }],
+      }
+
+      // { type: 'break', content: `
+      //     <h1 class="h1">Ostrý test - Úroveň 3</h1>
+      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 3 zpět. </p>
+
+      //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'U', level: 3 },
+      // { type: 'symbol', content: 'W', level: 3 },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'Q', level: 3 },
+      // { type: 'symbol', content: 'K', level: 3 },
+      // { type: 'symbol', content: 'L', level: 3 },
+      // { type: 'symbol', content: 'O', level: 3 },
+      // { type: 'symbol', content: 'L', level: 3 },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'O', level: 3 },
+      // { type: 'symbol', content: 'H', level: 3 },
+      // { type: 'symbol', content: 'T', level: 3 },
+      // { type: 'symbol', content: 'B', level: 3 },
+      // { type: 'symbol', content: 'F', level: 3 },
+      // { type: 'symbol', content: 'T', level: 3 },
+      // { type: 'symbol', content: 'P', level: 3 },
+      // { type: 'symbol', content: 'H', level: 3 },
+      // { type: 'symbol', content: 'P', level: 3 },
+      // { type: 'symbol', content: 'P', level: 3 },
+      // { type: 'symbol', content: 'F', level: 3 },
+      // { type: 'symbol', content: 'T', level: 3 },
+      // { type: 'symbol', content: 'Z', level: 3 },
+      // { type: 'symbol', content: 'F', level: 3 },
+      // { type: 'symbol', content: 'G', level: 3 },
+      // { type: 'symbol', content: 'B', level: 3 },
+      // { type: 'symbol', content: 'V', level: 3 },
+      // { type: 'symbol', content: 'F', level: 3 },
+      // { type: 'symbol', content: 'U', level: 3 },
+      // { type: 'symbol', content: 'V', level: 3 },
+      // { type: 'symbol', content: 'Z', level: 3 },
+      // { type: 'symbol', content: 'H', level: 3 },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'Z', level: 3 },
+      // { type: 'symbol', content: 'G', level: 3 },
+      // { type: 'symbol', content: 'B', level: 3 },
+      // { type: 'symbol', content: 'H', level: 3 },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'K', level: 3 },
+      // { type: 'symbol', content: 'N', level: 3 },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'U', level: 3 },
+      // { type: 'symbol', content: 'T', level: 3 },
+      // { type: 'symbol', content: 'N', level: 3 },
+      // { type: 'symbol', content: 'J', level: 3 },
+      // { type: 'symbol', content: 'T', level: 3 },
+      // { type: 'symbol', content: 'H', level: 3 },
+      // { type: 'symbol', content: 'U', level: 3 },
+      // { type: 'symbol', content: 'K', level: 3 },
+      // { type: 'symbol', content: 'H', level: 3 },
+
+      // { type: 'break', content: `
+      //     <h1 class="h1">Ostrý test - Úroveň 4</h1>
+      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 4 zpět. </p>
+
+      //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">G</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+      // { type: 'symbol', content: 'R', level: 4 },
+      // { type: 'symbol', content: 'J', level: 4 },
+      // { type: 'symbol', content: 'K', level: 4 },
+      // { type: 'symbol', content: 'G', level: 4 },
+      // { type: 'symbol', content: 'R', level: 4 },
+      // { type: 'symbol', content: 'H', level: 4 },
+      // { type: 'symbol', content: 'U', level: 4 },
+      // { type: 'symbol', content: 'T', level: 4 },
+      // { type: 'symbol', content: 'K', level: 4 },
+      // { type: 'symbol', content: 'H', level: 4 },
+      // { type: 'symbol', content: 'G', level: 4 },
+      // { type: 'symbol', content: 'F', level: 4 },
+      // { type: 'symbol', content: 'K', level: 4 },
+      // { type: 'symbol', content: 'U', level: 4 },
+      // { type: 'symbol', content: 'G', level: 4 },
+      // { type: 'symbol', content: 'J', level: 4 },
+      // { type: 'symbol', content: 'F', level: 4 },
+      // { type: 'symbol', content: 'R', level: 4 },
+      // { type: 'symbol', content: 'K', level: 4 },
+      // { type: 'symbol', content: 'P', level: 4 },
+      // { type: 'symbol', content: 'F', level: 4 },
+      // { type: 'symbol', content: 'Z', level: 4 },
+      // { type: 'symbol', content: 'E', level: 4 },
+      // { type: 'symbol', content: 'D', level: 4 },
+      // { type: 'symbol', content: 'F', level: 4 },
+      // { type: 'symbol', content: 'T', level: 4 },
+      // { type: 'symbol', content: 'K', level: 4 },
+      // { type: 'symbol', content: 'D', level: 4 },
+      // { type: 'symbol', content: 'I', level: 4 },
+      // { type: 'symbol', content: 'J', level: 4 },
+      // { type: 'symbol', content: 'K', level: 4 },
+      // { type: 'symbol', content: 'L', level: 4 },
+      // { type: 'symbol', content: 'I', level: 4 },
+      // { type: 'symbol', content: 'O', level: 4 },
+      // { type: 'symbol', content: 'M', level: 4 },
+      // { type: 'symbol', content: 'U', level: 4 },
+      // { type: 'symbol', content: 'F', level: 4 },
+      // { type: 'symbol', content: 'O', level: 4 },
+      // { type: 'symbol', content: 'H', level: 4 },
+      // { type: 'symbol', content: 'Z', level: 4 },
+      // { type: 'symbol', content: 'X', level: 4 },
+      // { type: 'symbol', content: 'Y', level: 4 },
+      // { type: 'symbol', content: 'J', level: 4 },
+      // { type: 'symbol', content: 'X', level: 4 },
+      // { type: 'symbol', content: 'N', level: 4 },
+      // { type: 'symbol', content: 'U', level: 4 },
+      // { type: 'symbol', content: 'O', level: 4 },
+      // { type: 'symbol', content: 'P', level: 4 },
+      // { type: 'symbol', content: 'N', level: 4 },
+      // { type: 'symbol', content: 'A', level: 4 },
+
+      // { type: 'break', content: `
+      //     <h1 class="h1">Ostrý test - Úroveň 5</h1>
+      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 5 zpět. </p>
+
+      //     <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+      // { type: 'symbol', content: 'G', level: 5 },
+      // { type: 'symbol', content: 'T', level: 5 },
+      // { type: 'symbol', content: 'R', level: 5 },
+      // { type: 'symbol', content: 'K', level: 5 },
+      // { type: 'symbol', content: 'J', level: 5 },
+      // { type: 'symbol', content: 'L', level: 5 },
+      // { type: 'symbol', content: 'R', level: 5 },
+      // { type: 'symbol', content: 'G', level: 5 },
+      // { type: 'symbol', content: 'N', level: 5 },
+      // { type: 'symbol', content: 'J', level: 5 },
+      // { type: 'symbol', content: 'K', level: 5 },
+      // { type: 'symbol', content: 'G', level: 5 },
+      // { type: 'symbol', content: 'R', level: 5 },
+      // { type: 'symbol', content: 'K', level: 5 },
+      // { type: 'symbol', content: 'D', level: 5 },
+      // { type: 'symbol', content: 'W', level: 5 },
+      // { type: 'symbol', content: 'Q', level: 5 },
+      // { type: 'symbol', content: 'S', level: 5 },
+      // { type: 'symbol', content: 'L', level: 5 },
+      // { type: 'symbol', content: 'R', level: 5 },
+      // { type: 'symbol', content: 'D', level: 5 },
+      // { type: 'symbol', content: 'S', level: 5 },
+      // { type: 'symbol', content: 'S', level: 5 },
+      // { type: 'symbol', content: 'R', level: 5 },
+      // { type: 'symbol', content: 'K', level: 5 },
+      // { type: 'symbol', content: 'N', level: 5 },
+      // { type: 'symbol', content: 'F', level: 5 },
+      // { type: 'symbol', content: 'R', level: 5 },
+      // { type: 'symbol', content: 'J', level: 5 },
+      // { type: 'symbol', content: 'O', level: 5 },
+      // { type: 'symbol', content: 'N', level: 5 },
+      // { type: 'symbol', content: 'T', level: 5 },
+      // { type: 'symbol', content: 'H', level: 5 },
+      // { type: 'symbol', content: 'J', level: 5 },
+      // { type: 'symbol', content: 'B', level: 5 },
+      // { type: 'symbol', content: 'N', level: 5 },
+      // { type: 'symbol', content: 'H', level: 5 },
+      // { type: 'symbol', content: 'U', level: 5 },
+      // { type: 'symbol', content: 'I', level: 5 },
+      // { type: 'symbol', content: 'B', level: 5 },
+      // { type: 'symbol', content: 'D', level: 5 },
+      // { type: 'symbol', content: 'H', level: 5 },
+      // { type: 'symbol', content: 'N', level: 5 },
+      // { type: 'symbol', content: 'V', level: 5 },
+      // { type: 'symbol', content: 'Z', level: 5 },
+      // { type: 'symbol', content: 'D', level: 5 },
+      // { type: 'symbol', content: 'H', level: 5 },
+      // { type: 'symbol', content: 'N', level: 5 },
+      // { type: 'symbol', content: 'M', level: 5 },
+      // { type: 'symbol', content: 'U', level: 5 },
+
+      // { type: 'break', content: `
+      //     <h1 class="h1">Ostrý test - Úroveň 6</h1>
+      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 6 zpět. </p>
+
+      //     <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">I</span>&rarr;<span class="badge">O</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+
+      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+      // ` },
+      // { type: 'symbol', content: 'F', level: 6 },
+      // { type: 'symbol', content: 'E', level: 6 },
+      // { type: 'symbol', content: 'K', level: 6 },
+      // { type: 'symbol', content: 'L', level: 6 },
+      // { type: 'symbol', content: 'K', level: 6 },
+      // { type: 'symbol', content: 'N', level: 6 },
+      // { type: 'symbol', content: 'E', level: 6 },
+      // { type: 'symbol', content: 'F', level: 6 },
+      // { type: 'symbol', content: 'D', level: 6 },
+      // { type: 'symbol', content: 'S', level: 6 },
+      // { type: 'symbol', content: 'N', level: 6 },
+      // { type: 'symbol', content: 'D', level: 6 },
+      // { type: 'symbol', content: 'W', level: 6 },
+      // { type: 'symbol', content: 'D', level: 6 },
+      // { type: 'symbol', content: 'V', level: 6 },
+      // { type: 'symbol', content: 'C', level: 6 },
+      // { type: 'symbol', content: 'E', level: 6 },
+      // { type: 'symbol', content: 'R', level: 6 },
+      // { type: 'symbol', content: 'W', level: 6 },
+      // { type: 'symbol', content: 'X', level: 6 },
+      // { type: 'symbol', content: 'O', level: 6 },
+      // { type: 'symbol', content: 'L', level: 6 },
+      // { type: 'symbol', content: 'P', level: 6 },
+      // { type: 'symbol', content: 'N', level: 6 },
+      // { type: 'symbol', content: 'X', level: 6 },
+      // { type: 'symbol', content: 'B', level: 6 },
+      // { type: 'symbol', content: 'G', level: 6 },
+      // { type: 'symbol', content: 'R', level: 6 },
+      // { type: 'symbol', content: 'E', level: 6 },
+      // { type: 'symbol', content: 'T', level: 6 },
+      // { type: 'symbol', content: 'X', level: 6 },
+      // { type: 'symbol', content: 'J', level: 6 },
+      // { type: 'symbol', content: 'K', level: 6 },
+      // { type: 'symbol', content: 'L', level: 6 },
+      // { type: 'symbol', content: 'P', level: 6 },
+      // { type: 'symbol', content: 'X', level: 6 },
+      // { type: 'symbol', content: 'K', level: 6 },
+      // { type: 'symbol', content: 'O', level: 6 },
+      // { type: 'symbol', content: 'L', level: 6 },
+      // { type: 'symbol', content: 'P', level: 6 },
+      // { type: 'symbol', content: 'B', level: 6 },
+      // { type: 'symbol', content: 'A', level: 6 },
+      // { type: 'symbol', content: 'N', level: 6 },
+      // { type: 'symbol', content: 'C', level: 6 },
+      // { type: 'symbol', content: 'P', level: 6 },
+      // { type: 'symbol', content: 'D', level: 6 },
+      // { type: 'symbol', content: 'E', level: 6 },
+      // { type: 'symbol', content: 'K', level: 6 },
+      // { type: 'symbol', content: 'Z', level: 6 },
+      // { type: 'symbol', content: 'P', level: 6 },
+      ],
+
       i: -1,
       card: {
         type: 'symbol',
@@ -20924,7 +20352,7 @@ __webpack_require__.r(__webpack_exports__);
 
           // No next card? Finish the test.
         } else if (!_this2.card) {
-          _this2.$emit('finish');
+          _this2.$emit('test-finished');
 
           // Next card is break/info card? Manage it standard way.
         } else {
@@ -20956,7 +20384,7 @@ __webpack_require__.r(__webpack_exports__);
 
           // No more cards, finish
         } else {
-          _this3.$emit('finish');
+          _this3.$emit('test-finished');
           // console.log(this.cards)
         }
       }, 200);
@@ -21242,10 +20670,19 @@ var _hoisted_18 = {
   key: 5,
   "class": "w-full"
 };
+var _hoisted_19 = {
+  "class": "bottom-container"
+};
+var _hoisted_20 = ["disabled"];
+var _hoisted_21 = {
+  key: 6,
+  "class": "w-full"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Home = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Home");
   var _component_PersonalInfoForm = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PersonalInfoForm");
   var _component_Test = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Test");
+  var _component_PreFinish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PreFinish");
   var _component_Finish = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Finish");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$data.step == 'reset' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'home' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Home), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary w-full",
@@ -21271,10 +20708,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Pokračovat", 8 /* PROPS */, _hoisted_7)])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.step == 'form']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-if=\"step=='info'\">\n        <TestInfo/>\n\n        <div class=\"bottom-container\">\n            <div class=\"left-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('form')\">Zpět</button>\n            </div>\n            <div class=\"right-container\">\n                <button class=\"btn btn-primary w-full\" @click=\"moveto('test')\">Pokračovat</button>\n            </div>\n        </div>\n    </div> "), $data.step == 'test' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Test, {
     ref: "test",
     email: _ctx.$refs.personalInfoForm.user['email'],
-    onFinish: _cache[4] || (_cache[4] = function ($event) {
-      return $options.testFinished();
+    onTestFinished: _cache[4] || (_cache[4] = function ($event) {
+      return $data.step = 'pre-finish';
     })
-  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
+  }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Test ref=\"test\" email=\"nanuqcz@gmail.com\" v-on:finish=\"testFinished()\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'loading' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'error' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'pre-finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PreFinish, {
+    ref: "preFinish",
+    onChange: _cache[5] || (_cache[5] = function ($event) {
+      return $options.preFinishChanged();
+    })
+  }, null, 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    disabled: $data.finishDisabled,
+    "class": "btn btn-primary w-full",
+    onClick: _cache[6] || (_cache[6] = function ($event) {
+      return $options.finish();
+    })
+  }, "Pokračovat", 8 /* PROPS */, _hoisted_20)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.step == 'finish' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Finish, {
     email: _ctx.$refs.personalInfoForm.user['email']
   }, null, 8 /* PROPS */, ["email"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Finish email=\"nanuqcz@gmail.com\"/> ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
@@ -21699,6 +21147,75 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['select', 'select-bordered', 'w-full', $options.isDisorderValid ? 'select-success' : 'select-warning'])
   }, _hoisted_147, 2 /* CLASS */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.user['disorder']]])])], 32 /* HYDRATE_EVENTS */)], 64 /* STABLE_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  "class": "h1"
+}, "Poslední otázka!", -1 /* HOISTED */);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "p"
+}, " Vyrušilo vás během testu něco? Mohlo jít například o člověka, který nečekaně vstoupil do místnosti a vyžadoval vaši pozornost, nebo třeba o technický problém s internetem, aplikací apod. ", -1 /* HOISTED */);
+var _hoisted_3 = {
+  "class": "grid grid-cols-2 gap-4 mt-8"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-face-surprise pr-1"
+}, null, -1 /* HOISTED */);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ano ");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "něco mě vyrušilo", -1 /* HOISTED */);
+var _hoisted_8 = [_hoisted_4, _hoisted_5, _hoisted_6, _hoisted_7];
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fa-solid fa-thumbs-up pr-1"
+}, null, -1 /* HOISTED */);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Ne ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "vše bylo v pořádku", -1 /* HOISTED */);
+var _hoisted_13 = [_hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12];
+var _hoisted_14 = {
+  key: 0,
+  "class": "form-control row w-full my-4"
+};
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "label"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "label-text"
+}, " Zde se o problému můžete rozepsat, pokud chcete: ")], -1 /* HOISTED */);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      $data.interruption = true;
+      _ctx.$emit('change');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['btn', 'btn-lg', 'w-full', 'shadow-lg', 'btn-warning', $data.interruption !== true ? 'btn-outline' : '', $data.interruption === false ? 'opacity-50' : ''])
+  }, _hoisted_8, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      $data.interruption = false;
+      _ctx.$emit('change');
+    }),
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(['btn', 'btn-lg', 'w-full', 'shadow-lg', 'btn-success', $data.interruption !== false ? 'btn-outline' : '', $data.interruption === true ? 'opacity-50' : ''])
+  }, _hoisted_13, 2 /* CLASS */)])]), $data.interruption ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.interruption_reason = $event;
+    }),
+    "class": "textarea textarea-md textarea-bordered w-full"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.interruption_reason]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -39421,6 +38938,34 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/components/PreFinish.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/PreFinish.vue ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PreFinish.vue?vue&type=template&id=6dd8943b */ "./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b");
+/* harmony import */ var _PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PreFinish.vue?vue&type=script&lang=js */ "./resources/js/components/PreFinish.vue?vue&type=script&lang=js");
+/* harmony import */ var C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_nback_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PreFinish.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/components/Test.vue":
 /*!******************************************!*\
   !*** ./resources/js/components/Test.vue ***!
@@ -39541,6 +39086,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/PreFinish.vue?vue&type=script&lang=js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/PreFinish.vue?vue&type=script&lang=js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PreFinish.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/Test.vue?vue&type=script&lang=js":
 /*!******************************************************************!*\
   !*** ./resources/js/components/Test.vue?vue&type=script&lang=js ***!
@@ -39633,6 +39194,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PersonalInfoForm_vue_vue_type_template_id_0b29f25d__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PersonalInfoForm_vue_vue_type_template_id_0b29f25d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PersonalInfoForm.vue?vue&type=template&id=0b29f25d */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PersonalInfoForm.vue?vue&type=template&id=0b29f25d");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PreFinish_vue_vue_type_template_id_6dd8943b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PreFinish.vue?vue&type=template&id=6dd8943b */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PreFinish.vue?vue&type=template&id=6dd8943b");
 
 
 /***/ }),

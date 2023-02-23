@@ -42,7 +42,7 @@
 
 
     <div class="w-full" v-if="step=='test'">
-        <Test ref="test" v-bind:email="$refs.personalInfoForm.user['email']" v-on:finish="testFinished()"/>
+        <Test ref="test" v-bind:email="$refs.personalInfoForm.user['email']" v-on:test-finished="step = 'pre-finish'"/>
         <!-- <Test ref="test" email="nanuqcz@gmail.com" v-on:finish="testFinished()"/> -->
     </div>
 
@@ -65,6 +65,15 @@
     </div>
 
 
+    <div class="w-full" v-if="step=='pre-finish'">
+        <PreFinish ref="preFinish" v-on:change="preFinishChanged()"/>
+
+        <div class="bottom-container">
+            <button v-bind:disabled="finishDisabled" class="btn btn-primary w-full" @click="finish()">Pokračovat</button>
+        </div>
+    </div>
+
+
     <div class="w-full" v-if="step=='finish'">
         <Finish v-bind:email="$refs.personalInfoForm.user['email']"/>
         <!-- <Finish email="nanuqcz@gmail.com"/> -->
@@ -78,14 +87,16 @@ import Home from './Home.vue'
 import PersonalInfoForm from './PersonalInfoForm.vue'
 import TestInfo from './TestInfo.vue'
 import Test from './Test.vue'
+import PreFinish from './PreFinish.vue'
 import Finish from './Finish.vue'
 import axios from 'axios'
 
 export default {
     data() {
         return {
-            step: 'home',
+            step: 'pre-finish',
             movetoInfoDisabled: true,
+            finishDisabled: true,
         }
     },
     components: {
@@ -93,6 +104,7 @@ export default {
         PersonalInfoForm,
         TestInfo,
         Test,
+        PreFinish,
         Finish,
     },
     methods: {
@@ -103,7 +115,10 @@ export default {
         personalInfoFormChanged(){
             this.movetoInfoDisabled = !this.$refs.personalInfoForm || !this.$refs.personalInfoForm.isValid;
         },
-        testFinished(){
+        preFinishChanged(){
+            this.finishDisabled = !this.$refs.preFinish || this.$refs.preFinish.interruption === null;
+        },
+        finish(){
             this.step = 'loading';
 
             var data = {
