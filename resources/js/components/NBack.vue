@@ -13,7 +13,7 @@
     </div>
 
 
-    <div v-show="step=='form'">
+    <div v-if="step=='form'">
         <PersonalInfoForm ref="personalInfoForm" v-on:change="personalInfoFormChanged()"/>
 
         <div class="bottom-container">
@@ -21,7 +21,7 @@
                 <button class="btn btn-primary w-full" @click="moveto('home')">Zpět</button>
             </div>
             <div class="right-container">
-                <button @click="moveto('test')" v-bind:disabled="movetoInfoDisabled" class="btn btn-primary w-full">Pokračovat</button>
+                <button @click="personalInfoFormFinish()" v-bind:disabled="movetoInfoDisabled" class="btn btn-primary w-full">Pokračovat</button>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
 
 
     <div class="w-full" v-if="step=='test'">
-        <Test ref="test" v-bind:email="$refs.personalInfoForm.user['email']" v-on:finish="step = 'test-finish'"/>
+        <Test ref="test" v-bind:email="user['email']" v-on:finish="testFinish()"/>
         <!-- <Test ref="test" email="nanuqcz@gmail.com" v-on:finish="testFinished()"/> -->
     </div>
 
@@ -75,7 +75,7 @@
 
 
     <div class="w-full" v-if="step=='app-finish'">
-        <AppFinish v-bind:email="$refs.personalInfoForm.user['email']"/>
+        <AppFinish v-bind:email="user['email']"/>
         <!-- <AppFinish email="nanuqcz@gmail.com"/> -->
     </div>
 
@@ -97,6 +97,10 @@ export default {
             step: 'home',
             movetoInfoDisabled: true,
             appFinishDisabled: true,
+
+            user: null,
+            test: null,
+            cards: null,
         }
     },
     components: {
@@ -118,17 +122,27 @@ export default {
         testFinishChanged(){
             this.appFinishDisabled = !this.$refs.testFinish || this.$refs.testFinish.interruption === null;
         },
+        personalInfoFormFinish(){
+            this.user = JSON.parse(JSON.stringify(this.$refs.personalInfoForm.user));
+            this.moveto('test');
+        },
+        testFinish(){
+            this.cards = JSON.parse(JSON.stringify(this.$refs.test.cards));
+            this.moveto('test-finish');
+        },
         appFinish(){
+            this.test = {
+                'interruption': this.$refs.testFinish.interruption,
+                'interruption_reason': this.$refs.testFinish.interruption_reason,
+                'browser_info': JSON.stringify(this.getBrowserInfo()),
+            };
+
             this.step = 'loading';
 
             var data = {
-                'user': this.$refs.personalInfoForm.user,
-                'test': {
-                    'interruption': this.$refs.testFinish.interruption,
-                    'interruption_reason': this.$refs.testFinish.interruption_reason,
-                    'browser_info': JSON.stringify(this.getBrowserInfo()),
-                },
-                'cards': this.$refs.test.cards,
+                'user': this.user,
+                'test': this.test,
+                'cards': this.cards,
             };
             data = JSON.parse(JSON.stringify(data));
 
