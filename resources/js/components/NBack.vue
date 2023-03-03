@@ -133,7 +133,7 @@ export default {
         appFinish(){
             this.test = {
                 'interruption': this.$refs.testFinish.interruption,
-                'interruption_reason': this.$refs.testFinish.interruption_reason,
+                'interruption_reason': this.$refs.testFinish.interruption_reason || '',
                 'browser_info': JSON.stringify(this.getBrowserInfo()),
             };
 

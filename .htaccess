@@ -6,5 +6,11 @@ Deny from all
 RewriteEngine On
 #RewriteBase /
 
+# HTTP -> HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# Front Controller
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ public/$1 [L]
