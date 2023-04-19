@@ -19576,7 +19576,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       this.test = {
         'interruption': this.$refs.testFinish.interruption,
-        'interruption_reason': this.$refs.testFinish.interruption_reason,
+        'interruption_reason': this.$refs.testFinish.interruption_reason || '',
         'browser_info': JSON.stringify(this.getBrowserInfo())
       };
       this.step = 'loading';
@@ -19880,7 +19880,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         type: 'break',
         "if": "imperfect",
-        next: 0,
+        next: 12,
         content: "\n                    <h1 class=\"h1\">Zku\u0161ebn\xED kolo - T\u011B\u017E\u0161\xED \xFArove\u0148</h1>\n                    <p class=\"p\">Je mi l\xEDto, zd\xE1 se, \u017Ee V\xE1m zku\u0161ebn\xED kolo nevy\u0161lo. To nevad\xED, byl to V\xE1\u0161 prvn\xED pokus, kter\xFD se nepo\u010D\xEDt\xE1 do fin\xE1ln\xEDho v\xFDsledku.</p>\n\n                    <p class=\"p\">Nyn\xED si zku\u0161ebn\xED kolo projd\u011Bte cel\xE9 pro jistotu znovu.</p>\n\n                    <p class=\"p\">Nezapome\u0148te, \u017Ee v&nbsp;t\u011B\u017E\u0161\xED \xFArovni je nutn\xE9 tla\u010D\xEDtko stisknout v\u017Edy, kdy\u017E se podn\u011Bty v&nbsp;\u0159ad\u011B budou shodovat ob-jedno. Tzn. kdy\u017E na obrazovce uvid\xEDte <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>, a&nbsp;za n\xEDm se op\u011Bt objev\xED dal\u0161\xED <span class=\"badge\">B</span>, stisknete tla\u010D\xEDtko v&nbsp;doln\xED \u010D\xE1sti obrazovky. <span class=\"badge\">B</span>&rarr;<span class=\"badge\">A</span>&rarr;<span class=\"badge\">B</span>&nbsp;=&nbsp;stisk tla\u010D\xEDtka.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
       },
       // ######
@@ -20094,184 +20094,616 @@ __webpack_require__.r(__webpack_exports__);
         type: 'symbol',
         content: 'V',
         level: 2
+      }, {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 3</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 3 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">R</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">R</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'W',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Q',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'V',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'V',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 3
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 3
+      }, {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 4</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 4 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">R</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">G</span>&rarr;<span class=\"badge\">R</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'E',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'D',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'D',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'I',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'I',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'M',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'X',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'Y',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'X',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'P',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 4
+      }, {
+        type: 'symbol',
+        content: 'A',
+        level: 4
+      }, {
+        type: 'break',
+        content: "\n                    <h1 class=\"h1\">Ostr\xFD test - \xDArove\u0148 5</h1>\n                    <p class=\"p\">V\xFDborn\u011B, m\u016F\u017Eeme p\u0159ej\xEDt na dal\u0161\xED level. Stiskn\u011Bte tla\u010D\xEDtko v\u017Edy, kdy\u017E se podn\u011Bt bude shodovat s podn\u011Btem o 5 zp\u011Bt. </p>\n\n                    <p class=\"p\">Tzn. <span class=\"badge\">N</span>&rarr;<span class=\"badge\">J</span>&rarr;<span class=\"badge\">H</span>&rarr;<span class=\"badge\">K</span>&rarr;<span class=\"badge\">L</span>&rarr;<span class=\"badge\">N</span>&nbsp;=&nbsp;stiskn\u011Bte tla\u010D\xEDtko.</p>\n\n                    <p class=\"p\">Pokud jste p\u0159ipraveni, stiskn\u011Bte tla\u010D\xEDtko <i>Pokra\u010Dovat</i>. </p>\n                "
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'G',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'D',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'W',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'Q',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'S',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'L',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'D',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'S',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'S',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'K',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'F',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'R',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'O',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'T',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'J',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'I',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'B',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'D',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'V',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'Z',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'D',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'H',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'N',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'M',
+        level: 5
+      }, {
+        type: 'symbol',
+        content: 'U',
+        level: 5
       }
-
-      // { type: 'break', content: `
-      //     <h1 class="h1">Ostrý test - Úroveň 3</h1>
-      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 3 zpět. </p>
-
-      //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'W', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'Q', level: 3 },
-      // { type: 'symbol', content: 'K', level: 3 },
-      // { type: 'symbol', content: 'L', level: 3 },
-      // { type: 'symbol', content: 'O', level: 3 },
-      // { type: 'symbol', content: 'L', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'O', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'B', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'P', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'P', level: 3 },
-      // { type: 'symbol', content: 'P', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'Z', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'G', level: 3 },
-      // { type: 'symbol', content: 'B', level: 3 },
-      // { type: 'symbol', content: 'V', level: 3 },
-      // { type: 'symbol', content: 'F', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'V', level: 3 },
-      // { type: 'symbol', content: 'Z', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'Z', level: 3 },
-      // { type: 'symbol', content: 'G', level: 3 },
-      // { type: 'symbol', content: 'B', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'K', level: 3 },
-      // { type: 'symbol', content: 'N', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'N', level: 3 },
-      // { type: 'symbol', content: 'J', level: 3 },
-      // { type: 'symbol', content: 'T', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-      // { type: 'symbol', content: 'U', level: 3 },
-      // { type: 'symbol', content: 'K', level: 3 },
-      // { type: 'symbol', content: 'H', level: 3 },
-
-      // { type: 'break', content: `
-      //     <h1 class="h1">Ostrý test - Úroveň 4</h1>
-      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 4 zpět. </p>
-
-      //     <p class="p">Tzn. <span class="badge">R</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">G</span>&rarr;<span class="badge">R</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-      // { type: 'symbol', content: 'R', level: 4 },
-      // { type: 'symbol', content: 'J', level: 4 },
-      // { type: 'symbol', content: 'K', level: 4 },
-      // { type: 'symbol', content: 'G', level: 4 },
-      // { type: 'symbol', content: 'R', level: 4 },
-      // { type: 'symbol', content: 'H', level: 4 },
-      // { type: 'symbol', content: 'U', level: 4 },
-      // { type: 'symbol', content: 'T', level: 4 },
-      // { type: 'symbol', content: 'K', level: 4 },
-      // { type: 'symbol', content: 'H', level: 4 },
-      // { type: 'symbol', content: 'G', level: 4 },
-      // { type: 'symbol', content: 'F', level: 4 },
-      // { type: 'symbol', content: 'K', level: 4 },
-      // { type: 'symbol', content: 'U', level: 4 },
-      // { type: 'symbol', content: 'G', level: 4 },
-      // { type: 'symbol', content: 'J', level: 4 },
-      // { type: 'symbol', content: 'F', level: 4 },
-      // { type: 'symbol', content: 'R', level: 4 },
-      // { type: 'symbol', content: 'K', level: 4 },
-      // { type: 'symbol', content: 'P', level: 4 },
-      // { type: 'symbol', content: 'F', level: 4 },
-      // { type: 'symbol', content: 'Z', level: 4 },
-      // { type: 'symbol', content: 'E', level: 4 },
-      // { type: 'symbol', content: 'D', level: 4 },
-      // { type: 'symbol', content: 'F', level: 4 },
-      // { type: 'symbol', content: 'T', level: 4 },
-      // { type: 'symbol', content: 'K', level: 4 },
-      // { type: 'symbol', content: 'D', level: 4 },
-      // { type: 'symbol', content: 'I', level: 4 },
-      // { type: 'symbol', content: 'J', level: 4 },
-      // { type: 'symbol', content: 'K', level: 4 },
-      // { type: 'symbol', content: 'L', level: 4 },
-      // { type: 'symbol', content: 'I', level: 4 },
-      // { type: 'symbol', content: 'O', level: 4 },
-      // { type: 'symbol', content: 'M', level: 4 },
-      // { type: 'symbol', content: 'U', level: 4 },
-      // { type: 'symbol', content: 'F', level: 4 },
-      // { type: 'symbol', content: 'O', level: 4 },
-      // { type: 'symbol', content: 'H', level: 4 },
-      // { type: 'symbol', content: 'Z', level: 4 },
-      // { type: 'symbol', content: 'X', level: 4 },
-      // { type: 'symbol', content: 'Y', level: 4 },
-      // { type: 'symbol', content: 'J', level: 4 },
-      // { type: 'symbol', content: 'X', level: 4 },
-      // { type: 'symbol', content: 'N', level: 4 },
-      // { type: 'symbol', content: 'U', level: 4 },
-      // { type: 'symbol', content: 'O', level: 4 },
-      // { type: 'symbol', content: 'P', level: 4 },
-      // { type: 'symbol', content: 'N', level: 4 },
-      // { type: 'symbol', content: 'A', level: 4 },
-
-      // { type: 'break', content: `
-      //     <h1 class="h1">Ostrý test - Úroveň 5</h1>
-      //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 5 zpět. </p>
-
-      //     <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">J</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
-
-      //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-      // ` },
-      // { type: 'symbol', content: 'G', level: 5 },
-      // { type: 'symbol', content: 'T', level: 5 },
-      // { type: 'symbol', content: 'R', level: 5 },
-      // { type: 'symbol', content: 'K', level: 5 },
-      // { type: 'symbol', content: 'J', level: 5 },
-      // { type: 'symbol', content: 'L', level: 5 },
-      // { type: 'symbol', content: 'R', level: 5 },
-      // { type: 'symbol', content: 'G', level: 5 },
-      // { type: 'symbol', content: 'N', level: 5 },
-      // { type: 'symbol', content: 'J', level: 5 },
-      // { type: 'symbol', content: 'K', level: 5 },
-      // { type: 'symbol', content: 'G', level: 5 },
-      // { type: 'symbol', content: 'R', level: 5 },
-      // { type: 'symbol', content: 'K', level: 5 },
-      // { type: 'symbol', content: 'D', level: 5 },
-      // { type: 'symbol', content: 'W', level: 5 },
-      // { type: 'symbol', content: 'Q', level: 5 },
-      // { type: 'symbol', content: 'S', level: 5 },
-      // { type: 'symbol', content: 'L', level: 5 },
-      // { type: 'symbol', content: 'R', level: 5 },
-      // { type: 'symbol', content: 'D', level: 5 },
-      // { type: 'symbol', content: 'S', level: 5 },
-      // { type: 'symbol', content: 'S', level: 5 },
-      // { type: 'symbol', content: 'R', level: 5 },
-      // { type: 'symbol', content: 'K', level: 5 },
-      // { type: 'symbol', content: 'N', level: 5 },
-      // { type: 'symbol', content: 'F', level: 5 },
-      // { type: 'symbol', content: 'R', level: 5 },
-      // { type: 'symbol', content: 'J', level: 5 },
-      // { type: 'symbol', content: 'O', level: 5 },
-      // { type: 'symbol', content: 'N', level: 5 },
-      // { type: 'symbol', content: 'T', level: 5 },
-      // { type: 'symbol', content: 'H', level: 5 },
-      // { type: 'symbol', content: 'J', level: 5 },
-      // { type: 'symbol', content: 'B', level: 5 },
-      // { type: 'symbol', content: 'N', level: 5 },
-      // { type: 'symbol', content: 'H', level: 5 },
-      // { type: 'symbol', content: 'U', level: 5 },
-      // { type: 'symbol', content: 'I', level: 5 },
-      // { type: 'symbol', content: 'B', level: 5 },
-      // { type: 'symbol', content: 'D', level: 5 },
-      // { type: 'symbol', content: 'H', level: 5 },
-      // { type: 'symbol', content: 'N', level: 5 },
-      // { type: 'symbol', content: 'V', level: 5 },
-      // { type: 'symbol', content: 'Z', level: 5 },
-      // { type: 'symbol', content: 'D', level: 5 },
-      // { type: 'symbol', content: 'H', level: 5 },
-      // { type: 'symbol', content: 'N', level: 5 },
-      // { type: 'symbol', content: 'M', level: 5 },
-      // { type: 'symbol', content: 'U', level: 5 },
 
       // { type: 'break', content: `
       //     <h1 class="h1">Ostrý test - Úroveň 6</h1>
@@ -20403,6 +20835,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     nextCard: function nextCard() {
       var _this3 = this;
+      var blankDuration = this.i == -1 || this.cards[this.i]['type'] == 'break' ? 500 : 2000;
+      /**/
+      console.log('blankDuration', blankDuration);
+
       // Force move to specific card ?
       if (this.cards[this.i] && this.cards[this.i]['next'] !== undefined) {
         this.i = this.cards[this.i]['next'] - 1;
@@ -20420,7 +20856,7 @@ __webpack_require__.r(__webpack_exports__);
         if (_this3.cards[_this3.i]) {
           _this3.card = _this3.prepareCard(_this3.i);
           if (_this3.card['type'] == 'symbol' || _this3.card['type'] == 'trial') {
-            _this3.cardTimeout = setTimeout(_this3.nextCard, 800);
+            _this3.cardTimeout = setTimeout(_this3.nextCard, 500);
           }
 
           // No more cards, finish
@@ -20428,7 +20864,7 @@ __webpack_require__.r(__webpack_exports__);
           _this3.$emit('finish');
           // console.log(this.cards)
         }
-      }, 200);
+      }, blankDuration);
     },
     prepareCard: function prepareCard(i) {
       if (!this.cards[i]) {
@@ -20635,7 +21071,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "open-source"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ")])], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #######\n    #       # #    # #  ####  #    #\n    #       # ##   # # #      #    #\n    #####   # # #  # #  ####  ######\n    #       # #  # # #      # #    #\n    #       # #   ## # #    # #    #\n    #       # #    # #  ####  #    #\n    "), _hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"p text-justify\">\n        Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.\n    </p>\n\n    <p class=\"p text-justify\">\n        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.\n    </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #######\r\n    #       # #    # #  ####  #    #\r\n    #       # ##   # # #      #    #\r\n    #####   # # #  # #  ####  ######\r\n    #       # #  # # #      # #    #\r\n    #       # #   ## # #    # #    #\r\n    #       # #    # #  ####  #    #\r\n    "), _hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <p class=\"p text-justify\">\r\n        Tvé výsledky spolu se srovnáním s ostatními účastníky najdeš na odkazu níže. Výsledky jsou interaktivní, takže jak bude více lidí zkoušet tento test, tvé srovnání s ostatními se bude měnit.\r\n    </p>\r\n\r\n    <p class=\"p text-justify\">\r\n        Neváhej se zde tedy vracet. A to jak k výsledkům, tak klidně čas od času k samotnému testu. Ve výsledcích pak uvidíš historicky všechny tvé testy i jejich srovnání.\r\n    </p> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "link link-primary",
     href: 'https://lea.michalm.cz/' + $props.email,
     target: "_blank"
@@ -20659,7 +21095,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"h1\">Úvod!</h1><p class=\"p\"><img src=\"/lea3.png\" alt=\"Lea Slížová\" class=\"float-left mt-[3px] mr-4 mb-4 w-36 rounded\"><!-- Přeji pěkný den! Děkuji, že jste se rozhodl/a zúčastnit tohoto výzkumu.  --> Jsem studentkou třetího ročníku psychologie na Ostravské univerzitě a momentálně píši bakalářskou práci na téma &quot;<b>Bilingvismus a pracovní paměť</b>&quot; pod vedením <a class=\"link\" href=\"https://ff.osu.cz/kps/klara-machu/31199/\" target=\"_blank\">Dr. Kláry Machů</a>. <!-- Veškeré informace, které z výzkumu získám, budou použity výhradně k účelu mé bakalářské práce a budou zde prezentovány v&amp;nbsp;anonymní formě. --> Budu Vám moc vděčná, pokud se rozhodnete účastnit našeho výzkumu. Účast je však samozřejmě dobrovolná a můžete ji kdykoliv ukončit. Veškerá získaná data budou anonymizována. </p><p class=\"p\"> Výzkum se skládá z <b>úvodního krátkého dotazníku</b> zaměřujícího se na základní sociodemografické údaje a na zjištění úrovně bilingvismu. Následuje <b>výkonový test zjišťující kapacitu pracovní paměti</b>. <br> Účastí na tomto výzkumu nejen pomůžete v realizaci mé bakalářské práce, ale také se dozvíte něco o sobě – konkrétně o své paměti. V závěru uvidíte své skóre v porovnání s ostatními. </p><p class=\"p\"> Celý test nezabere více než <b>20 minut</b>. Prosím, vyhraďte si tento čas a soustřeďte se nyní čistě na výzkum, najděte si klidné prostředí a nenechte se ničím rozptylovat. Pokud jste tak již učinili, můžete kliknout na tlačítko <i>Pokračovat</i>. </p>", 4);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n    #     #\r\n    #     #  ####  #    # ######\r\n    #     # #    # ##  ## #\r\n    ####### #    # # ## # #####\r\n    #     # #    # #    # #\r\n    #     # #    # #    # #\r\n    #     #  ####  #    # ######\r\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n    #     #\n    #     #  ####  #    # ######\n    #     # #    # ##  ## #\n    ####### #    # # ## # #####\n    #     # #    # #    # #\n    #     # #    # #    # #\n    #     #  ####  #    # ######\n    "), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
@@ -20816,7 +21252,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "Dotazník", -1 /* HOISTED */);
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "p"
-}, " První částí výzkumu je krátký sociodemograický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě. ", -1 /* HOISTED */);
+}, " První částí výzkumu je krátký sociodemografický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě. ", -1 /* HOISTED */);
 var _hoisted_3 = {
   "class": "form-control w-full"
 };
@@ -20986,13 +21422,13 @@ var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   selected: ""
 }, null, -1 /* HOISTED */);
 var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "0"
+  value: "man"
 }, "Muž", -1 /* HOISTED */);
 var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "1"
+  value: "woman"
 }, "Žena", -1 /* HOISTED */);
 var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
-  value: "2"
+  value: "other"
 }, "Nechci uvést / Jiné", -1 /* HOISTED */);
 var _hoisted_101 = [_hoisted_97, _hoisted_98, _hoisted_99, _hoisted_100];
 var _hoisted_102 = {

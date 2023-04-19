@@ -1,7 +1,7 @@
 <template>
     <h1 class="h1">Dotazník</h1>
     <p class="p">
-        První částí výzkumu je krátký sociodemograický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i&nbsp;dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě.
+        První částí výzkumu je krátký sociodemografický dotazník spojený se sebeposuzovací škálou úrovně znalosti druhého (nebo i&nbsp;dalšího) jazyka. Prosím, čtěte si veškeré otázky pečlivě, odpovídejte uvážlivě a pravdivě.
     </p>
 
     <form @input="formChanged()" @change="formChanged()" action="" class="flex-col">
@@ -190,9 +190,9 @@ B)	<b>Čtení a psaní</b> - má dobré kritické myšlení, dokáže proto bez 
             <select v-model="user['sex']"
                 v-bind:class="['select', 'select-bordered', 'w-full', isSexValid? 'select-success': 'select-warning']" >
                 <option disabled selected></option>
-                <option value="0">Muž</option>
-                <option value="1">Žena</option>
-                <option value="2">Nechci uvést / Jiné</option>
+                <option value="man">Muž</option>
+                <option value="woman">Žena</option>
+                <option value="other">Nechci uvést / Jiné</option>
             </select>
         </div>
 

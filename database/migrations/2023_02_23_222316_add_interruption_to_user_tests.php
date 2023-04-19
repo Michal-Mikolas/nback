@@ -22,7 +22,7 @@ class AddInterruptionToUserTests extends Migration
             DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
 
             $table->smallInteger('interruption')->after('total_points');
-            $table->text('interruption_reason')->after('interruption');
+            $table->text('interruption_reason')->nullable()->after('interruption');
         });
     }
 

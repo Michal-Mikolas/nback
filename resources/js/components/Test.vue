@@ -130,7 +130,7 @@ export default {
                 { type: 'trial', content: 'C', level: 2 },
                 { type: 'trial', content: 'R', level: 2 },
 
-                { type: 'break', if: "imperfect", next: 0, content: `
+                { type: 'break', if: "imperfect", next: 12, content: `
                     <h1 class="h1">Zkušební kolo - Těžší úroveň</h1>
                     <p class="p">Je mi líto, zdá se, že Vám zkušební kolo nevyšlo. To nevadí, byl to Váš první pokus, který se nepočítá do finálního výsledku.</p>
 
@@ -385,64 +385,64 @@ export default {
                 { type: 'symbol', content: 'M', level: 5 },
                 { type: 'symbol', content: 'U', level: 5 },
 
-                { type: 'break', content: `
-                    <h1 class="h1">Ostrý test - Úroveň 6</h1>
-                    <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 6 zpět. </p>
+                // { type: 'break', content: `
+                //     <h1 class="h1">Ostrý test - Úroveň 6</h1>
+                //     <p class="p">Výborně, můžeme přejít na další level. Stiskněte tlačítko vždy, když se podnět bude shodovat s podnětem o 6 zpět. </p>
 
-                    <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">I</span>&rarr;<span class="badge">O</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
+                //     <p class="p">Tzn. <span class="badge">N</span>&rarr;<span class="badge">H</span>&rarr;<span class="badge">K</span>&rarr;<span class="badge">I</span>&rarr;<span class="badge">O</span>&rarr;<span class="badge">L</span>&rarr;<span class="badge">N</span>&nbsp;=&nbsp;stiskněte tlačítko.</p>
 
-                    <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
-                ` },
-                { type: 'symbol', content: 'F', level: 6 },
-                { type: 'symbol', content: 'E', level: 6 },
-                { type: 'symbol', content: 'K', level: 6 },
-                { type: 'symbol', content: 'L', level: 6 },
-                { type: 'symbol', content: 'K', level: 6 },
-                { type: 'symbol', content: 'N', level: 6 },
-                { type: 'symbol', content: 'E', level: 6 },
-                { type: 'symbol', content: 'F', level: 6 },
-                { type: 'symbol', content: 'D', level: 6 },
-                { type: 'symbol', content: 'S', level: 6 },
-                { type: 'symbol', content: 'N', level: 6 },
-                { type: 'symbol', content: 'D', level: 6 },
-                { type: 'symbol', content: 'W', level: 6 },
-                { type: 'symbol', content: 'D', level: 6 },
-                { type: 'symbol', content: 'V', level: 6 },
-                { type: 'symbol', content: 'C', level: 6 },
-                { type: 'symbol', content: 'E', level: 6 },
-                { type: 'symbol', content: 'R', level: 6 },
-                { type: 'symbol', content: 'W', level: 6 },
-                { type: 'symbol', content: 'X', level: 6 },
-                { type: 'symbol', content: 'O', level: 6 },
-                { type: 'symbol', content: 'L', level: 6 },
-                { type: 'symbol', content: 'P', level: 6 },
-                { type: 'symbol', content: 'N', level: 6 },
-                { type: 'symbol', content: 'X', level: 6 },
-                { type: 'symbol', content: 'B', level: 6 },
-                { type: 'symbol', content: 'G', level: 6 },
-                { type: 'symbol', content: 'R', level: 6 },
-                { type: 'symbol', content: 'E', level: 6 },
-                { type: 'symbol', content: 'T', level: 6 },
-                { type: 'symbol', content: 'X', level: 6 },
-                { type: 'symbol', content: 'J', level: 6 },
-                { type: 'symbol', content: 'K', level: 6 },
-                { type: 'symbol', content: 'L', level: 6 },
-                { type: 'symbol', content: 'P', level: 6 },
-                { type: 'symbol', content: 'X', level: 6 },
-                { type: 'symbol', content: 'K', level: 6 },
-                { type: 'symbol', content: 'O', level: 6 },
-                { type: 'symbol', content: 'L', level: 6 },
-                { type: 'symbol', content: 'P', level: 6 },
-                { type: 'symbol', content: 'B', level: 6 },
-                { type: 'symbol', content: 'A', level: 6 },
-                { type: 'symbol', content: 'N', level: 6 },
-                { type: 'symbol', content: 'C', level: 6 },
-                { type: 'symbol', content: 'P', level: 6 },
-                { type: 'symbol', content: 'D', level: 6 },
-                { type: 'symbol', content: 'E', level: 6 },
-                { type: 'symbol', content: 'K', level: 6 },
-                { type: 'symbol', content: 'Z', level: 6 },
-                { type: 'symbol', content: 'P', level: 6 },
+                //     <p class="p">Pokud jste připraveni, stiskněte tlačítko <i>Pokračovat</i>. </p>
+                // ` },
+                // { type: 'symbol', content: 'F', level: 6 },
+                // { type: 'symbol', content: 'E', level: 6 },
+                // { type: 'symbol', content: 'K', level: 6 },
+                // { type: 'symbol', content: 'L', level: 6 },
+                // { type: 'symbol', content: 'K', level: 6 },
+                // { type: 'symbol', content: 'N', level: 6 },
+                // { type: 'symbol', content: 'E', level: 6 },
+                // { type: 'symbol', content: 'F', level: 6 },
+                // { type: 'symbol', content: 'D', level: 6 },
+                // { type: 'symbol', content: 'S', level: 6 },
+                // { type: 'symbol', content: 'N', level: 6 },
+                // { type: 'symbol', content: 'D', level: 6 },
+                // { type: 'symbol', content: 'W', level: 6 },
+                // { type: 'symbol', content: 'D', level: 6 },
+                // { type: 'symbol', content: 'V', level: 6 },
+                // { type: 'symbol', content: 'C', level: 6 },
+                // { type: 'symbol', content: 'E', level: 6 },
+                // { type: 'symbol', content: 'R', level: 6 },
+                // { type: 'symbol', content: 'W', level: 6 },
+                // { type: 'symbol', content: 'X', level: 6 },
+                // { type: 'symbol', content: 'O', level: 6 },
+                // { type: 'symbol', content: 'L', level: 6 },
+                // { type: 'symbol', content: 'P', level: 6 },
+                // { type: 'symbol', content: 'N', level: 6 },
+                // { type: 'symbol', content: 'X', level: 6 },
+                // { type: 'symbol', content: 'B', level: 6 },
+                // { type: 'symbol', content: 'G', level: 6 },
+                // { type: 'symbol', content: 'R', level: 6 },
+                // { type: 'symbol', content: 'E', level: 6 },
+                // { type: 'symbol', content: 'T', level: 6 },
+                // { type: 'symbol', content: 'X', level: 6 },
+                // { type: 'symbol', content: 'J', level: 6 },
+                // { type: 'symbol', content: 'K', level: 6 },
+                // { type: 'symbol', content: 'L', level: 6 },
+                // { type: 'symbol', content: 'P', level: 6 },
+                // { type: 'symbol', content: 'X', level: 6 },
+                // { type: 'symbol', content: 'K', level: 6 },
+                // { type: 'symbol', content: 'O', level: 6 },
+                // { type: 'symbol', content: 'L', level: 6 },
+                // { type: 'symbol', content: 'P', level: 6 },
+                // { type: 'symbol', content: 'B', level: 6 },
+                // { type: 'symbol', content: 'A', level: 6 },
+                // { type: 'symbol', content: 'N', level: 6 },
+                // { type: 'symbol', content: 'C', level: 6 },
+                // { type: 'symbol', content: 'P', level: 6 },
+                // { type: 'symbol', content: 'D', level: 6 },
+                // { type: 'symbol', content: 'E', level: 6 },
+                // { type: 'symbol', content: 'K', level: 6 },
+                // { type: 'symbol', content: 'Z', level: 6 },
+                // { type: 'symbol', content: 'P', level: 6 },
             ],
 
             i: -1,
@@ -513,6 +513,9 @@ export default {
             }, 100);
         },
         nextCard(){
+            var blankDuration = (this.i == -1 || this.cards[this.i]['type'] == 'break')? 500: 2000;
+            /**/console.log('blankDuration', blankDuration);
+
             // Force move to specific card ?
             if (this.cards[this.i] && (this.cards[this.i]['next'] !== undefined)) {
                 this.i = this.cards[this.i]['next'] - 1;
@@ -532,7 +535,7 @@ export default {
                     this.card = this.prepareCard(this.i);
 
                     if (this.card['type'] == 'symbol' || this.card['type'] == 'trial') {
-                        this.cardTimeout = setTimeout(this.nextCard, 800);
+                        this.cardTimeout = setTimeout(this.nextCard, 500);
                     }
 
                     // No more cards, finish
@@ -540,7 +543,7 @@ export default {
                     this.$emit('finish');
                     // console.log(this.cards)
                 }
-            }, 200);
+            }, blankDuration);
         },
         prepareCard(i){
             if (!this.cards[i]) {
