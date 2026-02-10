@@ -1,64 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Paměťový test N-Back
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Tato webová aplikace je interaktivní nástroj určený k testování a měření **pracovní paměti (Working Memory, WM)** pomocí metody **N-Back**. Původně vznikla jako součást bakalářské práce, jejímž cílem bylo sbírat data a porovnávat výsledky napříč populací.
+Uživatelé si mohou otestovat paměť, okamžitě vidět své výsledky a porovnat svůj výkon s ostatními účastníky.
 
-## About Laravel
+## 🧠 Co je N-Back test?
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**N-back** je typ paměťového testu, který se často používá v kognitivní neurovědě ke zkoumání pracovní paměti a její kapacity.
+Testovanému je postupně zobrazována sekvence podnětů (v tomto případě písmen) a jeho úkolem je označit **moment**, kdy aktuální podnět odpovídá tomu, který se objevil **N kroků zpět** v posloupnosti.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Funkce aplikace
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🎮 Interaktivní testování
+- **Postupně se zvyšující obtížnost**: Test je navržen tak, aby plynule přecházel od jednodušších úloh ke složitějším.
+    - **Zkušební kola**: Uživatelé začínají s 1-back a 2-back testem, aby pochopili princip. V případě chyb dostávají okamžitou zpětnou vazbu.
+    - **Hlavní test**: Skládá se ze 4 úrovní (2-back, 3-back, 4-back a 5-back), přičemž každá úroveň obsahuje 51 karet.
+- **Náhodně generované sekvence**: Aplikace vytváří náhodné posloupnosti písmen s **kontrolovaným podílem shod** (přibližně 30 %), aby byla zachována konzistentní obtížnost.
 
-## Learning Laravel
+### 📊 Výsledky a porovnání
+- **Okamžité vyhodnocení**: Výsledky jsou k dispozici ihned po dokončení testu.
+- **Srovnání s populací**: Aplikace zobrazuje:
+    - **Percentil**: Jak si uživatel vedl ve srovnání s ostatními.
+    - **Průměr a medián**: Základní statistiky celé populace.
+- **Detailní analýza chyb**: Přehled zahrnující:
+    - **Úspěšnost**: Správně rozpoznané shody.
+    - **Chyby typu „zapomenuté označení“**: Shody, které uživatel neoznačil, i když měl.
+    - **Chyby typu „označeno nesprávně“**: Situace, kdy byl podnět označen chybně (false positives).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📝 Sběr dat
+- **Demografické údaje**: Věk, pohlaví a dosažené vzdělání.
+- **Jazykové dovednosti**: Speciální část pro bilingvní uživatele, která umožňuje zkoumat vztah mezi jazykovou úrovní (např. C1/C2) a výkonem paměti.
+- **Dlouhodobé sledování**: Uživatelé se mohou k testu opakovaně vracet a absolvovat jej znovu (hlavní test vs. kratší tréninkové testy).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠 Použité technologie
 
-## Laravel Sponsors
+Projekt je vytvořen jako **Single Page Application (SPA)**, kde **Laravel** slouží jako backendové API a **Vue.js** zajišťuje frontend.
+- **Backend**: [Laravel 8](https://laravel.com)
+- **Frontend**: [Vue.js 3](https://vuejs.org)
+- **Styly**: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](https://daisyui.com)
+- **Databáze**: MySQL
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 🚀 Instalace
 
-### Premium Partners
+Postup pro spuštění projektu lokálně:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+1. **Stažení zdrojových kódů**
+   ```bash
+   git clone https://github.com/Michal-Mikolas/nback.git
+   cd nback
+   ```
 
-## Contributing
+2. **Instalace backendových závislostí**
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Instalace frontendových závislostí**
+   ```bash
+   npm install
+   ```
 
-## Code of Conduct
+4. **Nastavení prostředí**
+   Zkopírujte soubor `.env.example` na `.env` a nastavte přihlašovací údaje k databázi.
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Migrace databáze**
+   ```bash
+   php artisan migrate
+   ```
 
-## Security Vulnerabilities
+6. **Sestavení frontendových assetů**
+   ```bash
+   npm run dev
+   # nebo pro produkční prostředí
+   npm run prod
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. **Spuštění serveru**
+   ```bash
+   php artisan serve
+   ```
 
-## License
+## 📄 Licence
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Projekt je open-source a je šířen pod licencí [MIT](https://opensource.org/licenses/MIT).
+
+## 👨‍💻 Autor
+
+**Michal Mikoláš**
+
+* [LinkedIn](https://www.linkedin.com/in/michal-mikolas)
+* [GitHub](https://github.com/Michal-Mikolas)
