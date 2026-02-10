@@ -10,6 +10,9 @@ The **N-back** task is a continuous performance task that is commonly used as an
 
 The subject is presented with a sequence of stimuli (in this case, letters), and the task consists of indicating when the current stimulus matches the one from **N** steps earlier in the sequence.
 
+## Demo 
+You can test the application online at [lea.michalm.cz](https://lea.michalm.cz).
+
 ## ✨ Features
 
 ### 🎮 Interactive Testing
