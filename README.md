@@ -8,7 +8,7 @@ Uživatelé si mohou otestovat paměť, okamžitě vidět své výsledky a porov
 **N-back** je typ paměťového testu, který se často používá v kognitivní neurovědě ke zkoumání pracovní paměti a její kapacity.
 Testovanému je postupně zobrazována sekvence podnětů (v tomto případě písmen) a jeho úkolem je označit **moment**, kdy aktuální podnět odpovídá tomu, který se objevil **N kroků zpět** v posloupnosti.
 
-## Demo 
+## 🖥️ Demo 
 Aplikaci si můžete vyzkoušet online na [lea.michalm.cz](https://lea.michalm.cz).
 
 ## ✨ Funkce aplikace
